@@ -18,6 +18,8 @@ app.use("/uploads", express.static("uploads"));
 // ✅ Routes
 app.use("/api/auth", userRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/mentors", mentorRoutes);
+
 app.use("/api/admin/mentors", mentorRoutes);
 
 app.listen(PORT, () => {

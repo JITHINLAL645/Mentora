@@ -148,9 +148,9 @@ export default function AdminMentorRegister() {
           <label className="block text-sm font-medium">Specialization</label>
           <select name="specialization" value={formik.values.specialization} onChange={formik.handleChange} onBlur={formik.handleBlur} className="w-full p-2 border rounded-md">
             <option>General coach</option>
-            <option>Technical trainer</option>
-            <option>Motivational speaker</option>
-            <option>Academic mentor</option>
+            <option>clinical</option>
+            <option>counseling</option>
+            <option>neuropsychology</option>
           </select>
           {formik.touched.specialization && formik.errors.specialization && <div className="text-red-500 text-xs mt-1">{formik.errors.specialization}</div>}
         </div>

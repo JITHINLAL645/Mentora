@@ -8,6 +8,7 @@ const Login = lazy(() => import("../pages/user/login"));
 const AboutUs = lazy(() => import("../pages/user/Aboutus"));
 const AdminDashboard = lazy(() => import("../pages/admin/AdminDashboard"));
 const Mentees = lazy(() => import("../pages/admin/mentees"));
+const MentorPage=lazy(()=>import("../pages/user/mentorPage"))
 
 import Profile from "../pages/user/Profile";
 import AdminMentorRegister from "../pages/admin/mentorRegistrationForm";
@@ -34,6 +35,7 @@ const AppRoutes = () => {
         <Route path="/otpVerification" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/mentorPage" element={<MentorPage />} />
 
         {/* Admin Route */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />

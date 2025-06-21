@@ -6,6 +6,9 @@ import {
   toggleMentorApproval,
 } from "../controllers/mentorController";
 
+import { getAllApprovedMentors } from "../controllers/mentorController";
+
+
 const router = express.Router();
 
 router.post(
@@ -19,5 +22,8 @@ router.post(
 
 router.get("/", getAllMentors);
 router.patch("/:id/toggle-approval", toggleMentorApproval);
+
+router.get("/approved", getAllApprovedMentors);
+
 
 export default router;

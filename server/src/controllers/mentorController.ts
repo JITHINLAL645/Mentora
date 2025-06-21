@@ -53,3 +53,13 @@ export const toggleMentorApproval = async (req: Request, res: Response) => {
     res.status(500).json({ message: error.message || "Failed to toggle approval status" });
   }
 };
+
+export const getAllApprovedMentors = async (_req: Request, res: Response) => {
+  try {
+    const mentors = await Mentor.find({ isApproved: true });
+    res.json({ data: mentors }); // ✅ Must match frontend's access
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to fetch mentors." });
+  }
+};
