@@ -1,0 +1,28 @@
+// src/controllers/mentorController.ts
+import { Request, Response } from "express";
+import { createMentor } from "../repositories/mentorRepository";
+
+export const registerMentor = async (req: Request, res: Response) => {
+  try {
+    const { body, files } = req;
+
+    const profileImg = (files as any)?.profileImg?.[0]?.path;
+    const kycCertificate = (files as any)?.kycCertificate?.[0]?.path;
+
+    const mentorData = {
+      ...body,
+      profileImg,
+      kycCertificate,
+      experience: Number(body.experience),
+      availableDays: Array.isArray(body.availableDays)
+        ? body.availableDays
+        : [body.availableDays],
+    };
+
+    const mentor = await createMentor(mentorData);
+    res.status(201).json(mentor);
+  } catch (err: any) {
+    console.error("Mentor Registration Error:", err);
+    res.status(500).json({ message: err.message || "Server error" });
+  }
+};
