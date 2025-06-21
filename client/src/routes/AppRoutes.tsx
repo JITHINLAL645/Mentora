@@ -11,6 +11,7 @@ const Mentees = lazy(() => import("../pages/admin/mentees"));
 
 import Profile from "../pages/user/Profile";
 import AdminMentorRegister from "../pages/admin/mentorRegistrationForm";
+import AdminMentorPage from "../pages/admin/mentor"
 
 const AppRoutes = () => {
   return (
@@ -37,6 +38,7 @@ const AppRoutes = () => {
         {/* Admin Route */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/mentees" element={<Mentees />} />
+        <Route path="/admin/mentors" element={<AdminMentorPage />} />
         <Route path="/admin/mentor-registration" element={<AdminMentorRegister />} />
 
 

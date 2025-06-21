@@ -1,4 +1,3 @@
-// src/repositories/baseRepository.ts
 import { Model, FilterQuery } from "mongoose";
 
 export class BaseRepository<T> {

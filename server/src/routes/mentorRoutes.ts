@@ -1,7 +1,10 @@
-// routes/mentorRoutes.ts
 import express from "express";
-import { upload } from "../middlewares/upload"; 
-import { registerMentor } from "../controllers/mentorController";
+import { upload } from "../middlewares/upload";
+import {
+  registerMentor,
+  getAllMentors,
+  toggleMentorApproval,
+} from "../controllers/mentorController";
 
 const router = express.Router();
 
@@ -13,5 +16,8 @@ router.post(
   ]),
   registerMentor
 );
+
+router.get("/", getAllMentors);
+router.patch("/:id/toggle-approval", toggleMentorApproval);
 
 export default router;

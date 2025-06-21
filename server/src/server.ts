@@ -21,5 +21,5 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/admin/mentors", mentorRoutes);
 
 app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
+  console.log(` Server running on http://localhost:${PORT}`);
 });

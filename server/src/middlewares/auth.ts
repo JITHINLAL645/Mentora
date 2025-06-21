@@ -18,7 +18,7 @@ export const authenticate = (req: AuthenticatedRequest, res: Response, next: Nex
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: string };
 
-    req.userId = decoded.id; // Safe assignment now
+    req.userId = decoded.id;
     next();
   } catch (err) {
     return res.status(401).json({ message: "Unauthorized. Invalid token." });
