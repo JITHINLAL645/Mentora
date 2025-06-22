@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { FaStar, FaRegClock, FaPhone, FaEnvelope, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { toast } from 'sonner';
-import { useNavigate, useParams } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import 'sweetalert2/dist/sweetalert2.min.css';
-import Navbar from '../../components/Homecomponent/Navbar';
-import Footer from '../../components/Homecomponent/Footer';
-import { getApprovedMentors } from '../../api/user/mentor';
+import React, { useEffect, useState } from "react";
+import {
+  FaStar,
+  FaRegClock,
+  FaPhone,
+  FaEnvelope,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
+import { toast } from "sonner";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
+import Navbar from "../../components/Homecomponent/Navbar";
+import Footer from "../../components/Homecomponent/Footer";
+import { getApprovedMentors } from "../../api/user/mentor";
 
 interface IMentor {
   _id: string;
@@ -53,10 +60,10 @@ const MentorProfile: React.FC = () => {
       if (mentor) {
         setMentorData(mentor);
       } else {
-        toast.error('Mentor not found');
+        toast.error("Mentor not found");
       }
     } catch (error) {
-      toast.error('Failed to load mentor data');
+      toast.error("Failed to load mentor data");
     } finally {
       setLoading(false);
     }
@@ -72,35 +79,41 @@ const MentorProfile: React.FC = () => {
       // Simulate fetching slots (replace with actual API call)
       const mockSlots: ISlot[] = [
         {
-          _id: '1',
+          _id: "1",
           date: new Date().toISOString(),
-          startTime: '10:00',
-          endTime: '10:30',
+          startTime: "10:00",
+          endTime: "10:30",
           isAvailable: true,
           isBooked: false,
         },
         {
-          _id: '2',
+          _id: "2",
           date: new Date().toISOString(),
-          startTime: '11:00',
-          endTime: '11:30',
+          startTime: "11:00",
+          endTime: "11:30",
           isAvailable: true,
           isBooked: true,
         },
       ];
       setSlots(mockSlots);
-      const dates = [...new Set(mockSlots.map(slot => new Date(slot.date).toISOString().split('T')[0]))];
+      const dates = [
+        ...new Set(
+          mockSlots.map(
+            (slot) => new Date(slot.date).toISOString().split("T")[0]
+          )
+        ),
+      ];
       setAvailableDates(dates);
       setSlotModalVisible(true);
     } catch (error) {
-      toast.error('No slots available');
+      toast.error("No slots available");
     }
   };
 
   // Handle appointment booking
   const handleAppointmentConfirmation = async (slot: ISlot) => {
     if (!slot._id) {
-      toast.error('Invalid slot');
+      toast.error("Invalid slot");
       return;
     }
     try {
@@ -110,30 +123,32 @@ const MentorProfile: React.FC = () => {
         date: new Date(slot.date),
         startTime: slot.startTime,
         endTime: slot.endTime,
-        status: 'pending',
-        paymentStatus: 'unpaid',
+        status: "pending",
+        paymentStatus: "unpaid",
         amount: 120,
       };
       // Simulate booking (replace with actual API)
-      localStorage.setItem('AppointmentId', 'mock-appointment-id');
+      localStorage.setItem("AppointmentId", "mock-appointment-id");
       setSlotModalVisible(false);
       await handleSlotClick();
-      navigate('/appointment_booking');
+      navigate("/appointment_booking");
     } catch (error) {
-      toast.error('Failed to book slot');
+      toast.error("Failed to book slot");
     }
   };
 
   const handleAppointmentClick = async (slot: ISlot) => {
     Swal.fire({
-      title: 'Confirm Appointment?',
-      text: `You are about to book an appointment on ${new Date(slot.date).toLocaleDateString()} at ${slot.startTime} - ${slot.endTime}.`,
-      icon: 'warning',
+      title: "Confirm Appointment?",
+      text: `You are about to book an appointment on ${new Date(
+        slot.date
+      ).toLocaleDateString()} at ${slot.startTime} - ${slot.endTime}.`,
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, book it!',
-      cancelButtonText: 'No, close',
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, book it!",
+      cancelButtonText: "No, close",
     }).then((result) => {
       if (result.isConfirmed) {
         handleAppointmentConfirmation(slot);
@@ -143,11 +158,15 @@ const MentorProfile: React.FC = () => {
 
   // Calendar functions
   const prevMonth = () => {
-    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1)
+    );
   };
 
   const nextMonth = () => {
-    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
+    setCurrentMonth(
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1)
+    );
   };
 
   const renderCalendarDays = () => {
@@ -171,7 +190,7 @@ const MentorProfile: React.FC = () => {
     // Current month days
     for (let i = 1; i <= daysInMonth; i++) {
       const date = new Date(year, month, i);
-      const dateStr = date.toISOString().split('T')[0];
+      const dateStr = date.toISOString().split("T")[0];
       days.push({
         day: i,
         date,
@@ -191,7 +210,10 @@ const MentorProfile: React.FC = () => {
 
   // Filter slots by selected date
   const filteredSlots = selectedDate
-    ? slots.filter(slot => new Date(slot.date).toISOString().split('T')[0] === selectedDate)
+    ? slots.filter(
+        (slot) =>
+          new Date(slot.date).toISOString().split("T")[0] === selectedDate
+      )
     : [];
 
   if (loading) {
@@ -226,7 +248,11 @@ const MentorProfile: React.FC = () => {
         <div className="flex flex-col md:flex-row gap-8 mb-8">
           <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-gray-200 overflow-hidden">
             <img
-              src={mentorData.profileImg || '/default-profile.png'}
+              src={
+                mentorData.profileImg
+                  ? `http://localhost:5000/uploads/${mentorData.profileImg}`
+                  : "/default-profile.png"
+              }
               alt={mentorData.fullName}
               className="w-full h-full object-cover"
             />
@@ -235,7 +261,9 @@ const MentorProfile: React.FC = () => {
             <h1 className="text-3xl font-bold">{mentorData.fullName}</h1>
             <p className="text-gray-600">{mentorData.education}</p>
             <p className="text-gray-600">{mentorData.specialization}</p>
-            <p className="text-gray-600">{mentorData.experience} years Experience</p>
+            <p className="text-gray-600">
+              {mentorData.experience} years Experience
+            </p>
             <div className="flex gap-1 mt-2">
               {[...Array(5)].map((_, i) => (
                 <FaStar key={i} className="text-yellow-400 text-sm" />
@@ -247,7 +275,9 @@ const MentorProfile: React.FC = () => {
         {/* About Section */}
         <div className="mb-8">
           <h2 className="text-xl font-semibold mb-4">About</h2>
-          <p className="text-gray-700">{mentorData.about || 'No information available'}</p>
+          <p className="text-gray-700">
+            {mentorData.about || "No information available"}
+          </p>
         </div>
 
         {/* Contact Section */}
@@ -258,7 +288,7 @@ const MentorProfile: React.FC = () => {
           </div>
           <div className="flex items-center gap-2">
             <FaPhone className="text-gray-500" />
-            <span>Phone: {mentorData.phone || 'Not provided'}</span>
+            <span>Phone: {mentorData.phone || "Not provided"}</span>
           </div>
           <div className="flex items-center gap-2">
             <FaRegClock className="text-gray-500" />
@@ -266,7 +296,10 @@ const MentorProfile: React.FC = () => {
           </div>
           <span>Appointment Booking fee: ₹120</span>
           <div className="flex items-center gap-2">
-            <span>Location: {mentorData.street}, {mentorData.city}, {mentorData.state}</span>
+            <span>
+              Location: {mentorData.street}, {mentorData.city},{" "}
+              {mentorData.state}
+            </span>
           </div>
         </div>
 
@@ -287,7 +320,9 @@ const MentorProfile: React.FC = () => {
               {/* Left Side - Time Slots */}
               <div className="flex-1 p-6 overflow-y-auto">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-xl font-semibold">Available Time Slots</h3>
+                  <h3 className="text-xl font-semibold">
+                    Available Time Slots
+                  </h3>
                   <button
                     onClick={() => setSlotModalVisible(false)}
                     className="text-gray-500 hover:text-gray-700 text-2xl"
@@ -305,17 +340,23 @@ const MentorProfile: React.FC = () => {
                             key={slot._id}
                             className={`p-3 rounded-lg border transition-all flex flex-col items-center ${
                               slot.isAvailable && !slot.isBooked
-                                ? 'bg-teal-50 border-teal-200 hover:bg-teal-100 text-teal-800'
-                                : 'bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed'
+                                ? "bg-teal-50 border-teal-200 hover:bg-teal-100 text-teal-800"
+                                : "bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed"
                             }`}
-                            onClick={() => slot.isAvailable && !slot.isBooked && handleAppointmentClick(slot)}
+                            onClick={() =>
+                              slot.isAvailable &&
+                              !slot.isBooked &&
+                              handleAppointmentClick(slot)
+                            }
                             disabled={!slot.isAvailable || slot.isBooked}
                           >
                             <span className="font-medium text-sm">
                               {slot.startTime} - {slot.endTime}
                             </span>
                             {slot.isBooked && (
-                              <span className="text-xs text-red-500 mt-1">Booked</span>
+                              <span className="text-xs text-red-500 mt-1">
+                                Booked
+                              </span>
                             )}
                           </button>
                         ))}
@@ -345,9 +386,9 @@ const MentorProfile: React.FC = () => {
                       <FaChevronLeft />
                     </button>
                     <span className="font-medium">
-                      {currentMonth.toLocaleDateString('en-US', {
-                        month: 'long',
-                        year: 'numeric',
+                      {currentMonth.toLocaleDateString("en-US", {
+                        month: "long",
+                        year: "numeric",
                       })}
                     </span>
                     <button
@@ -358,29 +399,34 @@ const MentorProfile: React.FC = () => {
                     </button>
                   </div>
                   <div className="grid grid-cols-7 gap-1 mb-2">
-                    {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map(day => (
-                      <div key={day} className="text-center text-xs font-medium text-gray-500">
+                    {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((day) => (
+                      <div
+                        key={day}
+                        className="text-center text-xs font-medium text-gray-500"
+                      >
                         {day}
                       </div>
                     ))}
                   </div>
                   <div className="grid grid-cols-7 gap-1">
                     {renderCalendarDays().map((dayObj, index) => {
-                      const dateStr = dayObj.date.toISOString().split('T')[0];
+                      const dateStr = dayObj.date.toISOString().split("T")[0];
                       const isSelected = selectedDate === dateStr;
                       return (
                         <button
                           key={index}
                           className={`h-8 w-8 rounded-full text-sm flex items-center justify-center ${
                             !dayObj.isCurrentMonth
-                              ? 'text-gray-300'
+                              ? "text-gray-300"
                               : isSelected
-                              ? 'bg-teal-600 text-white'
+                              ? "bg-teal-600 text-white"
                               : dayObj.isAvailable
-                              ? 'hover:bg-gray-100 text-gray-800'
-                              : 'text-gray-400 cursor-not-allowed'
+                              ? "hover:bg-gray-100 text-gray-800"
+                              : "text-gray-400 cursor-not-allowed"
                           }`}
-                          disabled={!dayObj.isAvailable || !dayObj.isCurrentMonth}
+                          disabled={
+                            !dayObj.isAvailable || !dayObj.isCurrentMonth
+                          }
                           onClick={() => {
                             if (dayObj.isAvailable && dayObj.isCurrentMonth) {
                               setSelectedDate(dateStr);
@@ -395,7 +441,9 @@ const MentorProfile: React.FC = () => {
                 </div>
                 <div className="mt-6">
                   <h4 className="font-medium mb-2">Consultation Fee</h4>
-                  <p className="text-gray-700">₹{mentorData?.consultantFee || 500}</p>
+                  <p className="text-gray-700">
+                    ₹{mentorData?.consultantFee || 500}
+                  </p>
                   <p className="text-sm text-gray-500 mt-4">
                     Note: An additional ₹120 booking fee will be charged
                   </p>
@@ -405,8 +453,7 @@ const MentorProfile: React.FC = () => {
           </div>
         )}
       </div>
-        <Footer /> 
-        
+      <Footer />
     </div>
   );
 };

@@ -188,9 +188,9 @@ const MentorPage: React.FC = () => {
                   className="flex flex-col md:flex-row items-center gap-6 p-4 md:p-6 border rounded-lg shadow-md"
                 >
                   <img
-                    src={mentor.profileImg || "/default-profile.png"}
-                    alt={mentor.fullName}
-                    className="w-24 h-24 rounded-full object-cover"
+                    src={`http://localhost:5000/uploads/${mentor.profileImg}`}
+                    alt="mentor profile"
+                    className="w-35 h-35 object-cover rounded-2xl"
                   />
 
                   <div className="flex-1">
@@ -226,7 +226,9 @@ const MentorPage: React.FC = () => {
                   <div className="mt-4 md:mt-0">
                     <button
                       className="px-4 py-2 bg-teal-600 text-white rounded shadow"
-                      onClick={() => navigate(`/singlementorPage/${mentor._id}`)}
+                      onClick={() =>
+                        navigate(`/singlementorPage/${mentor._id}`)
+                      }
                     >
                       Show Availability
                     </button>

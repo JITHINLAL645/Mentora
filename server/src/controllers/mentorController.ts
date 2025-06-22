@@ -7,12 +7,13 @@ export const registerMentor = async (req: Request, res: Response) => {
   try {
     const { body, files } = req;
 
-    const profileImg = (files as any)?.profileImg?.[0]?.path;
-    const kycCertificate = (files as any)?.kycCertificate?.[0]?.path;
+const profileImg = (files as any)?.profileImg?.[0]?.filename;
+const kycCertificate = (files as any)?.kycCertificate?.[0]?.filename;
+
 
     const mentorData = {
       ...body,
-      profileImg,
+      profileImg, // now just "1750444455403_profileImg.jpeg"
       kycCertificate,
       experience: Number(body.experience),
       availableDays: Array.isArray(body.availableDays)
@@ -27,6 +28,7 @@ export const registerMentor = async (req: Request, res: Response) => {
     res.status(500).json({ message: err.message || "Server error" });
   }
 };
+
 
 export const getAllMentors = async (req: Request, res: Response) => {
   try {
