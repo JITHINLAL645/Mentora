@@ -93,9 +93,9 @@ const Navbar = () => {
       {/* Navigation Links */}
       <div className="hidden ml-20 md:flex gap-10 text-sm font-medium text-gray-500 ">
         <a href="/" className="hover:text-orange-600">Home</a>
-        <a href="#" className="hover:text-orange-600">Dashboard</a>
+        {/* <a href="#" className="hover:text-orange-600">Dashboard</a> */}
         <a href="/mentorPage" className="hover:text-orange-600">Mentors</a>
-        <a href="#" className="hover:text-orange-600">Sessions</a>
+        <a href="" className="hover:text-orange-600">Sessions</a>
         <a href="/about" className="hover:text-orange-600">About</a>
       </div>
 
