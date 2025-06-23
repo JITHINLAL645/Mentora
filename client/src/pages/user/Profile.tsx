@@ -11,7 +11,7 @@ interface ProfileData {
   position: string;
   location: string;
   about: string;
-  profilePicture: string;
+  profileImage: string;
 }
 
 const Profile: React.FC = () => {
@@ -24,7 +24,7 @@ const Profile: React.FC = () => {
     position: "",
     location: "",
     about: "",
-    profilePicture: "",
+    profileImage: "",
   });
 
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -35,6 +35,8 @@ const Profile: React.FC = () => {
         const res = await axios.get("/api/user/profile", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
+        console.log("Fetched Profile:", res.data); // 👈 Add this
+
         setProfileData(res.data);
       } catch (err) {
         console.error("Failed to fetch profile:", err);
@@ -49,21 +51,21 @@ const Profile: React.FC = () => {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("upload_preset", "Mentora"); // replace with your Cloudinary preset
-      const cloudName = "dha3cpw1u"; // replace with your Cloudinary cloud name
+      formData.append("upload_preset", "Mentora");
+      const cloudName = "dha3cpw1u";
 
-      const cloudinaryRes = await axios.post(
+      const { data } = await axios.post(
         `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
         formData
       );
 
-      const imageUrl = cloudinaryRes.data.secure_url;
-      setProfileData((prev) => ({ ...prev, profilePicture: imageUrl }));
+      const imageUrl = data.secure_url;
+      setProfileData((prev) => ({ ...prev, profileImage: imageUrl }));
+      console.log(imageUrl, "oooooooooooooo");
 
-      // Save image URL to DB
       await axios.patch(
-        "/api/user/profile",
-        { profilePicture: imageUrl },
+        "/api/auth/profile",
+        { profileImage: imageUrl },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
@@ -74,7 +76,7 @@ const Profile: React.FC = () => {
   };
 
   const handleSaveProfile = async () => {
-    console.log("Save Profile clicked"); // Check if button is clicked
+    console.log("Save Profile clicked");
     try {
       const res = await axios.patch(
         "/api/user/profile",
@@ -113,13 +115,12 @@ const Profile: React.FC = () => {
         }
       );
 
-      // Fetch updated data
       const res = await axios.get("/api/user/profile", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setProfileData(res.data);
 
-      setIsEditAboutOpen(false); // Close modal
+      setIsEditAboutOpen(false);
     } catch (err) {
       console.error("Failed to save about info:", err);
     }
@@ -138,9 +139,9 @@ const Profile: React.FC = () => {
                 onClick={() => fileInputRef.current?.click()}
                 title="Click to change profile image"
               >
-                {profileData.profilePicture ? (
+                {profileData.profileImage ? (
                   <img
-                    src={profileData.profilePicture}
+                    src={profileData.profileImage}
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />
@@ -185,7 +186,6 @@ const Profile: React.FC = () => {
           <p className="mt-4 text-gray-600">{profileData.about}</p>
         </div>
 
-        {/* Edit Profile Modal */}
         {isEditProfileOpen && (
           <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg shadow-lg p-6 w-310 h-110">
@@ -232,7 +232,6 @@ const Profile: React.FC = () => {
           </div>
         )}
 
-        {/* Edit About Modal */}
         {isEditAboutOpen && (
           <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-3xl">

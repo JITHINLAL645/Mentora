@@ -7,16 +7,17 @@ import boxImage1 from "../../assets/m1.jpg";
 import boxImage2 from "../../assets/m2.jpg";
 import boxImage3 from "../../assets/m3.jpg";
 import boxImage4 from "../../assets/m4.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  
+  const navigate = useNavigate();
+
   return (
     <>
       <Navbar />
 
       <section className="bg-[#F6F6F6] py-16 px-6 md:px-20">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
-          {/* Left Side Content */}
           <div className="max-w-xl">
             <h1
               className="text-4xl pl-10 md:text-6xl font-extralight text-gray-800 leading-tight mb-4"
@@ -39,29 +40,27 @@ const Home = () => {
               and personalized guidance.
             </p>
 
-            {/* Buttons */}
             <div className="flex gap-4 pl-60 pt-25">
-              <button className="bg-blue-900 text-white px-6 py-2 rounded-full text-sm hover:bg-blue-800">
+              <button
+                className="bg-blue-900 text-white px-6 py-2 rounded-full text-sm hover:bg-blue-800"
+                onClick={() => navigate("/mentorPage")}
+              >
                 Find a Mentor
               </button>
+
               <button className="bg-gray-100 text-gray-800 px-6 py-2 rounded-full text-sm hover:bg-gray-200">
                 Become a Mentor
               </button>
             </div>
           </div>
 
-          {/* Right Side Image with Background Shape */}
           <div className="relative w-[320px] h-[320px] md:w-[400px] md:h-[400px]">
-            {/* Circle behind image */}
             <div className="absolute inset-0  rounded-full border-2 border-green-200 scale-110 z-0" />
 
-            {/* Background Box 1 - top left */}
             <div className="absolute top-[0px] left-[-25px] w-30 h-30 bg-[#0F1C4D] rounded-3xl z-0 rotate-12" />
 
-            {/* Background Box 2 - bottom right */}
             <div className="absolute bottom-[-10px] right-[-20px] w-30 h-30 bg-[#D7D9ED] rounded-3xl z-0 -rotate-5" />
 
-            {/* Main Image */}
             <img
               src={heroImage}
               alt="Mentor Session"
@@ -70,19 +69,15 @@ const Home = () => {
           </div>
         </div>
 
-        {/* ✅ About Us Section */}
         <div className="relative w-full flex flex-col md:flex-row items-center justify-center mt-16 px-6 md:px-20">
-          {/* Left Image Side (3/4) */}
           <div className="w-full md:w-3/4 h-[500px] relative right-50 ">
             <img
-              src={heroImage2} // You can use another image if needed
+              src={heroImage2}
               alt="About Mentora"
               className="w-full h-full  object-cover rounded-2xl shadow-lg "
             />
 
-            {/* Text Block - Glass Style Overlay */}
             <div className="absolute top-0 l left-170  bg-white/40 backdrop-blur-md p-6  rounded-lg shadow-md w-[90%] md:w-2/3 h-125">
-              {/* <h2 className="text-2xl font-bold mb-2 text-gray-800"></h2> */}
               <h3 className="text-4xl font-semibold mb-4 text-blue-900">
                 Welcome to Mentora
               </h3>
@@ -121,7 +116,6 @@ const Home = () => {
         </div>
 
         <div className="relative w-full flex flex-col md:flex-row items-center justify-center mt-16 px-6 md:px-20">
-          {/* Image Container */}
           <div className="w-full md:w-3/4 h-[500px] relative left-48">
             <img
               src={homeImage3}
@@ -129,7 +123,6 @@ const Home = () => {
               className="w-full h-full object-cover rounded-2xl shadow-lg"
             />
 
-            {/* Glass Text Box Overlay - Aligned Right */}
             <div className="absolute top-0 right-10 md:right-175 bg-white/40 backdrop-blur-md p-6 rounded-lg shadow-md w-[90%] md:w-2/3 h-full overflow-auto">
               <h3 className="text-4xl font-semibold mb-4 text-blue-900">
                 One-to-One Coaching for <br />

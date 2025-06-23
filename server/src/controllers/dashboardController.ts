@@ -1,6 +1,5 @@
-// dashboardController.ts
 import { Request, Response } from "express";
-import { User } from "../models/user"; // Ensure consistent casing
+import { User } from "../models/user"; 
 
 export const getUserCount = async (req: Request, res: Response) => {
   try {

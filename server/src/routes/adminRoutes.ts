@@ -1,4 +1,3 @@
-// routes/adminRoutes.ts
 import express from "express";
 import { getMentees, toggleBlockUser } from "../controllers/menteesController";
 import { getUserCount } from "../controllers/dashboardController";

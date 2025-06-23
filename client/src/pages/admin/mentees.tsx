@@ -21,8 +21,8 @@ const Mentees: React.FC = () => {
   useEffect(() => {
     const fetchMentees = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/admin/mentees"); // Update if your route is different
-        setMentees(response.data.users); // assuming response.data.users is the array
+        const response = await axios.get("http://localhost:5000/api/admin/mentees");
+        setMentees(response.data.users); 
       } catch (error) {
         console.error("Failed to fetch mentees:", error);
       }
@@ -31,7 +31,6 @@ const Mentees: React.FC = () => {
     fetchMentees();
   }, []);
 
-  // Search + Pagination
   const filteredMentees = mentees.filter((user) =>
     user.name?.toLowerCase().includes(search.toLowerCase())
   );
@@ -45,7 +44,6 @@ const Mentees: React.FC = () => {
 
   const toggleStatus = async (userId: string) => {
     try {
-      // You can send a patch request to toggle block/unblock
       await axios.patch(`http://localhost:5000/api/admin/block/${userId}`);
       const updatedUsers = mentees.map(user =>
         user._id === userId ? { ...user, isBlock: !user.isBlock } : user
@@ -124,7 +122,6 @@ const Mentees: React.FC = () => {
           </tbody>
         </table>
 
-        {/* Pagination */}
         <div className="flex justify-center mt-4">
           <nav className="inline-flex rounded-md shadow">
             <button

@@ -4,7 +4,6 @@ const Footer = () => {
   return (
     <footer className="bg-[#F6F6F6] pt-6 pb-10 mt-10 [box-shadow:0_-6px_6px_-4px_rgba(0,0,0,0.1)]">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6 text-sm text-gray-600">
-        {/* Left: Logo + Description */}
         <div>
           <div className="relative w-10 h-10">
             <img
@@ -20,7 +19,6 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Right: 6 Links in 2 Rows (3 per row) */}
         <div className="mt-2 grid grid-cols-3 gap-6 text-sm font-medium text-gray-600">
           <a href="#" className="hover:text-gray-400">
             Platform
@@ -43,7 +41,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Border + Copyright */}
       <div className=" mt-6 pt-4 px-6">
         <hr className="mt-20  border-gray-300" />
         <div className="max-w-7xl mx-auto">

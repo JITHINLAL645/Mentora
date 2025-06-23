@@ -110,7 +110,6 @@ const MentorProfile: React.FC = () => {
     }
   };
 
-  // Handle appointment booking
   const handleAppointmentConfirmation = async (slot: ISlot) => {
     if (!slot._id) {
       toast.error("Invalid slot");
@@ -127,7 +126,6 @@ const MentorProfile: React.FC = () => {
         paymentStatus: "unpaid",
         amount: 120,
       };
-      // Simulate booking (replace with actual API)
       localStorage.setItem("AppointmentId", "mock-appointment-id");
       setSlotModalVisible(false);
       await handleSlotClick();
@@ -156,7 +154,6 @@ const MentorProfile: React.FC = () => {
     });
   };
 
-  // Calendar functions
   const prevMonth = () => {
     setCurrentMonth(
       new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1)

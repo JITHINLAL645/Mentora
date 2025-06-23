@@ -8,11 +8,11 @@ const Login = lazy(() => import("../pages/user/login"));
 const AboutUs = lazy(() => import("../pages/user/Aboutus"));
 const AdminDashboard = lazy(() => import("../pages/admin/AdminDashboard"));
 const Mentees = lazy(() => import("../pages/admin/mentees"));
-const MentorPage=lazy(()=>import("../pages/user/mentorPage"))
-import MentorProfile from '../pages/user/SingleMentorPage'; // Adjust path
+const MentorPage = lazy(() => import("../pages/user/mentorPage"));
+import MentorProfile from "../pages/user/SingleMentorPage"; // Adjust path
 import Profile from "../pages/user/Profile";
 import AdminMentorRegister from "../pages/admin/mentorRegistrationForm";
-import AdminMentorPage from "../pages/admin/mentor"
+import AdminMentorPage from "../pages/admin/mentor";
 
 const AppRoutes = () => {
   return (
@@ -41,11 +41,10 @@ const AppRoutes = () => {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/mentees" element={<Mentees />} />
         <Route path="/admin/mentors" element={<AdminMentorPage />} />
-        <Route path="/admin/mentor-registration" element={<AdminMentorRegister />} />
-
-
-
-
+        <Route
+          path="/admin/mentor-registration"
+          element={<AdminMentorRegister />}
+        />
       </Routes>
     </Suspense>
   );

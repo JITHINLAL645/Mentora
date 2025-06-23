@@ -5,7 +5,6 @@ import userRepository from "../repositories/userRepository";
 import jwt from "jsonwebtoken";
 import { sendEmail } from "../utils/sendEmail";
 
-// ✅ OTP Verification Controller
 export const verifyOtp = async (req: Request, res: Response) => {
   const { email, otp } = req.body;
 
@@ -20,7 +19,6 @@ export const verifyOtp = async (req: Request, res: Response) => {
   res.status(200).json({ message: "Email verified successfully" });
 };
 
-// ✅ Resend OTP Controller
 export const resendOtp = async (req: Request, res: Response) => {
   try {
     const { email } = req.body;
@@ -28,7 +26,7 @@ export const resendOtp = async (req: Request, res: Response) => {
 
     await authRepository.saveOtp(email, otp);
 
-    console.log(`🔁 Resent OTP for ${email}: ${otp}`); // ✅ Show OTP in terminal
+    console.log(`🔁 Resent OTP for ${email}: ${otp}`); 
 
     await sendEmail(email, "OTP Resent", `Your new OTP is: ${otp}`);
 
@@ -39,27 +37,6 @@ export const resendOtp = async (req: Request, res: Response) => {
   }
 };
 
-// ✅ Register User and Send OTP
-// export const register = async (req: Request, res: Response) => {
-//   try {
-//     const user = await UserService.registerUser(req.body);
-//     const otp = authRepository.generateOtp();
-
-//     await authRepository.saveOtp(user.email, otp);
-
-//     console.log(`✅ OTP for ${user.email}: ${otp}`); // ✅ Terminal log
-
-//     await sendEmail(user.email, "OTP Verification", `Your OTP is: ${otp}`);
-
-//     res.status(201).json({
-//       message: "Registered successfully. OTP sent to your email.",
-//       user,
-//     });
-//   } catch (error: any) {
-//     console.error("❌ Registration error:", error.message);
-//     res.status(400).json({ message: error.message });
-//   }
-// };
 export const register = async (req: Request, res: Response) => {
   try {
     console.log("🟢 Incoming signup request:", req.body); // check incoming data
@@ -85,7 +62,6 @@ export const register = async (req: Request, res: Response) => {
 };
 
 
-// ✅ Login Controller
 export const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
@@ -105,7 +81,6 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
-// ✅ Logout Controller
 export const logoutUser = async (req: Request, res: Response) => {
   try {
     res.clearCookie("token");

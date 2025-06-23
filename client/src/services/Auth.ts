@@ -1,8 +1,6 @@
-// ✅ src/services/auth.ts
 import api from "./api";
 import { AxiosError } from "axios";
 
-// ✅ Login Function
 export const login = async (data: { email: string; password: string }) => {
   try {
     const response = await api.post("/auth/login", data);
@@ -20,7 +18,6 @@ export const login = async (data: { email: string; password: string }) => {
   }
 };
 
-// ✅ Signup Function
 export const signup = async (data: {
   name: string;
   email: string;
@@ -41,7 +38,6 @@ export const signup = async (data: {
   }
 };
 
-// ✅ OTP Verification
 export const verifyOtp = async ({
   email,
   otp,
@@ -59,7 +55,6 @@ export const verifyOtp = async ({
   }
 };
 
-// ✅ Resend OTP
 export const resendOtp = async ({ email }: { email: string }) => {
   try {
     const res = await api.post("/auth/resend-otp", { email });
@@ -69,7 +64,6 @@ export const resendOtp = async ({ email }: { email: string }) => {
   }
 };
 
-// ✅ Logout
 export const logout = async (userId: string) => {
   try {
     const res = await api.post(`/auth/logout/${userId}`);
@@ -81,7 +75,6 @@ export const logout = async (userId: string) => {
   }
 };
 
-// ✅ Google Login Handler (if used)
 export const googleLogin = () => {
   window.open(`http://localhost:5000/api/auth/google`, "_self");
 };

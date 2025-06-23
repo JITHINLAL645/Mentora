@@ -1,8 +1,7 @@
 import React from "react";
 
 const ForgotPasswordDesign: React.FC = () => {
-  // For design only, hardcoding step = 1 | 2 | 3 for preview
-  const step = 1; // Change to 2 or 3 to preview other steps
+  const step = 1; 
 
   return (
     <div className="bg-[#F6F6F6] flex flex-col justify-center font-[Montserrat] min-h-screen p-8">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { verifyOtp, resendOtp } from "../../services/Auth"; // Make sure the path is correct
+import { verifyOtp, resendOtp } from "../../services/Auth"; 
 import { useNavigate } from "react-router-dom";
 
 const OtpVerificationForm: React.FC = () => {
@@ -36,7 +36,7 @@ const OtpVerificationForm: React.FC = () => {
   const handleResend = async () => {
     await resendOtp({ email });
     setTimer(60);
-    setErrorMsg(""); // Clear any error message
+    setErrorMsg(""); 
   };
 
   return (
@@ -61,7 +61,6 @@ const OtpVerificationForm: React.FC = () => {
           />
         </div>
 
-        {/* Show error message if exists */}
         {errorMsg && (
           <p className="text-red-600 text-center text-sm">{errorMsg}</p>
         )}

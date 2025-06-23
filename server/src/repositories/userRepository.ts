@@ -1,4 +1,3 @@
-// src/repositories/userRepository.ts
 
 import { User, IUser } from "../models/user";
 import { BaseRepository } from "./baseRepository";
@@ -21,6 +20,5 @@ class UserRepository extends BaseRepository<IUser> {
   }
 }
 
-// ✅ VERY IMPORTANT: Export the instance, not the class
 const userRepository = new UserRepository();
 export default userRepository;

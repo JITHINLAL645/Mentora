@@ -1,15 +1,12 @@
-// src/middlewares/upload.ts
 import multer from "multer";
 import path from "path";
 import fs from "fs";
 
-// Ensure uploads folder exists
 const uploadDir = path.join(__dirname, "../../uploads");
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
 
-// Storage configuration
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, uploadDir);
@@ -21,7 +18,6 @@ const storage = multer.diskStorage({
   },
 });
 
-// File type filter
 const fileFilter = (
   req: Express.Request,
   file: Express.Multer.File,
@@ -34,7 +30,6 @@ const fileFilter = (
   cb(null, true);
 };
 
-// Export upload instance
 export const upload = multer({
   storage,
   fileFilter,

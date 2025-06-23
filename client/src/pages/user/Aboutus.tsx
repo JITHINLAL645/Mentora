@@ -1,9 +1,8 @@
-import aboutImage from "../../assets/aboutus.png"; // Replace with your actual image path
+import aboutImage from "../../assets/aboutus.png";
 import Footer from "../../components/Homecomponent/Footer";
 import Navbar from "../../components/Homecomponent/Navbar";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
-
 
 const AboutUs = () => {
   return (
@@ -11,23 +10,19 @@ const AboutUs = () => {
       <Navbar />
       <section className="bg-[#F6F6F6] py-12">
         <h2 className="text-2xl md:text-3xl font-bold ml-10 flex items-center gap-2">
-  <Link to="/">
-    <ChevronLeftIcon className="w-6 h-6 text-shadow-black cursor-pointer" />
-  </Link>
-  About Us
-</h2>
+          <Link to="/">
+            <ChevronLeftIcon className="w-6 h-6 text-shadow-black cursor-pointer" />
+          </Link>
+          About Us
+        </h2>
         <div className="relative w-full h-[1000px] mt-10 rounded-2xl overflow-hidden max-w-7xl mx-auto shadow-lg">
-          {/* Background Image */}
           <img
             src={aboutImage}
             alt="About Mentora"
             className="w-full h-full object-cover"
           />
 
-          {/* Overlay Content */}
           <div className="absolute inset-0  backdrop-blur-xs p-6 md:p-12 flex flex-col md:flex-row items-start justify-between space-y-6 md:space-y-0">
-            {/* Left Content Section */}
-
             <div className=" space-y-6 text-gray-800">
               <div className="ml-20 pr-20 ">
                 <h2 className="text-2xl md:text-3xl font-bold mb-2 ">

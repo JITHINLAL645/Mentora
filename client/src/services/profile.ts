@@ -1,41 +1,28 @@
+import api from './api';
+import { AxiosError } from 'axios';
 
-import api from "./api"; // Assuming this is your configured Axios instance
-import { AxiosError } from "axios";
-
-const USER_BASE_ROUTE = "/api/user";
+const AUTH_BASE_ROUTE = '/auth';
 
 export const getProfile = async (userId: string) => {
-  try {
-    const response = await api.get(`${USER_BASE_ROUTE}/users/${userId}/profile`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-    });
-    return response.data;
-  } catch (error) {
-    handleApiError(error, "Failed to load profile");
-  }
+  const response = await api.get(`${AUTH_BASE_ROUTE}/users/${userId}/profile`);
+  return response.data;
 };
 
 export const editProfile = async (userId: string, formData: any) => {
   try {
-    const response = await api.put(`${USER_BASE_ROUTE}/users/${userId}/profile`, formData, {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-    });
+    const response = await api.patch(`${AUTH_BASE_ROUTE}/profile`, formData);
     return response.data;
   } catch (error) {
-    handleApiError(error, "Failed to update profile");
+    handleApiError(error, 'Failed to update profile');
   }
 };
 
 export const editAbout = async (userId: string, about: string) => {
   try {
-    const response = await api.put(
-      `${USER_BASE_ROUTE}/users/${userId}/about`,
-      { about },
-      { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
-    );
+    const response = await api.patch(`${AUTH_BASE_ROUTE}/profile`, { about });
     return response.data;
   } catch (error) {
-    handleApiError(error, "Failed to update about section");
+    handleApiError(error, 'Failed to update about section');
   }
 };
 

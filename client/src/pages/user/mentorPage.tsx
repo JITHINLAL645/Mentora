@@ -37,9 +37,26 @@ const MentorPage: React.FC = () => {
     const fetchMentors = async () => {
       try {
         const response = await getApprovedMentors();
-        setMentors(response.data.data || []);
+        const data = response.data?.data || [];
+        if (data.length === 0) throw new Error("No mentors found");
+        setMentors(data);
       } catch (error) {
-        toast.error("Failed to load mentors.");
+        toast.error("Loading fallback mentors for demo");
+        // Fallback mock mentors
+        const mockData: IMentor[] = Array.from({ length: 12 }).map((_, i) => ({
+          _id: String(i + 1),
+          fullName: `Demo Mentor ${i + 1}`,
+          email: `demo${i + 1}@mail.com`,
+          profileImg: "default.png",
+          specialization: "General coach",
+          education: "MSc Psychology",
+          experience: i + 1,
+          city: "Kozhikode",
+          street: "Main Street",
+          state: "Kerala",
+          gender: i % 2 === 0 ? "Male" : "Female",
+        }));
+        setMentors(mockData);
       }
     };
     fetchMentors();
@@ -48,40 +65,34 @@ const MentorPage: React.FC = () => {
   const filteredMentors = mentors.filter(
     (mentor) =>
       mentor.fullName.toLowerCase().includes(searchQuery.toLowerCase()) &&
-      (specializationFilter
-        ? mentor.specialization === specializationFilter
-        : true) &&
+      (specializationFilter ? mentor.specialization === specializationFilter : true) &&
       (genderFilter ? mentor.gender === genderFilter : true) &&
       mentor.experience >= experienceFilter
   );
 
-  // Pagination logic
   const totalPages = Math.ceil(filteredMentors.length / usersPerPage);
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  const currentMentors = filteredMentors.slice(
-    indexOfFirstUser,
-    indexOfLastUser
-  );
+  const currentMentors = filteredMentors.slice(indexOfFirstUser, indexOfLastUser);
 
-  const paginate = (page: number) => setCurrentPage(page);
+  const paginate = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div>
       <Navbar />
 
       <div className="p-4 md:p-8 min-h-screen bg-[#F6F6F6]">
-        <h1 className="text-2xl md:text-3xl font-bold text-center text-teal-700 ">
+        <h1 className="text-2xl md:text-3xl font-bold text-center text-teal-700">
           OUR MENTORS
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6 ">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
           {/* Filters */}
           <div className="w-full p-6 bg-[#F6F6F6] rounded-xl shadow-md border border-gray-200 space-y-6">
-            {/* Title */}
-            <h2 className="text-xl font-bold text-gray-800 text-center">
-              Filter Mentors
-            </h2>
+            <h2 className="text-xl font-bold text-gray-800 text-center">Filter Mentors</h2>
 
             {/* Specialization */}
             <div>
@@ -89,12 +100,7 @@ const MentorPage: React.FC = () => {
                 Specialization
               </h3>
               <div className="flex flex-col gap-2">
-                {[
-                  "General coach",
-                  "clinical",
-                  "counseling",
-                  "neuropsychology",
-                ].map((specialty) => (
+                {["General coach", "clinical", "counseling", "neuropsychology"].map((specialty) => (
                   <button
                     key={specialty}
                     onClick={() => setSpecializationFilter(specialty)}
@@ -120,7 +126,7 @@ const MentorPage: React.FC = () => {
                   <button
                     key={g}
                     onClick={() => setGenderFilter(g)}
-                    className={`w-50 px-4 py-2 rounded-md text-sm border font-medium text-left transition ${
+                    className={`px-4 py-2 rounded-md text-sm border font-medium text-left transition ${
                       genderFilter === g
                         ? "bg-teal-600 text-white border-teal-900"
                         : "bg-gray-50 text-gray-800 border-gray-300 hover:bg-gray-100"
@@ -145,12 +151,10 @@ const MentorPage: React.FC = () => {
                 onChange={(e) => setExperienceFilter(Number(e.target.value))}
                 className="w-full accent-teal-600"
               />
-              <p className="text-sm mt-2 text-gray-600">
-                {experienceFilter}+ years
-              </p>
+              <p className="text-sm mt-2 text-gray-600">{experienceFilter}+ years</p>
             </div>
 
-            {/* Clear Filters Button */}
+            {/* Clear Filters */}
             <div className="pt-4 flex justify-center">
               <button
                 onClick={() => {
@@ -168,7 +172,7 @@ const MentorPage: React.FC = () => {
 
           {/* Mentor List */}
           <div className="md:col-span-3 space-y-6">
-            <div className="relative mb-4 max-w-md mx-auto ml-61">
+            <div className="relative mb-4 max-w-md mx-auto">
               <input
                 type="text"
                 placeholder="Search mentors..."
@@ -189,96 +193,84 @@ const MentorPage: React.FC = () => {
                 >
                   <img
                     src={`http://localhost:5000/uploads/${mentor.profileImg}`}
-                    alt="mentor profile"
-                    className="w-35 h-35 object-cover rounded-2xl"
+                    alt="mentor"
+                    className="w-32 h-32 object-cover rounded-xl"
                   />
 
                   <div className="flex-1">
-                    <h3 className="text-lg md:text-xl font-semibold">
-                      {mentor.fullName}
-                    </h3>
-                    <p className="text-sm text-gray-500">
-                      {mentor.specialization}
-                    </p>
-
-                    <div className="flex items-center gap-2 mt-1">
+                    <h3 className="text-lg font-semibold">{mentor.fullName}</h3>
+                    <p className="text-sm text-gray-500">{mentor.specialization}</p>
+                    <div className="flex gap-2 mt-1">
                       <span className="px-2 py-1 bg-gray-200 text-xs rounded">
                         {mentor.experience} yrs
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2 py-1 bg-red-100 text-red-500 text-xs font-semibold rounded">
+                      <span className="flex items-center gap-1 px-2 py-1 bg-red-100 text-red-500 text-xs font-semibold rounded">
                         <FaHeart />
-                        LOYAL MENTEES
+                        Loyal Mentees
                         <Info className="w-4 h-4" />
                       </span>
                     </div>
-
                     <div className="flex gap-1 mt-2">
                       {[...Array(5)].map((_, i) => (
                         <FaStar key={i} className="text-yellow-400 text-sm" />
                       ))}
                     </div>
-
                     <p className="text-sm text-gray-600 mt-1">
                       {mentor.street}, {mentor.city}, {mentor.state}
                     </p>
                   </div>
 
-                  <div className="mt-4 md:mt-0">
-                    <button
-                      className="px-4 py-2 bg-teal-600 text-white rounded shadow"
-                      onClick={() =>
-                        navigate(`/singlementorPage/${mentor._id}`)
-                      }
-                    >
-                      Show Availability
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => navigate(`/singlementorPage/${mentor._id}`)}
+                    className="px-4 py-2 bg-teal-600 text-white rounded shadow mt-4 md:mt-0"
+                  >
+                    Show Availability
+                  </button>
                 </div>
               ))
             )}
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="flex justify-center mt-6">
+                <nav className="inline-flex rounded-md shadow">
+                  <button
+                    onClick={() => paginate(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="px-3 py-1 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+                  >
+                    Previous
+                  </button>
+
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((number) => (
+                    <button
+                      key={number}
+                      onClick={() => paginate(number)}
+                      className={`px-3 py-1 border-t border-b border-gray-300 ${
+                        currentPage === number
+                          ? "bg-teal-600 text-white"
+                          : "bg-white text-gray-500 hover:bg-gray-50"
+                      }`}
+                    >
+                      {number}
+                    </button>
+                  ))}
+
+                  <button
+                    onClick={() => paginate(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="px-3 py-1 rounded-r-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+                  >
+                    Next
+                  </button>
+                </nav>
+              </div>
+            )}
           </div>
         </div>
-
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex justify-center mt-6">
-            <nav className="inline-flex rounded-md shadow">
-              <button
-                onClick={() => paginate(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="px-3 py-1 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 disabled:opacity-50"
-              >
-                Previous
-              </button>
-
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                (number) => (
-                  <button
-                    key={number}
-                    onClick={() => paginate(number)}
-                    className={`px-3 py-1 border-t border-b border-gray-300 ${
-                      currentPage === number
-                        ? "bg-teal-600 text-white"
-                        : "bg-white text-gray-500 hover:bg-gray-50"
-                    }`}
-                  >
-                    {number}
-                  </button>
-                )
-              )}
-
-              <button
-                onClick={() => paginate(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className="px-3 py-1 rounded-r-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 disabled:opacity-50"
-              >
-                Next
-              </button>
-            </nav>
-          </div>
-        )}
-      </div>
       <Footer />
+      </div>
+
     </div>
   );
 };

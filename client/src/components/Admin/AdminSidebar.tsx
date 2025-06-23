@@ -7,7 +7,7 @@ const AdminSidebar: React.FC = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
-    navigate("/admin/login");
+    navigate("/login");
   };
 
   return (

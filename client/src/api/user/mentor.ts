@@ -1,4 +1,3 @@
-import instance from "../../axiosInstance"; // Using shared axios instance with credentials
+import instance from "../../axiosInstance"; 
 
-// GET all approved mentors (used in user Mentor page)
 export const getApprovedMentors = () => instance.get("/mentors/approved");

@@ -11,7 +11,6 @@ const LoginForm: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
-    // Clear individual errors while typing
     if (e.target.id === "email") setEmailError("");
     if (e.target.id === "password") setPasswordError("");
   };

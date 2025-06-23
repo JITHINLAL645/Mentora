@@ -40,12 +40,11 @@ const userSchema = new Schema<IUser>(
     age: Number,
     profileImage: {
       type: String,
-      default:
-        "https://res.cloudinary.com/danyvuvkm/image/upload/v1742640347/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399_cdpbr4.jpg",
+      // default:
+        // "https://res.cloudinary.com/danyvuvkm/image/upload/v1742640347/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399_cdpbr4.jpg",
     },
   },
   { timestamps: true }
 );
 
-// ✅ Important line to prevent OverwriteModelError
 export const User = mongoose.models.User || mongoose.model<IUser>("User", userSchema);

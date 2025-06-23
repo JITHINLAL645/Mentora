@@ -1,4 +1,3 @@
-// src/controllers/mentorController.ts
 import { Request, Response } from "express";
 import { createMentor } from "../repositories/mentorRepository";
 import { Mentor } from "../models/Mentor";
@@ -13,7 +12,7 @@ const kycCertificate = (files as any)?.kycCertificate?.[0]?.filename;
 
     const mentorData = {
       ...body,
-      profileImg, // now just "1750444455403_profileImg.jpeg"
+      profileImg, 
       kycCertificate,
       experience: Number(body.experience),
       availableDays: Array.isArray(body.availableDays)
@@ -59,7 +58,7 @@ export const toggleMentorApproval = async (req: Request, res: Response) => {
 export const getAllApprovedMentors = async (_req: Request, res: Response) => {
   try {
     const mentors = await Mentor.find({ isApproved: true });
-    res.json({ data: mentors }); // ✅ Must match frontend's access
+    res.json({ data: mentors }); 
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Failed to fetch mentors." });
