@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 import Navbar from "../../components/Homecomponent/Navbar";
 import Footer from "../../components/Homecomponent/Footer";
-import { getApprovedMentors } from "../../api/user/mentor";
+import { getApprovedMentors } from "../../services/mentorService";
 
 interface IMentor {
   _id: string;

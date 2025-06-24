@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { registerMentor } from "../../api/admin/mentorRegister";
+import { registerMentor } from "../../services/mentorService";
 import { toast } from "sonner";
 import { useFormik } from "formik";
 import * as Yup from "yup";

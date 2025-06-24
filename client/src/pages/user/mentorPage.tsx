@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Homecomponent/Navbar";
 import Footer from "../../components/Homecomponent/Footer";
-import { getApprovedMentors } from "../../api/user/mentor";
+import { getApprovedMentors } from "../../services/mentorService";
 
 interface IMentor {
   _id: string;

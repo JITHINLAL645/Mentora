@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import AdminSidebar from "../../components/Admin/AdminSidebar";
-import { getAllMentors, toggleMentorApproval } from "../../api/admin/mentorRegister";
+import { getAllMentors, toggleMentorApproval } from "../../services/mentorService";
 
 export interface IMentor {
   _id: string;
