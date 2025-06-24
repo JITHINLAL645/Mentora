@@ -5,13 +5,17 @@ import axios from "axios";
 const AdminDashboard: React.FC = () => {
   const [totalMentees, setTotalMentees] = useState(0);
   const [blockedMentees, setBlockedMentees] = useState(0);
+  const [totalMentors, setTotalMentors] = useState(0); // ✅ add this
 
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/admin/users/count");
+        const response = await axios.get(
+          "http://localhost:5000/api/admin/users/count"
+        );
         setTotalMentees(response.data.totalMentees);
         setBlockedMentees(response.data.blockedMentees);
+        setTotalMentors(response.data.totalMentors); // ✅ use this
       } catch (error) {
         console.error("Error fetching counts:", error);
       }
@@ -33,23 +37,28 @@ const AdminDashboard: React.FC = () => {
             <h2 className="text-lg font-semibold text-gray-700 mb-1">
               Total Mentees
             </h2>
-            <p className="text-3xl font-bold text-teal-600 mt-2">{totalMentees}</p>
+            <p className="text-3xl font-bold text-teal-600 mt-2">
+              {totalMentees}
+            </p>
           </div>
 
           <div className="bg-white shadow-md p-6 rounded-lg">
             <h2 className="text-lg font-semibold text-gray-700 mb-1">
               Blocked Mentees
             </h2>
-            <p className="text-3xl font-bold text-red-500 mt-2">{blockedMentees}</p>
+            <p className="text-3xl font-bold text-red-500 mt-2">
+              {blockedMentees}
+            </p>
           </div>
 
-          {/* Dummy box */}
-          <div className="bg-white shadow-md p-6 rounded-lg">
+          {/* <div className="bg-white shadow-md p-6 rounded-lg">
             <h2 className="text-lg font-semibold text-gray-700">
-              Active Sessions
+              Total Mentors
             </h2>
-            <p className="text-3xl font-bold text-blue-500 mt-2">23</p>
-          </div>
+            <p className="text-3xl font-bold text-blue-500 mt-2">
+              {totalMentors}
+            </p>
+          </div> */}
         </div>
       </div>
     </div>

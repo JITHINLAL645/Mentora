@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../services/Auth";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/slice/authSlice";
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-    if (e.target.id === "email") setEmailError("");
-    if (e.target.id === "password") setPasswordError("");
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+    if (id === "email") setEmailError("");
+    if (id === "password") setPasswordError("");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -34,13 +39,8 @@ const LoginForm: React.FC = () => {
     try {
       const userData = await login(formData);
       localStorage.setItem("userToken", userData.token);
-      window.dispatchEvent(new Event("storage"));
-
-      if (userData.isAdmin) {
-        navigate("/admin/dashboard");
-      } else {
-        navigate("/");
-      }
+      dispatch(setUser(userData));
+      navigate(userData.isAdmin ? "/admin/dashboard" : "/");
     } catch (err: any) {
       setError(err.message || "Login failed");
     }
@@ -55,7 +55,9 @@ const LoginForm: React.FC = () => {
 
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <label htmlFor="email" className="block mb-1 font-medium">Email</label>
+          <label htmlFor="email" className="block mb-1 font-medium">
+            Email
+          </label>
           <input
             id="email"
             type="email"
@@ -69,7 +71,9 @@ const LoginForm: React.FC = () => {
         </div>
 
         <div>
-          <label htmlFor="password" className="block mb-1 font-medium">Password</label>
+          <label htmlFor="password" className="block mb-1 font-medium">
+            Password
+          </label>
           <input
             id="password"
             type="password"
@@ -91,6 +95,9 @@ const LoginForm: React.FC = () => {
           </button>
           <button
             type="button"
+            onClick={() =>
+              window.open("http://localhost:5000/api/auth/google", "_self")
+            }
             className="flex-1 border border-gray-300 py-2 rounded-lg flex items-center justify-center hover:bg-gray-100"
           >
             <img

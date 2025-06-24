@@ -1,6 +1,8 @@
 import { LogOut, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import API from "../../services/api";
+import { logout } from "../../redux/slice/authSlice";
 
 interface UserInfo {
   name: string;
@@ -14,8 +16,9 @@ interface Props {
   user: UserInfo;
 }
 
-const UserDropdown = ({ onClose, onLogout, user }: Props) => {
+const UserDropdown = ({ onClose, onLogout }: Props) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogout = async () => {
     try {
@@ -26,15 +29,22 @@ const UserDropdown = ({ onClose, onLogout, user }: Props) => {
         return;
       }
 
-      await API.post(`/auth/logout/user`, {}, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await API.post(
+        `/auth/logout/user`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       localStorage.removeItem("userToken");
-      window.dispatchEvent(new Event("storage"));
-      onLogout();
+
+      dispatch(logout());
+
+      if (onLogout) onLogout();
+
       navigate("/login");
     } catch (error) {
       console.error("Logout failed:", error);

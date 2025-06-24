@@ -6,12 +6,6 @@ interface AuthenticatedRequest extends Request {
   userId?: string;
 }
 
-
-interface AuthenticatedRequest extends Request {
-  userId?: string;
-}
-
-
 export const uploadProfileImage = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const file = req.file?.path;
@@ -79,5 +73,25 @@ export const updateUserProfile = async (req: AuthenticatedRequest, res: Response
   } catch (err) {
     console.error('Error updating profile:', err);
     res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
+
+export const getUserProfile = async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const userId = req.userId;
+    if (!userId) return res.status(401).json({ message: "Unauthorized" });
+
+    const user = await User.findById(userId).select(
+      "firstName lastName phoneNumber position location about profileImage"
+    );
+
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    res.status(200).json(user);
+  } catch (err) {
+    console.error("Error fetching user profile:", err);
+    res.status(500).json({ message: "Server Error" });
   }
 };

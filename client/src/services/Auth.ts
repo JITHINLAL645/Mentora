@@ -1,12 +1,14 @@
-import api from "./api";
+import api from "../axiosInstance";
 import { AxiosError } from "axios";
 
+// LOGIN FUNCTION
 export const login = async (data: { email: string; password: string }) => {
   try {
     const response = await api.post("/auth/login", data);
-    const { token, isAdmin } = response.data;
+    const { token, user } = response.data;
 
-    return { token, isAdmin };
+    // Merge token into user object
+    return { ...user, token };
   } catch (error) {
     if (error instanceof AxiosError) {
       console.error("❌ Login error:", error.response?.data);
@@ -18,6 +20,7 @@ export const login = async (data: { email: string; password: string }) => {
   }
 };
 
+// SIGNUP FUNCTION
 export const signup = async (data: {
   name: string;
   email: string;
@@ -25,7 +28,6 @@ export const signup = async (data: {
 }) => {
   try {
     const response = await api.post("/auth/signup", data);
-    console.log("✅ Signup response:", response.data);
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {
@@ -38,43 +40,40 @@ export const signup = async (data: {
   }
 };
 
-export const verifyOtp = async ({
-  email,
-  otp,
-}: {
-  email: string;
-  otp: string;
-}) => {
+// OTP VERIFY FUNCTION
+export const verifyOtp = async (data: { email: string; otp: string }) => {
   try {
-    const res = await api.post("/auth/verify-otp", { email, otp });
-    console.log("✅ OTP verification success:", res.data);
-    return { success: true };
+    const response = await api.post("/auth/verify-otp", data);
+    return { success: true, message: response.data?.message };
   } catch (error) {
     console.error("❌ OTP verification failed:", error);
     return { success: false };
   }
 };
 
-export const resendOtp = async ({ email }: { email: string }) => {
+// RESEND OTP FUNCTION
+export const resendOtp = async (data: { email: string }) => {
   try {
-    const res = await api.post("/auth/resend-otp", { email });
-    console.log("🔁 OTP resent:", res.data);
-  } catch (err) {
-    console.error("❌ Resend OTP failed:", err);
+    const response = await api.post("/auth/resend-otp", data);
+    return response.data;
+  } catch (error) {
+    console.error("❌ Resend OTP failed:", error);
+    throw new Error("Failed to resend OTP.");
   }
 };
 
+// LOGOUT FUNCTION
 export const logout = async (userId: string) => {
   try {
-    const res = await api.post(`/auth/logout/${userId}`);
-    console.log("👋 Logged out:", res.data);
-    return res.data;
+    const response = await api.post(`/auth/logout/${userId}`);
+    return response.data;
   } catch (error: any) {
     console.error("❌ Logout Error", error.response?.data);
     throw new Error("Logout failed");
   }
 };
 
+// GOOGLE LOGIN FUNCTION
 export const googleLogin = () => {
   window.open(`http://localhost:5000/api/auth/google`, "_self");
 };

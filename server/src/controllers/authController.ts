@@ -74,12 +74,21 @@ export const login = async (req: Request, res: Response) => {
       { expiresIn: "1d" }
     );
 
-    res.status(200).json({ token, isAdmin: user.isAdmin });
+    res.status(200).json({
+      token,
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+      },
+    });
   } catch (error: any) {
     console.error("❌ Login failed:", error.message);
     res.status(401).json({ message: error.message });
   }
 };
+
 
 export const logoutUser = async (req: Request, res: Response) => {
   try {

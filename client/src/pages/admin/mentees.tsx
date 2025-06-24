@@ -84,14 +84,14 @@ const Mentees: React.FC = () => {
               <tr key={user._id} className="border-b border-gray-200">
                 <td className="px-4 py-4">{user._id}</td>
                 <td className="px-4 py-4 flex items-center gap-3">
-                  <img
+                  {/* <img
                     src={
                       user.profileImage ||
                       "https://www.svgrepo.com/show/384674/account-avatar-profile-user-11.svg"
                     }
                     alt="Profile"
                     className="w-10 h-10 rounded-full object-cover"
-                  />
+                  /> */}
                   <span>{user.name}</span>
                 </td>
                 <td className="px-4 py-4">{user.email}</td>

@@ -2,7 +2,7 @@ import express from 'express';
 import * as UserController from '../controllers/authController';
 import { upload } from '../middlewares/upload';
 import { uploadProfileImage, updateUserProfile } from '../controllers/profileController';
-import { getUserProfile } from '../controllers/menteesController';
+import { getUserProfile } from '../controllers/profileController';
 import { verifyOtp, resendOtp } from '../controllers/authController';
 import { authenticate } from '../middlewares/auth';
 
