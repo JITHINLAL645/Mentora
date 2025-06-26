@@ -2,17 +2,21 @@ import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import "ldrs/react/Bouncy.css";
 
-// Lazy loaded components
 const Home = lazy(() => import("../pages/user/Home"));
 const Login = lazy(() => import("../pages/user/login"));
 const AboutUs = lazy(() => import("../pages/user/Aboutus"));
+const MentorPage = lazy(() => import("../pages/user/mentorPage"));
+import MentorProfile from "../pages/user/SingleMentorPage";
+import Profile from "../pages/user/Profile";
+
 const AdminDashboard = lazy(() => import("../pages/admin/AdminDashboard"));
 const Mentees = lazy(() => import("../pages/admin/mentees"));
-const MentorPage = lazy(() => import("../pages/user/mentorPage"));
-import MentorProfile from "../pages/user/SingleMentorPage"; // Adjust path
-import Profile from "../pages/user/Profile";
-import AdminMentorRegister from "../pages/admin/mentorRegistrationForm";
-import AdminMentorPage from "../pages/admin/mentor";
+const AdminMentorRegister = lazy(() => import("../pages/admin/mentorRegistrationForm"));
+const AdminMentorPage = lazy(() => import("../pages/admin/mentor"));
+
+import ProtectedAdminRoute from "./ProtectedAdminRoute";
+import MentorDashboard from "../pages/mentor/MentorDashboard";
+import MentorRegistrationPage from "../pages/mentor/MentorRegistration";
 
 const AppRoutes = () => {
   return (
@@ -37,13 +41,46 @@ const AppRoutes = () => {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/mentorPage" element={<MentorPage />} />
         <Route path="/singlementorPage/:id" element={<MentorProfile />} />
-        {/* Admin Route */}
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/mentees" element={<Mentees />} />
-        <Route path="/admin/mentors" element={<AdminMentorPage />} />
+
+        {/* Mentor Routes */}
+        <Route path="/mentorDashboard" element={<MentorDashboard />} />
+        <Route path="/mentor-registration" element={<MentorRegistrationPage />} />
+
+        
+
+
+        {/* Admin Protected Routes */}
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedAdminRoute>
+              <AdminDashboard />
+            </ProtectedAdminRoute>
+          }
+        />
+        <Route
+          path="/admin/mentees"
+          element={
+            <ProtectedAdminRoute>
+              <Mentees />
+            </ProtectedAdminRoute>
+          }
+        />
+        <Route
+          path="/admin/mentors"
+          element={
+            <ProtectedAdminRoute>
+              <AdminMentorPage />
+            </ProtectedAdminRoute>
+          }
+        />
         <Route
           path="/admin/mentor-registration"
-          element={<AdminMentorRegister />}
+          element={
+            <ProtectedAdminRoute>
+              <AdminMentorRegister />
+            </ProtectedAdminRoute>
+          }
         />
       </Routes>
     </Suspense>

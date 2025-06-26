@@ -245,11 +245,8 @@ const MentorProfile: React.FC = () => {
         <div className="flex flex-col md:flex-row gap-8 mb-8">
           <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-gray-200 overflow-hidden">
             <img
-              src={
-                mentorData.profileImg
-                  ? `http://localhost:5000/uploads/${mentorData.profileImg}`
-                  : "/default-profile.png"
-              }
+              src={mentorData.profileImg || "/default-profile.png"}
+              onError={(e) => (e.currentTarget.src = "/default-profile.png")}
               alt={mentorData.fullName}
               className="w-full h-full object-cover"
             />

@@ -36,14 +36,22 @@ const LoginForm: React.FC = () => {
       return;
     }
 
-    try {
-      const userData = await login(formData);
-      localStorage.setItem("userToken", userData.token);
-      dispatch(setUser(userData));
-      navigate(userData.isAdmin ? "/admin/dashboard" : "/");
-    } catch (err: any) {
-      setError(err.message || "Login failed");
-    }
+ try {
+  const userData = await login(formData);
+
+  if (userData.isAdmin) {
+    localStorage.setItem("adminToken", userData.token); 
+    navigate("/admin/dashboard");
+  } else {
+    localStorage.setItem("userToken", userData.token);
+    navigate("/");
+  }
+
+  dispatch(setUser(userData));
+} catch (err: any) {
+  setError(err.message || "Login failed");
+}
+
   };
 
   return (

@@ -1,19 +1,31 @@
 import { Request, Response } from "express";
 import { createMentor } from "../repositories/mentorRepository";
 import { Mentor } from "../models/Mentor";
+import { uploadToCloudinary } from "../utils/cloudinary";
+import fs from "fs";
 
-export const registerMentor = async (req: Request, res: Response) => {
+export const registerMentorWithCloudinary = async (req: Request, res: Response) => {
   try {
     const { body, files } = req;
 
-const profileImg = (files as any)?.profileImg?.[0]?.filename;
-const kycCertificate = (files as any)?.kycCertificate?.[0]?.filename;
+    const profileImgFile = (files as any)?.profileImg?.[0];
+    const kycCertificateFile = (files as any)?.kycCertificate?.[0];
 
+    if (!profileImgFile || !kycCertificateFile) {
+      return res.status(400).json({ message: "Profile and KYC images are required" });
+    }
+
+    const profileImgUpload = await uploadToCloudinary(profileImgFile.path);
+    const kycUpload = await uploadToCloudinary(kycCertificateFile.path);
+
+
+    fs.unlinkSync(profileImgFile.path);
+    fs.unlinkSync(kycCertificateFile.path);
 
     const mentorData = {
       ...body,
-      profileImg, 
-      kycCertificate,
+      profileImg: profileImgUpload.url,
+      kycCertificate: kycUpload.url,
       experience: Number(body.experience),
       availableDays: Array.isArray(body.availableDays)
         ? body.availableDays
@@ -22,14 +34,13 @@ const kycCertificate = (files as any)?.kycCertificate?.[0]?.filename;
 
     const mentor = await createMentor(mentorData);
     res.status(201).json(mentor);
-  } catch (err: any) {
-    console.error("Mentor Registration Error:", err);
-    res.status(500).json({ message: err.message || "Server error" });
+  } catch (error: any) {
+    console.error("Mentor Registration (Cloudinary) Error:", error);
+    res.status(500).json({ message: error.message || "Server error" });
   }
 };
 
-
-export const getAllMentors = async (req: Request, res: Response) => {
+export const getAllMentors = async (_req: Request, res: Response) => {
   try {
     const mentors = await Mentor.find();
     res.status(200).json({ message: "Mentors fetched successfully", data: mentors });
@@ -48,6 +59,7 @@ export const toggleMentorApproval = async (req: Request, res: Response) => {
 
     mentor.isApproved = !mentor.isApproved;
     await mentor.save();
+
     res.status(200).json({ message: "Approval status updated", data: mentor });
   } catch (error: any) {
     console.error("Toggle Approval Error:", error);
@@ -58,9 +70,9 @@ export const toggleMentorApproval = async (req: Request, res: Response) => {
 export const getAllApprovedMentors = async (_req: Request, res: Response) => {
   try {
     const mentors = await Mentor.find({ isApproved: true });
-    res.json({ data: mentors }); 
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Failed to fetch mentors." });
+    res.json({ data: mentors });
+  } catch (error: any) {
+    console.error("Get Approved Mentors Error:", error);
+    res.status(500).json({ message: "Failed to fetch approved mentors." });
   }
 };

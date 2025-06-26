@@ -1,6 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Mentoralogo from "../../assets/mentoraA.png";
+import {
+  LayoutDashboard,
+  Users,
+  UserCheck,
+  UserPlus,
+  LogOut,
+} from "lucide-react";
 
 const AdminSidebar: React.FC = () => {
   const navigate = useNavigate();
@@ -9,6 +16,13 @@ const AdminSidebar: React.FC = () => {
     localStorage.removeItem("adminToken");
     navigate("/login");
   };
+
+  const menuItems = [
+    { name: "Dashboard", path: "/admin/dashboard", icon: <LayoutDashboard size={18} /> },
+    { name: "Mentees", path: "/admin/mentees", icon: <Users size={18} /> },
+    { name: "Mentors", path: "/admin/mentors", icon: <UserCheck size={18} /> },
+    { name: "Mentor Registration", path: "/admin/mentor-registration", icon: <UserPlus size={18} /> },
+  ];
 
   return (
     <div className="w-64 h-screen bg-[#1f2937] text-white flex flex-col items-center py-6 shadow-md">
@@ -23,27 +37,25 @@ const AdminSidebar: React.FC = () => {
         </div>
       </div>
 
-      {/* Navigation Items */}
+      {/* Menu */}
       <ul className="flex flex-col gap-4 w-full px-4">
-        {[
-          { name: "Dashboard", path: "/admin/dashboard" },
-          { name: "Mentees", path: "/admin/mentees" },
-          { name: "Mentors", path: "/admin/mentors" },
-          { name: "Mentor Registration", path: "/admin/mentor-registration" },
-        ].map((item) => (
+        {menuItems.map((item) => (
           <li
             key={item.name}
-            className="py-2 px-4 rounded-md hover:bg-[#374151] cursor-pointer transition-all"
+            className="flex items-center gap-3 py-2 px-4 rounded-md hover:bg-[#374151] cursor-pointer transition-all"
             onClick={() => navigate(item.path)}
           >
+            {item.icon}
             {item.name}
           </li>
         ))}
 
+        {/* Logout */}
         <li
-          className="py-2 px-4 rounded-md hover:bg-red-500 hover:text-white cursor-pointer font-semibold transition-all"
+          className="flex items-center gap-3 py-2 px-4 rounded-md hover:bg-red-500 hover:text-white cursor-pointer font-semibold transition-all"
           onClick={handleLogout}
         >
+          <LogOut size={18} />
           Logout
         </li>
       </ul>

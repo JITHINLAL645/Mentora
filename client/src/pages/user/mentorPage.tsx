@@ -65,7 +65,9 @@ const MentorPage: React.FC = () => {
   const filteredMentors = mentors.filter(
     (mentor) =>
       mentor.fullName.toLowerCase().includes(searchQuery.toLowerCase()) &&
-      (specializationFilter ? mentor.specialization === specializationFilter : true) &&
+      (specializationFilter
+        ? mentor.specialization === specializationFilter
+        : true) &&
       (genderFilter ? mentor.gender === genderFilter : true) &&
       mentor.experience >= experienceFilter
   );
@@ -73,7 +75,10 @@ const MentorPage: React.FC = () => {
   const totalPages = Math.ceil(filteredMentors.length / usersPerPage);
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  const currentMentors = filteredMentors.slice(indexOfFirstUser, indexOfLastUser);
+  const currentMentors = filteredMentors.slice(
+    indexOfFirstUser,
+    indexOfLastUser
+  );
 
   const paginate = (page: number) => {
     setCurrentPage(page);
@@ -92,7 +97,9 @@ const MentorPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
           {/* Filters */}
           <div className="w-full p-6 bg-[#F6F6F6] rounded-xl shadow-md border border-gray-200 space-y-6">
-            <h2 className="text-xl font-bold text-gray-800 text-center">Filter Mentors</h2>
+            <h2 className="text-xl font-bold text-gray-800 text-center">
+              Filter Mentors
+            </h2>
 
             {/* Specialization */}
             <div>
@@ -100,7 +107,12 @@ const MentorPage: React.FC = () => {
                 Specialization
               </h3>
               <div className="flex flex-col gap-2">
-                {["General coach", "clinical", "counseling", "neuropsychology"].map((specialty) => (
+                {[
+                  "General coach",
+                  "clinical",
+                  "counseling",
+                  "neuropsychology",
+                ].map((specialty) => (
                   <button
                     key={specialty}
                     onClick={() => setSpecializationFilter(specialty)}
@@ -151,7 +163,9 @@ const MentorPage: React.FC = () => {
                 onChange={(e) => setExperienceFilter(Number(e.target.value))}
                 className="w-full accent-teal-600"
               />
-              <p className="text-sm mt-2 text-gray-600">{experienceFilter}+ years</p>
+              <p className="text-sm mt-2 text-gray-600">
+                {experienceFilter}+ years
+              </p>
             </div>
 
             {/* Clear Filters */}
@@ -192,14 +206,16 @@ const MentorPage: React.FC = () => {
                   className="flex flex-col md:flex-row items-center gap-6 p-4 md:p-6 border rounded-lg shadow-md"
                 >
                   <img
-                    src={`http://localhost:5000/uploads/${mentor.profileImg}`}
+                    src={mentor.profileImg}
                     alt="mentor"
                     className="w-32 h-32 object-cover rounded-xl"
                   />
 
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold">{mentor.fullName}</h3>
-                    <p className="text-sm text-gray-500">{mentor.specialization}</p>
+                    <p className="text-sm text-gray-500">
+                      {mentor.specialization}
+                    </p>
                     <div className="flex gap-2 mt-1">
                       <span className="px-2 py-1 bg-gray-200 text-xs rounded">
                         {mentor.experience} yrs
@@ -242,19 +258,21 @@ const MentorPage: React.FC = () => {
                     Previous
                   </button>
 
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((number) => (
-                    <button
-                      key={number}
-                      onClick={() => paginate(number)}
-                      className={`px-3 py-1 border-t border-b border-gray-300 ${
-                        currentPage === number
-                          ? "bg-teal-600 text-white"
-                          : "bg-white text-gray-500 hover:bg-gray-50"
-                      }`}
-                    >
-                      {number}
-                    </button>
-                  ))}
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (number) => (
+                      <button
+                        key={number}
+                        onClick={() => paginate(number)}
+                        className={`px-3 py-1 border-t border-b border-gray-300 ${
+                          currentPage === number
+                            ? "bg-teal-600 text-white"
+                            : "bg-white text-gray-500 hover:bg-gray-50"
+                        }`}
+                      >
+                        {number}
+                      </button>
+                    )
+                  )}
 
                   <button
                     onClick={() => paginate(currentPage + 1)}
@@ -268,9 +286,8 @@ const MentorPage: React.FC = () => {
             )}
           </div>
         </div>
-      <Footer />
+        <Footer />
       </div>
-
     </div>
   );
 };

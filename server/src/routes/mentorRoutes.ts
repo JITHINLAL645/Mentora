@@ -1,29 +1,18 @@
 import express from "express";
-import { upload } from "../middlewares/upload";
 import {
-  registerMentor,
   getAllMentors,
   toggleMentorApproval,
+  getAllApprovedMentors,
+  registerMentorWithCloudinary,
 } from "../controllers/mentorController";
-
-import { getAllApprovedMentors } from "../controllers/mentorController";
-
+import { uploadFields } from "../middlewares/multer";
 
 const router = express.Router();
 
-router.post(
-  "/register",
-  upload.fields([
-    { name: "profileImg", maxCount: 1 },
-    { name: "kycCertificate", maxCount: 1 },
-  ]),
-  registerMentor
-);
-
+router.post("/admin/register", uploadFields,registerMentorWithCloudinary );
+router.post("/register", uploadFields, registerMentorWithCloudinary);
 router.get("/", getAllMentors);
-router.patch("/:id/toggle-approval", toggleMentorApproval);
-
 router.get("/approved", getAllApprovedMentors);
-
+router.patch("/toggle-approval/:id", toggleMentorApproval);
 
 export default router;

@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import AdminSidebar from "../../components/Admin/AdminSidebar";
-import { getAllMentors, toggleMentorApproval } from "../../services/mentorService";
+import {
+  getAllMentors,
+  toggleMentorApproval,
+} from "../../services/mentorService";
 
 export interface IMentor {
   _id: string;
@@ -24,6 +27,8 @@ export interface IMentor {
 export default function MentorListPage() {
   const [mentors, setMentors] = useState<IMentor[]>([]);
   const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const mentorsPerPage = 5;
 
   const fetchMentors = async () => {
     try {
@@ -45,7 +50,9 @@ export default function MentorListPage() {
       toast.success("Approval status updated");
       await fetchMentors();
     } catch (error: any) {
-      toast.error(error.response?.data?.message || "Error updating approval status");
+      toast.error(
+        error.response?.data?.message || "Error updating approval status"
+      );
     }
   };
 
@@ -57,6 +64,16 @@ export default function MentorListPage() {
     mentor.fullName.toLowerCase().includes(search.toLowerCase())
   );
 
+  const totalPages = Math.ceil(filteredMentors.length / mentorsPerPage);
+  const indexOfLastMentor = currentPage * mentorsPerPage;
+  const indexOfFirstMentor = indexOfLastMentor - mentorsPerPage;
+  const currentMentors = filteredMentors.slice(
+    indexOfFirstMentor,
+    indexOfLastMentor
+  );
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
   return (
     <div className="flex h-screen">
       <AdminSidebar />
@@ -66,12 +83,15 @@ export default function MentorListPage() {
             type="text"
             placeholder="Search by name"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setCurrentPage(1);
+            }}
             className="w-full px-4 py-2 border rounded-lg shadow-sm"
           />
         </div>
 
-        {filteredMentors.length === 0 ? (
+        {currentMentors.length === 0 ? (
           <p className="text-gray-500 px-4">No mentors found.</p>
         ) : (
           <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
@@ -87,24 +107,27 @@ export default function MentorListPage() {
               </tr>
             </thead>
             <tbody>
-              {filteredMentors.map((mentor) => (
+              {currentMentors.map((mentor) => (
                 <tr key={mentor._id} className="border-b border-gray-200">
-                  <td className="px-4 py-4 flex items-center gap-3">
-                    {/* <img
-                      src={mentor.profileImg || "/default-profile.png"}
-                      alt={mentor.fullName}
-                      className="w-10 h-10 rounded-full object-cover"
-                    /> */}
-                    <div>
-                      <p className="font-medium">{mentor.fullName}</p>
-                      <p className="text-sm text-gray-500">{mentor.email}</p>
+                  <td className="px-4 py-4">
+                    <div className="flex items-center gap-4">
+                      <img
+                        src={mentor.profileImg}
+                        alt={mentor.fullName}
+                        className="w-12 h-12 rounded-full object-cover border"
+                      />
+                      <div>
+                        <p className="font-medium">{mentor.fullName}</p>
+                        <p className="text-sm text-gray-500">{mentor.email}</p>
+                      </div>
                     </div>
                   </td>
                   <td className="px-4 py-4">{mentor.specialization}</td>
                   <td className="px-4 py-4">{mentor.education}</td>
                   <td className="px-4 py-4">{mentor.experience} yrs</td>
                   <td className="px-4 py-4">
-                    {mentor.street}, {mentor.city}, {mentor.state} - {mentor.pincode}
+                    {mentor.street}, {mentor.city}, {mentor.state} -{" "}
+                    {mentor.pincode}
                   </td>
                   <td className="px-4 py-4">
                     <div className="flex items-center gap-2">
@@ -132,6 +155,48 @@ export default function MentorListPage() {
               ))}
             </tbody>
           </table>
+        )}
+
+        {totalPages >= 1 && (
+          <div className="flex justify-center mt-4">
+            <nav className="inline-flex rounded-md shadow">
+              <button
+                onClick={() => paginate(currentPage > 1 ? currentPage - 1 : 1)}
+                disabled={currentPage === 1}
+                className="px-3 py-1 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+              >
+                Previous
+              </button>
+
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                (number) => (
+                  <button
+                    key={number}
+                    onClick={() => paginate(number)}
+                    className={`px-3 py-1 border-t border-b border-gray-300 ${
+                      currentPage === number
+                        ? "bg-teal-600 text-white"
+                        : "bg-white text-gray-500 hover:bg-gray-50"
+                    }`}
+                  >
+                    {number}
+                  </button>
+                )
+              )}
+
+              <button
+                onClick={() =>
+                  paginate(
+                    currentPage < totalPages ? currentPage + 1 : totalPages
+                  )
+                }
+                disabled={currentPage === totalPages}
+                className="px-3 py-1 rounded-r-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+              >
+                Next
+              </button>
+            </nav>
+          </div>
         )}
       </div>
     </div>

@@ -48,7 +48,10 @@ const Home = () => {
                 Find a Mentor
               </button>
 
-              <button className="bg-gray-100 text-gray-800 px-6 py-2 rounded-full text-sm hover:bg-gray-200">
+              <button
+                onClick={() => navigate("/mentor-registration")}
+                className="bg-gray-100 text-gray-800 px-6 py-2 rounded-full text-sm hover:bg-gray-200"
+              >
                 Become a Mentor
               </button>
             </div>
