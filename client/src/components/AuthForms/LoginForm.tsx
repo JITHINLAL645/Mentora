@@ -36,22 +36,21 @@ const LoginForm: React.FC = () => {
       return;
     }
 
- try {
-  const userData = await login(formData);
+    try {
+      const userData = await login(formData);
 
-  if (userData.isAdmin) {
-    localStorage.setItem("adminToken", userData.token); 
-    navigate("/admin/dashboard");
-  } else {
-    localStorage.setItem("userToken", userData.token);
-    navigate("/");
-  }
+      if (userData.isAdmin) {
+        localStorage.setItem("adminToken", userData.token);
+        navigate("/admin/dashboard");
+      } else {
+        localStorage.setItem("userToken", userData.token);
+        navigate("/");
+      }
 
-  dispatch(setUser(userData));
-} catch (err: any) {
-  setError(err.message || "Login failed");
-}
-
+      dispatch(setUser(userData));
+    } catch (err: any) {
+      setError(err.message || "Login failed");
+    }
   };
 
   return (
@@ -75,7 +74,9 @@ const LoginForm: React.FC = () => {
             placeholder="Enter your email"
             required
           />
-          {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
+          {emailError && (
+            <p className="text-red-500 text-sm mt-1">{emailError}</p>
+          )}
         </div>
 
         <div>
@@ -91,7 +92,9 @@ const LoginForm: React.FC = () => {
             placeholder="Enter your password"
             required
           />
-          {passwordError && <p className="text-red-500 text-sm mt-1">{passwordError}</p>}
+          {passwordError && (
+            <p className="text-red-500 text-sm mt-1">{passwordError}</p>
+          )}
         </div>
 
         <div className="flex gap-3">
@@ -121,6 +124,13 @@ const LoginForm: React.FC = () => {
           Don't have an account?{" "}
           <a href="/signup" className="text-blue-600 hover:underline">
             Sign up
+          </a>
+          <br />
+          <a
+            href="/mentorLogin"
+            className="text-blue-600 text-lg hover:underline text-center pd-20 text-shadow-indigo-500"
+          >
+            login as Mentor !
           </a>
         </p>
       </form>

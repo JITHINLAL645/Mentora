@@ -19,11 +19,11 @@ const MentorSidebar: React.FC = () => {
   };
 
   const menuItems = [
-    { name: "Dashboard", path: "/mentor/dashboard", icon: <LayoutDashboard size={18} /> },
-    { name: "Appointment", path: "/mentor/appointment", icon: <CalendarClock size={18} /> },
-    { name: "Profile", path: "/mentor/profile", icon: <UserCircle size={18} /> },
-    { name: "Chat", path: "/mentor/chat", icon: <MessageCircle size={18} /> },
-    { name: "Video Call", path: "/mentor/videocall", icon: <Video size={18} /> },
+    { name: "Dashboard", path: "/mentorDashboard", icon: <LayoutDashboard size={18} /> },
+    { name: "Appointment", path: "", icon: <CalendarClock size={18} /> },
+    { name: "Profile", path: "/mentorProfile", icon: <UserCircle size={18} /> },
+    { name: "Chat", path: "", icon: <MessageCircle size={18} /> },
+    { name: "Video Call", path: "", icon: <Video size={18} /> },
   ];
 
   return (

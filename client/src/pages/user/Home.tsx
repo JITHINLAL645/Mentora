@@ -30,19 +30,13 @@ const Home = () => {
               <span className="text-red-500 pl-8">Personal Mentor</span>
             </h1>
 
-            <p className="text-gray-400 text-sm md:text-base mb-8">
-              A one-on-one learning platform where students
-              <br />
-              and mentors collaborate through live
-              <br />
-              sessions, real-time chat,
-              <br />
-              and personalized guidance.
+            <p className="text-gray-00 text-sm md:text-base mb-8 ">
+              A one-on-one learning platform where students connect with expert mentors through live sessions, real-time chat, and personalized guidance. It ensures interactive learning, quick doubt resolution, progress tracking, and support tailored to each student's unique needs for a more focused and effective educational experience.
             </p>
 
             <div className="flex gap-4 pl-60 pt-25">
               <button
-                className="bg-blue-900 text-white px-6 py-2 rounded-full text-sm hover:bg-blue-800"
+                className="bg-teal-700 text-white px-6 py-2 rounded-full text-sm hover:bg-teal-800"
                 onClick={() => navigate("/mentorPage")}
               >
                 Find a Mentor

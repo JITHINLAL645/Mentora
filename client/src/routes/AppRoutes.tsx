@@ -16,7 +16,9 @@ const AdminMentorPage = lazy(() => import("../pages/admin/mentor"));
 
 import ProtectedAdminRoute from "./ProtectedAdminRoute";
 import MentorDashboard from "../pages/mentor/MentorDashboard";
+import MentorSingleProfile from "../pages/mentor/MentorProfile";
 import MentorRegistrationPage from "../pages/mentor/MentorRegistration";
+import MentorLogin from "../pages/mentor/MentorLogin";
 
 const AppRoutes = () => {
   return (
@@ -44,7 +46,9 @@ const AppRoutes = () => {
 
         {/* Mentor Routes */}
         <Route path="/mentorDashboard" element={<MentorDashboard />} />
+        <Route path="/mentorProfile" element={<MentorSingleProfile />} />
         <Route path="/mentor-registration" element={<MentorRegistrationPage />} />
+        <Route path="/mentorLogin" element={<MentorLogin />} />
 
         
 

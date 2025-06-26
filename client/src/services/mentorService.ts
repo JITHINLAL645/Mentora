@@ -19,3 +19,17 @@ export const toggleMentorApproval = async (id: string) => {
 
 // User-side
 export const getApprovedMentors = () => api.get("/mentors/approved");
+
+//mentor-side
+
+export const mentorLogin = (email: string, password: string) => {
+  return api.post("/mentors/login", { email, password });
+};
+
+export const getMentorProfile = async () => {
+  return await api.get("/mentors/mentorprofile", {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("mentorToken")}`,
+    },
+  });
+};

@@ -4,6 +4,9 @@ import { Mentor } from "../models/Mentor";
 import { uploadToCloudinary } from "../utils/cloudinary";
 import fs from "fs";
 
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+
 export const registerMentorWithCloudinary = async (req: Request, res: Response) => {
   try {
     const { body, files } = req;
@@ -75,4 +78,59 @@ export const getAllApprovedMentors = async (_req: Request, res: Response) => {
     console.error("Get Approved Mentors Error:", error);
     res.status(500).json({ message: "Failed to fetch approved mentors." });
   }
+};
+
+
+
+
+
+
+
+export const mentorLogin = async (req: Request, res: Response) => {
+  try {
+    const { email, password } = req.body;
+
+    console.log("Login attempt:", email, password);
+
+    const mentor = await Mentor.findOne({ email });
+
+    if (!mentor) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    console.log("Mentor found:", mentor);
+
+const isPasswordCorrect = password === mentor.password;
+
+    if (!isPasswordCorrect) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    if (!mentor.isApproved) {
+      return res.status(403).json({ message: "Mentor not approved" });
+    }
+
+    // Create JWT token
+    const token = jwt.sign({ id: mentor._id }, process.env.JWT_SECRET as string, {
+      expiresIn: "7d",
+    });
+
+    res.status(200).json({
+      message: "Login successful",
+      token,
+      mentor,
+    });
+  } catch (error) {
+    console.error("Login error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+
+export const getMentorProfileController = async (req: Request, res: Response) => {
+  const mentor = await Mentor.findById(req.userId); // assuming userId is set in middleware
+  if (!mentor) {
+    return res.status(404).json({ message: "Mentor not found" });
+  }
+  res.status(200).json({ mentor });
 };
