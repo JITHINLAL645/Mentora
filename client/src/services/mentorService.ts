@@ -33,3 +33,23 @@ export const getMentorProfile = async () => {
     },
   });
 };
+
+export const changeMentorPassword = async (data: any) => {
+  const token = localStorage.getItem("mentorToken");
+  return await api.put("/mentors/change-password", data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+
+export const updateMentorProfile = async (data: any) => {
+  const token = localStorage.getItem("mentorToken");
+
+  return await api.put("/mentors/update-profile", data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

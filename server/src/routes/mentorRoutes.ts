@@ -6,6 +6,8 @@ import {
   registerMentorWithCloudinary,
   mentorLogin,
   getMentorProfileController,
+  updateMentorProfile,
+  changeMentorPassword
 } from "../controllers/mentorController";
 import { uploadFields } from "../middlewares/multer";
 import { authenticate } from "../middlewares/auth"; 
@@ -20,6 +22,11 @@ router.get("/approved", getAllApprovedMentors);
 router.patch("/toggle-approval/:id", toggleMentorApproval);
 router.post("/login", mentorLogin);
 router.get("/mentorprofile", authenticate, getMentorProfileController);
+
+router.put("/update-profile", authenticate, updateMentorProfile);
+router.put("/change-password", authenticate, changeMentorPassword);
+
+
 
 
 

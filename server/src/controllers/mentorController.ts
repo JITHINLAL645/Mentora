@@ -21,12 +21,17 @@ export const registerMentorWithCloudinary = async (req: Request, res: Response) 
     const profileImgUpload = await uploadToCloudinary(profileImgFile.path);
     const kycUpload = await uploadToCloudinary(kycCertificateFile.path);
 
-
+    // Delete local files after upload
     fs.unlinkSync(profileImgFile.path);
     fs.unlinkSync(kycCertificateFile.path);
 
+    // 🔐 Hash the password before saving
+    const hashedPassword = await bcrypt.hash(body.password, 10);
+
+    // ✅ Prepare mentor data
     const mentorData = {
       ...body,
+      password: hashedPassword,
       profileImg: profileImgUpload.url,
       kycCertificate: kycUpload.url,
       experience: Number(body.experience),
@@ -35,8 +40,14 @@ export const registerMentorWithCloudinary = async (req: Request, res: Response) 
         : [body.availableDays],
     };
 
+    // 👇 Save to DB
     const mentor = await createMentor(mentorData);
-    res.status(201).json(mentor);
+
+    // 🎉 Response
+    res.status(201).json({
+      message: "Mentor registered successfully",
+      mentor,
+    });
   } catch (error: any) {
     console.error("Mentor Registration (Cloudinary) Error:", error);
     res.status(500).json({ message: error.message || "Server error" });
@@ -86,6 +97,7 @@ export const getAllApprovedMentors = async (_req: Request, res: Response) => {
 
 
 
+
 export const mentorLogin = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
@@ -100,7 +112,7 @@ export const mentorLogin = async (req: Request, res: Response) => {
 
     console.log("Mentor found:", mentor);
 
-const isPasswordCorrect = password === mentor.password;
+    const isPasswordCorrect = await bcrypt.compare(password, mentor.password); 
 
     if (!isPasswordCorrect) {
       return res.status(401).json({ message: "Invalid credentials" });
@@ -110,7 +122,6 @@ const isPasswordCorrect = password === mentor.password;
       return res.status(403).json({ message: "Mentor not approved" });
     }
 
-    // Create JWT token
     const token = jwt.sign({ id: mentor._id }, process.env.JWT_SECRET as string, {
       expiresIn: "7d",
     });
@@ -133,4 +144,68 @@ export const getMentorProfileController = async (req: Request, res: Response) =>
     return res.status(404).json({ message: "Mentor not found" });
   }
   res.status(200).json({ mentor });
+};
+
+
+interface AuthRequest extends Request {
+  userId?: string;
+}
+
+// ✅ UPDATE PROFILE
+export const updateMentorProfile = async (req: AuthRequest, res: Response) => {
+  try {
+    const mentor = await Mentor.findById(req.userId);
+    if (!mentor) return res.status(404).json({ message: "Mentor not found" });
+
+    const {
+      fullName,
+      phone,
+      education,
+      experience,
+      about,
+    } = req.body;
+
+    mentor.fullName = fullName || mentor.fullName;
+    mentor.phone = phone || mentor.phone;
+    mentor.education = education || mentor.education;
+    mentor.experience = experience || mentor.experience;
+    mentor.about = about || mentor.about;
+
+    await mentor.save();
+
+    res.status(200).json({ message: "Profile updated successfully", mentor });
+  } catch (err) {
+    console.error("Profile Update Error:", err);
+    res.status(500).json({ message: "Server error while updating profile" });
+  }
+};
+
+export const changeMentorPassword = async (req: Request, res: Response) => {
+  try {
+    
+    const { currentPassword, newPassword } = req.body;
+    const mentorId = (req as any).userId;
+    console.log("Received currentPassword:", currentPassword);
+
+    const mentor = await Mentor.findById(mentorId);
+    if (!mentor) {
+      return res.status(404).json({ message: "Mentor not found" });
+    }
+
+    const isPasswordValid = await bcrypt.compare(currentPassword, mentor.password);
+    console.log("Mentor.password (hashed):", mentor.password);
+
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: "Current password is incorrect" });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    mentor.password = hashedPassword;
+    await mentor.save();
+
+    res.status(200).json({ message: "Password updated successfully" });
+  } catch (err) {
+    console.error("Password update error:", err);
+    res.status(500).json({ message: "Server error" });
+  }
 };

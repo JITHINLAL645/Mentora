@@ -94,7 +94,6 @@ const Navbar = () => {
         <a href="/mentorPage" className="hover:text-orange-600">Mentors</a>
         <a href="" className="hover:text-orange-600">Sessions</a>
         <a href="/about" className="hover:text-orange-600">About</a>
-        <a href="/mentorDashboard" className="hover:text-orange-600">mentor</a>
       </div>
 
       {/* Right Section */}
