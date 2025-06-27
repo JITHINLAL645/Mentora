@@ -1,4 +1,6 @@
 import api from "./api";
+import axios from "axios";
+
 
 // Admin-side
 export const registerMentor = async (data: FormData) => {
@@ -44,12 +46,13 @@ export const changeMentorPassword = async (data: any) => {
 };
 
 
-export const updateMentorProfile = async (data: any) => {
+export const updateMentorProfile = (data: any) => {
   const token = localStorage.getItem("mentorToken");
-
-  return await api.put("/mentors/update-profile", data, {
+return axios.put("/api/mentors/update-profile", data, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 };
+
+

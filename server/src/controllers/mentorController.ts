@@ -21,14 +21,11 @@ export const registerMentorWithCloudinary = async (req: Request, res: Response) 
     const profileImgUpload = await uploadToCloudinary(profileImgFile.path);
     const kycUpload = await uploadToCloudinary(kycCertificateFile.path);
 
-    // Delete local files after upload
     fs.unlinkSync(profileImgFile.path);
     fs.unlinkSync(kycCertificateFile.path);
 
-    // 🔐 Hash the password before saving
     const hashedPassword = await bcrypt.hash(body.password, 10);
 
-    // ✅ Prepare mentor data
     const mentorData = {
       ...body,
       password: hashedPassword,
@@ -40,10 +37,8 @@ export const registerMentorWithCloudinary = async (req: Request, res: Response) 
         : [body.availableDays],
     };
 
-    // 👇 Save to DB
     const mentor = await createMentor(mentorData);
 
-    // 🎉 Response
     res.status(201).json({
       message: "Mentor registered successfully",
       mentor,
@@ -151,34 +146,6 @@ interface AuthRequest extends Request {
   userId?: string;
 }
 
-// ✅ UPDATE PROFILE
-export const updateMentorProfile = async (req: AuthRequest, res: Response) => {
-  try {
-    const mentor = await Mentor.findById(req.userId);
-    if (!mentor) return res.status(404).json({ message: "Mentor not found" });
-
-    const {
-      fullName,
-      phone,
-      education,
-      experience,
-      about,
-    } = req.body;
-
-    mentor.fullName = fullName || mentor.fullName;
-    mentor.phone = phone || mentor.phone;
-    mentor.education = education || mentor.education;
-    mentor.experience = experience || mentor.experience;
-    mentor.about = about || mentor.about;
-
-    await mentor.save();
-
-    res.status(200).json({ message: "Profile updated successfully", mentor });
-  } catch (err) {
-    console.error("Profile Update Error:", err);
-    res.status(500).json({ message: "Server error while updating profile" });
-  }
-};
 
 export const changeMentorPassword = async (req: Request, res: Response) => {
   try {
@@ -209,3 +176,27 @@ export const changeMentorPassword = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+
+export const updateMentorProfileController = async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const mentorId = req.userId;
+    const { fullName, education, about, experience } = req.body;
+
+    const updatedMentor = await Mentor.findByIdAndUpdate(
+      mentorId,
+      { fullName, education, about, experience },
+      { new: true }
+    );
+
+    if (!updatedMentor) {
+      return res.status(404).json({ message: "Mentor not found" });
+    }
+
+    res.status(200).json({ message: "Profile updated", mentor: updatedMentor });
+  } catch (error) {
+    console.error("Update Profile Error:", error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+

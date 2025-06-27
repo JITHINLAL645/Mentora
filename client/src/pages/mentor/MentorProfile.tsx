@@ -6,6 +6,7 @@ import { getMentorProfile, updateMentorProfile, changeMentorPassword } from "../
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
+
 interface MentorProfileType {
   fullName: string;
   email: string;
@@ -41,7 +42,7 @@ const MentorProfile = () => {
     const fetchProfile = async () => {
       try {
         const response = await getMentorProfile();
-        setMentor(response.data.mentor);
+         setMentor(response.data.mentor);
         setEditForm({
           fullName: response.data.mentor.fullName,
           experience: response.data.mentor.experience,
@@ -55,17 +56,21 @@ const MentorProfile = () => {
     fetchProfile();
   }, []);
 
-  const handleEditSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const response = await updateMentorProfile(editForm);
-      toast.success("Profile updated successfully");
-      setMentor(response.data.updatedMentor);
-      setShowEditModal(false);
-    } catch (error: any) {
-      toast.error(error.response?.data?.message || "Failed to update profile");
-    }
-  };
+ const handleEditSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  try {
+    const response = await updateMentorProfile(editForm);
+    toast.success("Profile updated successfully");
+
+    setMentor(response.data.mentor || response.data.updatedMentor);
+
+    setShowEditModal(false);
+  } catch (error: any) {
+    console.log("Update profile error:", error);
+    toast.error(error.response?.data?.message || "Failed to update profile");
+  }
+};
+
 
   const handlePasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -112,15 +117,38 @@ const MentorProfile = () => {
       </div>
 
       {/* Edit Modal */}
-      {showEditModal && (
+     {showEditModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-xl">
             <h2 className="text-2xl font-bold mb-6">Edit Profile</h2>
             <form className="grid gap-4" onSubmit={handleEditSubmit}>
-              <input type="text" value={editForm.fullName} onChange={(e) => setEditForm({ ...editForm, fullName: e.target.value })} placeholder="Name" className="border p-2 rounded" />
-              <input type="number" value={editForm.experience} onChange={(e) => setEditForm({ ...editForm, experience: Number(e.target.value) })} placeholder="Experience" className="border p-2 rounded" />
-              <input type="text" value={editForm.education} onChange={(e) => setEditForm({ ...editForm, education: e.target.value })} placeholder="Education" className="border p-2 rounded" />
-              <textarea value={editForm.about} onChange={(e) => setEditForm({ ...editForm, about: e.target.value })} placeholder="About" className="border p-2 rounded" />
+              <input
+                type="text"
+                value={editForm.fullName}
+                onChange={(e) => setEditForm({ ...editForm, fullName: e.target.value })}
+                placeholder="Name"
+                className="border p-2 rounded"
+              />
+              <input
+                type="number"
+                value={editForm.experience}
+                onChange={(e) => setEditForm({ ...editForm, experience: Number(e.target.value) })}
+                placeholder="Experience"
+                className="border p-2 rounded"
+              />
+              <input
+                type="text"
+                value={editForm.education}
+                onChange={(e) => setEditForm({ ...editForm, education: e.target.value })}
+                placeholder="Education"
+                className="border p-2 rounded"
+              />
+              <textarea
+                value={editForm.about}
+                onChange={(e) => setEditForm({ ...editForm, about: e.target.value })}
+                placeholder="About"
+                className="border p-2 rounded"
+              />
               <div className="flex justify-end gap-4">
                 <button type="button" onClick={() => setShowEditModal(false)} className="bg-gray-400 text-white px-4 py-2 rounded">Cancel</button>
                 <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Save</button>
