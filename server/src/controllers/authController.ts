@@ -32,22 +32,22 @@ export const resendOtp = async (req: Request, res: Response) => {
 
     res.status(200).json({ message: "OTP resent to your email." });
   } catch (err) {
-    console.error("❌ Failed to resend OTP:", err);
+    console.error(" Failed to resend OTP:", err);
     res.status(500).json({ message: "Failed to resend OTP. Please try again." });
   }
 };
 
 export const register = async (req: Request, res: Response) => {
   try {
-    console.log("🟢 Incoming signup request:", req.body); // check incoming data
+    console.log(" Incoming signup request:", req.body); 
 
     const user = await UserService.registerUser(req.body);
-    console.log("✅ User created:", user);
+    console.log(" User created:", user);
 
     const otp = authRepository.generateOtp();
     await authRepository.saveOtp(user.email, otp);
 
-    console.log(`📩 OTP for ${user.email}: ${otp}`); // log OTP
+    console.log(`📩 OTP for ${user.email}: ${otp}`); 
 
     await sendEmail(user.email, "OTP Verification", `Your OTP is: ${otp}`);
 
@@ -56,7 +56,7 @@ export const register = async (req: Request, res: Response) => {
       user,
     });
   } catch (error: any) {
-    console.error("❌ Registration Error:", error.message);
+    console.error(" Registration Error:", error.message);
     res.status(400).json({ message: error.message });
   }
 };
@@ -84,7 +84,7 @@ export const login = async (req: Request, res: Response) => {
       },
     });
   } catch (error: any) {
-    console.error("❌ Login failed:", error.message);
+    console.error(" Login failed:", error.message);
     res.status(401).json({ message: error.message });
   }
 };
@@ -102,7 +102,7 @@ export const logoutUser = async (req: Request, res: Response) => {
       res.status(200).json({ message: "Logged out successfully" });
     }
   } catch (err) {
-    console.error("❌ Logout error:", err);
+    console.error(" Logout error:", err);
     res.status(500).json({ message: "Logout failed" });
   }
 };

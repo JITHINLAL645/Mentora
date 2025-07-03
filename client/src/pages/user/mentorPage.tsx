@@ -62,15 +62,15 @@ const MentorPage: React.FC = () => {
     fetchMentors();
   }, []);
 
-  const filteredMentors = mentors.filter(
-    (mentor) =>
-      mentor.fullName.toLowerCase().includes(searchQuery.toLowerCase()) &&
-      (specializationFilter
-        ? mentor.specialization === specializationFilter
-        : true) &&
-      (genderFilter ? mentor.gender === genderFilter : true) &&
-      mentor.experience >= experienceFilter
-  );
+ const filteredMentors = mentors.filter((mentor) =>
+  mentor.fullName.toLowerCase().includes(searchQuery.toLowerCase()) &&
+  (specializationFilter
+    ? mentor.specialization.toLowerCase() === specializationFilter.toLowerCase()
+    : true) &&
+  (genderFilter ? mentor.gender === genderFilter : true) &&
+  mentor.experience >= experienceFilter
+);
+
 
   const totalPages = Math.ceil(filteredMentors.length / usersPerPage);
   const indexOfLastUser = currentPage * usersPerPage;

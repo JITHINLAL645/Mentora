@@ -5,6 +5,8 @@ import axios from "axios";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import imageCompression from "browser-image-compression";
+import Footer from "../../components/Homecomponent/Footer";
+import Navbar from "../../components/Homecomponent/Navbar";
 
 const MentorRegistrationPage = () => {
   const [previewProfile, setPreviewProfile] = useState<string | null>(null);
@@ -108,6 +110,8 @@ const MentorRegistrationPage = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="min-h-screen bg-gray-100 py-10 px-4">
       <div className="max-w-4xl mx-auto bg-white p-8 shadow-lg rounded-lg">
         <h2 className="text-3xl font-semibold mb-6 text-center text-gray-700">
@@ -247,7 +251,10 @@ const MentorRegistrationPage = () => {
           </div>
         </form>
       </div>
+    <Footer />
     </div>
+
+    </>
   );
 };
 

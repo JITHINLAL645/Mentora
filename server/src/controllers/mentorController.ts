@@ -3,6 +3,7 @@ import { createMentor } from "../repositories/mentorRepository";
 import { Mentor } from "../models/Mentor";
 import { uploadToCloudinary } from "../utils/cloudinary";
 import fs from "fs";
+import { IMentor } from "../interfaces/mentorInterface";
 
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -26,7 +27,7 @@ export const registerMentorWithCloudinary = async (req: Request, res: Response) 
 
     const hashedPassword = await bcrypt.hash(body.password, 10);
 
-    const mentorData = {
+    const mentorData:Partial<IMentor> = {
       ...body,
       password: hashedPassword,
       profileImg: profileImgUpload.url,

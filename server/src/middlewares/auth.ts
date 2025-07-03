@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
+import { readdirSync } from "fs";
 
 interface AuthenticatedRequest extends Request {
   userId?: string;
@@ -9,7 +10,8 @@ export const authenticate = (req: AuthenticatedRequest, res: Response, next: Nex
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res.status(401).json({ message: "Unauthorized. Please log in." });
+     res.status(401).json({ message: "Unauthorized. Please log in." });
+     return
   }
 
   const token = authHeader.split(" ")[1];
@@ -20,6 +22,6 @@ export const authenticate = (req: AuthenticatedRequest, res: Response, next: Nex
     req.userId = decoded.id;
     next();
   } catch (err) {
-    return res.status(401).json({ message: "Unauthorized. Invalid token." });
+     res.status(401).json({ message: "Unauthorized. Invalid token." });
   }
 };

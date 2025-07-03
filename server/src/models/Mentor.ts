@@ -1,4 +1,3 @@
-// This is your updated Mongoose model schema for Mentor
 
 import mongoose, { Schema, Document } from "mongoose";
 
@@ -10,10 +9,10 @@ export interface IMentor extends Document {
   education: string;
   gender: "Male" | "Female" | "Other";
   experience: number;
-  profileImg: string; // URL from Cloudinary
+  profileImg: string; 
   phone: string;
   about: string;
-  kycCertificate: string; // URL from Cloudinary
+  kycCertificate: string; 
   availableDays: string[];
   isVerified: boolean;
   isApproved: boolean;
@@ -28,10 +27,9 @@ export interface IMentor extends Document {
   absentDays?: Date[];
   createdAt?: Date;
 
-  // Optionally add:
   updatedAt?: Date;
-  role?: "mentor"; // for future scalability (e.g., if admin or user also uses similar model)
-  deleted?: boolean; // soft delete if required in the future
+  role?: "mentor";
+  deleted?: boolean; 
 }
 
 const mentorSchema = new Schema<IMentor>(

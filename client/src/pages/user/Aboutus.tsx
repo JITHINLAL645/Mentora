@@ -11,7 +11,7 @@ const AboutUs = () => {
       <section className="bg-[#F6F6F6] py-12">
         <h2 className="text-2xl md:text-3xl font-bold ml-10 flex items-center gap-2">
           <Link to="/">
-            <ChevronLeftIcon className="w-6 h-6 text-shadow-black cursor-pointer" />
+            <ChevronLeftIcon className="w-6 h-6 text-shadow-black hover:bg-gray-200 cursor-pointer" />
           </Link>
           About Us
         </h2>

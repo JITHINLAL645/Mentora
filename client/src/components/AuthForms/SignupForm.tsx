@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signup } from "../../services/Auth";
+import { toast } from "sonner";
+
 
 const SignupForm: React.FC = () => {
   const navigate = useNavigate();
@@ -9,7 +11,6 @@ const SignupForm: React.FC = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  // Error states
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -19,7 +20,6 @@ const SignupForm: React.FC = () => {
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Reset errors
     setNameError("");
     setEmailError("");
     setPasswordError("");
@@ -61,6 +61,8 @@ const SignupForm: React.FC = () => {
 
     try {
       await signup({ name, email, password });
+        toast.success("OTP sent to your email."); 
+
       localStorage.setItem("email", email);
       navigate("/otpVerification");
     } catch (err: any) {

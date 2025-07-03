@@ -24,12 +24,19 @@ const AppRoutes = () => {
   return (
     <Suspense
       fallback={
-        <div className="bg-[#F6F6F6] h-screen flex items-center justify-center">
-          <div className="relative w-14 h-14">
-            <div className="absolute inset-0 border-4 border-[#3d5a80] border-t-transparent rounded-full animate-spin"></div>
-            <div className="absolute inset-2 border-4 border-[#98c1d9] border-b-transparent rounded-full animate-spin [animation-direction:reverse]"></div>
-          </div>
-        </div>
+       <div className="bg-[#F6F6F6] h-screen flex items-center justify-center">
+  <div className="relative w-16 h-16">
+    {/* Outer Ring */}
+    <div className="absolute inset-0 border-4 border-[#3d5a80] border-t-transparent rounded-full animate-spin"></div>
+
+    {/* Middle Ring */}
+    <div className="absolute inset-2 border-4 border-[#98c1d9] border-b-transparent rounded-full animate-spin [animation-direction:reverse]"></div>
+
+    {/* Inner Ring */}
+    <div className="absolute inset-4 border-4 border-[#b8b9b9] border-l-transparent rounded-full animate-spin"></div>
+  </div>
+</div>
+
       }
     >
       <Routes>

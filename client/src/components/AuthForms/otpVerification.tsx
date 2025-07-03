@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { verifyOtp, resendOtp } from "../../services/Auth"; 
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner"; 
+
 
 const OtpVerificationForm: React.FC = () => {
   const [otp, setOtp] = useState("");
@@ -9,7 +11,6 @@ const OtpVerificationForm: React.FC = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
 
-  // Timer countdown
   useEffect(() => {
     if (timer === 0) return;
     const interval = setInterval(() => {
@@ -18,10 +19,9 @@ const OtpVerificationForm: React.FC = () => {
     return () => clearInterval(interval);
   }, [timer]);
 
-  // Handle OTP verification
   const handleVerify = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMsg(""); // Clear previous errors
+    setErrorMsg(""); 
 
     const response = await verifyOtp({ email, otp });
 
@@ -32,9 +32,10 @@ const OtpVerificationForm: React.FC = () => {
     }
   };
 
-  // Resend OTP and restart timer
   const handleResend = async () => {
     await resendOtp({ email });
+    toast.success("Resent OTP sent to your email ");
+
     setTimer(60);
     setErrorMsg(""); 
   };

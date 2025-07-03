@@ -17,7 +17,7 @@ const Navbar = () => {
   const [userData, setUserData] = useState<UserInfo>({
     name: "",
     email: "",
-    profileImage: "https://via.placeholder.com/40", // fallback image
+    profileImage: "https://via.placeholder.com/40", 
   });
 
   const navigate = useNavigate();
@@ -79,7 +79,6 @@ const Navbar = () => {
 
   return (
     <nav className="bg-[#F6F6F6] shadow-md p-4 flex items-center justify-between px-8">
-      {/* Brand Logo */}
       <div className="flex items-center relative w-10 h-10">
         <img
           src={Mentoralogo}
@@ -90,7 +89,6 @@ const Navbar = () => {
 
       <div className="hidden ml-20 md:flex gap-10 text-sm font-medium text-gray-500 ">
         <a href="/" className="hover:text-orange-600">Home</a>
-        {/* <a href="#" className="hover:text-orange-600">Dashboard</a> */}
         <a href="/mentorPage" className="hover:text-orange-600">Mentors</a>
         <a href="" className="hover:text-orange-600">Sessions</a>
         <a href="/about" className="hover:text-orange-600">About</a>
@@ -124,7 +122,7 @@ const Navbar = () => {
         ) : (
           <button
             onClick={handleLogin}
-            className="px-4 py-2 bg-blue-900 text-white rounded-2xl hover:bg-blue-600 w-30 transition"
+            className="px-4 py-2 bg-teal-700 text-white rounded-2xl hover:bg-blue-600 w-30 transition"
           >
             Login
           </button>
