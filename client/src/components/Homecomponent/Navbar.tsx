@@ -1,5 +1,6 @@
 import { Bell, MessageSquareText } from "lucide-react";
 import Mentoralogo from "../../assets/mentoraA.png";
+import default_img from "../../assets/default-img.png";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserDropdown from "./UserDropdown";
@@ -29,7 +30,6 @@ const Navbar = () => {
         withCredentials: true,
       });
 
-      // ✅ Fix: API returns { user: {...} }
       const userData = res.data.user;
       console.log("User data from API:", userData);
 
@@ -41,7 +41,7 @@ const Navbar = () => {
           profileImage:
             userData.profileImage && userData.profileImage.startsWith("http")
               ? userData.profileImage
-              : "/default-avatar.png",
+              : default_img,
           isAdmin: userData.isAdmin || false,
           token,
         })
@@ -52,7 +52,20 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    fetchUserProfile();
+    // ✅ Check for token in URL (Google OAuth redirect)
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token");
+
+    if (token) {
+      localStorage.setItem("userToken", token);
+
+      // clean URL (remove ?token=xxx)
+      window.history.replaceState({}, document.title, "/");
+
+      fetchUserProfile();
+    } else {
+      fetchUserProfile();
+    }
 
     const handleAuthChange = () => fetchUserProfile();
     window.addEventListener("authChange", handleAuthChange);
@@ -94,16 +107,16 @@ const Navbar = () => {
 
       {/* Center Links */}
       <div className="hidden ml-20 md:flex gap-10 text-sm font-medium text-gray-500">
-        <a href="/" className="hover:text-orange-600">
+        <a href="/" className="hover:text-teal-600">
           Home
         </a>
-        <a href="/mentorPage" className="hover:text-orange-600">
+        <a href="/mentorPage" className="hover:text-teal-600">
           Mentors
         </a>
-        <a href="#" className="hover:text-orange-600">
+        <a href="#" className="hover:text-teal-600">
           Sessions
         </a>
-        <a href="/about" className="hover:text-orange-600">
+        <a href="/about" className="hover:text-teal-600">
           About
         </a>
       </div>
@@ -116,13 +129,13 @@ const Navbar = () => {
             <MessageSquareText className="w-6 h-6 text-gray-700 hover:text-orange-600 cursor-pointer mr-5" />
             <div className="relative">
               <img
-                src={user.profileImage || "/default-avatar.png"}
+                src={user.profileImage || default_img}
                 alt="Profile"
                 className="w-10 h-10 rounded-full border-2 border-orange-600 cursor-pointer object-cover"
                 onClick={toggleDropdown}
                 onError={(e) => {
                   e.currentTarget.onerror = null;
-                  e.currentTarget.src = "/default-avatar.png";
+                  e.currentTarget.src = default_img;
                 }}
               />
 
@@ -133,7 +146,7 @@ const Navbar = () => {
                   user={{
                     name: user.name,
                     email: user.email,
-                    profileImage: user.profileImage || "/default-avatar.png",
+                    profileImage: user.profileImage || default_img,
                   }}
                 />
               )}
