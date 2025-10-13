@@ -147,7 +147,7 @@ export const getMentorProfileController = async (
 
   if (!mentor) {
     res.status(404).json({ message: "Mentor not found" });
-    return; // ✅ stop execution but don't return Response
+    return; //  stop execution but don't return Response
   }
 
   res.status(200).json({ mentor });
