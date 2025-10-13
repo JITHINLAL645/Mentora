@@ -2,10 +2,14 @@ import React, { useEffect, useState } from "react";
 import { verifyOtp, resendOtp } from "../../services/Auth"; 
 import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "sonner"; 
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/slice/authSlice";
+import default_img from "../../assets/default-img.png";
 
 const OtpVerificationForm: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const [otp, setOtp] = useState("");
   const [email, setEmail] = useState("");
@@ -19,6 +23,7 @@ const OtpVerificationForm: React.FC = () => {
     if (emailFromUrl) setEmail(emailFromUrl);
   }, [location]);
 
+  // ✅ Timer countdown
   useEffect(() => {
     if (timer === 0) return;
     const interval = setInterval(() => {
@@ -27,6 +32,7 @@ const OtpVerificationForm: React.FC = () => {
     return () => clearInterval(interval);
   }, [timer]);
 
+  // ✅ Handle OTP verification
   const handleVerify = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg(""); 
@@ -35,16 +41,35 @@ const OtpVerificationForm: React.FC = () => {
       const response = await verifyOtp({ email, otp });
 
       if (response.success) {
+        // Save token in localStorage
+        if (response.token) localStorage.setItem("userToken", response.token);
+
+        // Update Redux store with user info
+        if (response.user) {
+          dispatch(
+            setUser({
+              _id: response.user._id,
+              name: response.user.name,
+              email: response.user.email,
+              profileImage: response.user.profileImage || default_img,
+              isAdmin: response.user.isAdmin || false,
+              token: response.token || "",
+            })
+          );
+          window.dispatchEvent(new Event("authChange")); // optional: trigger global updates
+        }
+
         toast.success("Email verified successfully");
-        navigate("/");
+        navigate("/"); // redirect to profile/home
       } else {
-        setErrorMsg("Invalid or expired OTP");
+        setErrorMsg(response.message || "Invalid or expired OTP");
       }
     } catch (err: any) {
-      setErrorMsg("Verification failed. Try again.");
+      setErrorMsg(err.message || "Verification failed. Try again.");
     }
   };
 
+  // ✅ Resend OTP
   const handleResend = async () => {
     try {
       await resendOtp({ email });

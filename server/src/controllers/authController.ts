@@ -46,11 +46,11 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     req.login(user, (err) => {
       if (err) return next(err);
 
-      // ✅ Generate JWT token
+      //  Generate JWT token
       const token = generateToken(user._id);
 
       return res.status(200).json({
-        token,  // send token to frontend
+        token,  
         user: {
           _id: user._id,
           name: user.name,
@@ -64,26 +64,57 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
   }
 };
 
+// export const verifyOtp = async (req: Request, res: Response) => {
+//   const { email, otp } = req.body;
+
+//   const valid = await authRepository.verifyOtp(email, otp);
+// console.log("Verifying OTP for", email, ":", otp);
+
+
+//   if (!valid) {
+//      res.status(400).json({ message: "Invalid or expired OTP" });
+//      return
+//   }
+
+//   await userRepository.markVerified(email);
+//   const user = await userRepository.findUserByEmail(email);
+
+//   res.status(200).json({ 
+//     message: "Email verified successfully", 
+//     user: { ...user.toObject(), verified: true } 
+//   });
+// };
+
+
 export const verifyOtp = async (req: Request, res: Response) => {
   const { email, otp } = req.body;
 
   const valid = await authRepository.verifyOtp(email, otp);
-console.log("Verifying OTP for", email, ":", otp);
-
+  console.log("Verifying OTP for", email, ":", otp);
 
   if (!valid) {
-     res.status(400).json({ message: "Invalid or expired OTP" });
-     return
+    return res.status(400).json({ message: "Invalid or expired OTP" });
   }
 
+  // Mark user as verified
   await userRepository.markVerified(email);
   const user = await userRepository.findUserByEmail(email);
 
-  res.status(200).json({ 
-    message: "Email verified successfully", 
-    user: { ...user.toObject(), verified: true } 
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  // ✅ Generate JWT token
+  const token = generateToken(user._id);
+
+  res.status(200).json({
+    success: true,
+    message: "Email verified successfully",
+    token, 
+    user: { ...user.toObject(), verified: true },
   });
 };
+
 
 export const resendOtp = async (req: Request, res: Response) => {
   try {
