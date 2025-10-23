@@ -1,7 +1,7 @@
 import { Model, FilterQuery } from "mongoose";
 
 export class BaseRepository<T> {
-  private model: Model<T>;
+  protected model: Model<T>;
 
   constructor(model: Model<T>) {
     this.model = model;
@@ -23,11 +23,11 @@ export class BaseRepository<T> {
     return await this.model.findOne(filter);
   }
 
-  async deleteById(id: string): Promise<T | null> {
-    return await this.model.findByIdAndDelete(id);
+  async updateById(id: string, data: Partial<T>): Promise<T | null> {
+    return await this.model.findByIdAndUpdate(id, data, { new: true });
   }
 
-  async findByIdAndSort(id: string): Promise<T | null> {
-    return await this.model.findById(id).sort({ createdAt: -1 });
+  async deleteById(id: string): Promise<T | null> {
+    return await this.model.findByIdAndDelete(id);
   }
 }

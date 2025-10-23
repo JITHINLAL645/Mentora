@@ -1,4 +1,3 @@
-
 import { User, IUser } from "../models/user";
 import { BaseRepository } from "./baseRepository";
 
@@ -18,6 +17,17 @@ class UserRepository extends BaseRepository<IUser> {
   async getAllMentees(): Promise<IUser[]> {
     return await User.find({ isAdmin: false });
   }
+  async updatePassword(email: string, hashedPassword: string): Promise<void> {
+    await User.updateOne({ email }, { password: hashedPassword });
+  }
+
+  async toggleBlock(userId: string): Promise<IUser | null> {
+    const user = await User.findById(userId);
+    if (!user) return null;
+    user.isBlock = !user.isBlock;
+    return await user.save();
+  }
+  
 }
 
 const userRepository = new UserRepository();

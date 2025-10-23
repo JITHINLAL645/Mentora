@@ -19,7 +19,7 @@ const generateToken = (user: any) => {
       name: user.name,
       isAdmin: user.isAdmin || false,
     },
-    process.env.JWT_SECRET || "your_jwt_secret", // 👈 secret from .env
+    process.env.JWT_SECRET || "your_jwt_secret", 
     { expiresIn: "7d" }
   );
 };

@@ -1,14 +1,23 @@
+import { BaseRepository } from "./baseRepository";
 import { Mentor, IMentor } from "../models/Mentor";
 
-export const createMentor = async (data: Partial<IMentor>) => {
-  const mentor = new Mentor(data);
-  return await mentor.save();
-};
+export class MentorRepository extends BaseRepository<IMentor> {
+  constructor() {
+    super(Mentor);
+  }
 
-export const findAllMentors = async () => {
-  return await Mentor.find();
-};
+  async findApprovedMentors(): Promise<IMentor[]> {
+    return await this.model.find({ isApproved: true });
+  }
 
-export const findMentorById = async (id: string) => {
-  return await Mentor.findById(id);
-};
+  async toggleApproval(id: string): Promise<IMentor | null> {
+    const mentor = await this.model.findById(id);
+    if (!mentor) return null;
+
+    mentor.isApproved = !mentor.isApproved;
+    await mentor.save();
+    return mentor;
+  }
+}
+
+export const mentorRepository = new MentorRepository();
