@@ -34,31 +34,23 @@ const MentorPage: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchMentors = async () => {
-      try {
-        const response = await getApprovedMentors();
-        const data = response.data?.data || [];
-        if (data.length === 0) throw new Error("No mentors found");
-        setMentors(data);
-      } catch (error) {
-        toast.error("Loading fallback mentors for demo");
-        // Fallback mock mentors
-        const mockData: IMentor[] = Array.from({ length: 12 }).map((_, i) => ({
-          _id: String(i + 1),
-          fullName: `Demo Mentor ${i + 1}`,
-          email: `demo${i + 1}@mail.com`,
-          profileImg: "default.png",
-          specialization: "General coach",
-          education: "MSc Psychology",
-          experience: i + 1,
-          city: "Kozhikode",
-          street: "Main Street",
-          state: "Kerala",
-          gender: i % 2 === 0 ? "Male" : "Female",
-        }));
-        setMentors(mockData);
-      }
-    };
+   const fetchMentors = async () => {
+  try {
+    const response = await getApprovedMentors();
+    const data = response.data?.data || [];
+
+    setMentors(data);
+
+    if (data.length === 0) {
+      toast.info("No mentors available right now");
+    }
+  } catch (error) {
+    console.error("Error fetching mentors:", error);
+    toast.error("Failed to fetch mentors from server");
+    setMentors([]); 
+  }
+};
+
     fetchMentors();
   }, []);
 

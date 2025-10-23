@@ -4,6 +4,7 @@ import { GoPencil } from "react-icons/go";
 import { EllipsisVertical } from "lucide-react";
 import Footer from "../../components/Homecomponent/Footer";
 import Navbar from "../../components/Homecomponent/Navbar";
+import ConfirmModal from "../../components/Mentor/ConfirmModal";
 
 interface UserProfile {
   _id: string;
@@ -20,11 +21,12 @@ const Profile: React.FC = () => {
   const [user, setUser] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Modal states
   const [editingProfile, setEditingProfile] = useState(false);
   const [editingAbout, setEditingAbout] = useState(false);
 
-  // Profile form state
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [confirmAction, setConfirmAction] = useState<(() => void) | null>(null);
+
   const [formData, setFormData] = useState({
     name: "",
     gender: "",
@@ -33,10 +35,8 @@ const Profile: React.FC = () => {
     profileImage: null as File | null,
   });
 
-  // About state
   const [aboutText, setAboutText] = useState("");
 
-  // 🔹 Fetch profile
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem("userToken");
@@ -66,21 +66,17 @@ const Profile: React.FC = () => {
     fetchProfile();
   }, []);
 
-  // 🔹 Handle text change (profile form)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // 🔹 Handle file upload
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setFormData({ ...formData, profileImage: e.target.files[0] });
     }
   };
 
-  // 🔹 Submit profile update
-  const handleProfileSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const updateProfile = async () => {
     try {
       const token = localStorage.getItem("userToken");
       if (!token) throw new Error("No token found");
@@ -112,37 +108,44 @@ const Profile: React.FC = () => {
     }
   };
 
-  // 🔹 Submit about update (send JSON, not FormData)
-// 🔹 Submit about update
-const handleAboutSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  try {
-    const token = localStorage.getItem("userToken");
-    if (!token) throw new Error("No token found");
+  const handleProfileSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setConfirmAction(() => updateProfile);
+    setShowConfirmModal(true);
+  };
 
-    const data = new FormData();
-    data.append("about", aboutText);
+  const updateAbout = async () => {
+    try {
+      const token = localStorage.getItem("userToken");
+      if (!token) throw new Error("No token found");
 
-    const res = await axios.put(
-      "http://localhost:5000/api/auth/profile",
-      data,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+      const data = new FormData();
+      data.append("about", aboutText);
 
-    setUser(res.data.user); // ✅ Update state with new about
-    setAboutText(res.data.user.about || ""); // ✅ Keep input synced
-    setEditingAbout(false);
-  } catch (err) {
-    console.error("About update error:", err);
-  }
-};
+      const res = await axios.put(
+        "http://localhost:5000/api/auth/profile",
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
+      setUser(res.data.user);
+      setAboutText(res.data.user.about || "");
+      setEditingAbout(false);
+    } catch (err) {
+      console.error("About update error:", err);
+    }
+  };
 
+  const handleAboutSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setConfirmAction(() => updateAbout);
+    setShowConfirmModal(true);
+  };
 
   if (loading) return <p>Loading...</p>;
   if (!user) return <p>No profile found</p>;
@@ -150,178 +153,191 @@ const handleAboutSubmit = async (e: React.FormEvent) => {
   return (
     <>
       <Navbar />
-    <div className="bg-[#F6F6F6] min-h-screen p-6">
-      {/* Profile Header with Gradient */}
-      <div className="bg-white rounded-lg shadow-md overflow-hidden">
-        <div className="relative">
-          <div className="w-full h-40 bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300"></div>
+      <div className="bg-[#F6F6F6] min-h-screen p-6">
+        <div className="bg-white rounded-lg shadow-md overflow-hidden">
+          <div className="relative">
+            <div className="w-full h-40 bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300"></div>
 
-          {user.profileImage && (
-            <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-14 w-32 h-32 rounded-full border-4 border-white shadow-md overflow-hidden">
-              <img
-                src={user.profileImage}
-                alt="Profile"
-                className="w-full h-full object-cover"
+            {user.profileImage && (
+              <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-14 w-32 h-32 rounded-full border-4 border-white shadow-md overflow-hidden">
+                <img
+                  src={user.profileImage}
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
+          </div>
+
+          <div className="pt-20 pb-6 px-6 text-center">
+            <h1 className="text-xl font-bold">{user.name}</h1>
+            <p className="text-gray-600 text-sm">{user.email}</p>
+            <p className="text-gray-500 text-sm">
+              {user.phone ? `📞 ${user.phone}` : "No phone info"}
+            </p>
+            <p className="text-gray-500 text-sm">
+              {user.city || "No city info"}
+            </p>
+
+            <div className="flex justify-center gap-4 mt-3">
+              <GoPencil
+                className="cursor-pointer w-5 h-5 text-gray-600 hover:text-gray-900"
+                onClick={() => setEditingProfile(true)}
               />
+              <EllipsisVertical className="cursor-pointer text-gray-600" />
             </div>
-          )}
+          </div>
         </div>
 
-        {/* Name, Email, Phone, City */}
-        <div className="pt-20 pb-6 px-6 text-center">
-          <h1 className="text-xl font-bold">{user.name}</h1>
-          <p className="text-gray-600 text-sm">{user.email}</p>
-          <p className="text-gray-500 text-sm">
-            {user.phone ? `📞 ${user.phone}` : "No phone info"}
-          </p>
-          <p className="text-gray-500 text-sm">
-            {user.city || "No city info"}
-          </p>
-
-          <div className="flex justify-center gap-4 mt-3">
+        {/* About Section */}
+        <div className="bg-white rounded-lg shadow-md p-6 mt-6">
+          <div className="flex justify-between items-center">
+            <h2 className="text-lg font-medium text-gray-800">About</h2>
             <GoPencil
               className="cursor-pointer w-5 h-5 text-gray-600 hover:text-gray-900"
-              onClick={() => setEditingProfile(true)}
+              onClick={() => setEditingAbout(true)}
             />
-            <EllipsisVertical className="cursor-pointer text-gray-600" />
           </div>
+          <p className="mt-4 text-gray-600">
+            {user.about || "No about details available."}
+          </p>
         </div>
-      </div>
 
-      {/* About Section */}
-      <div className="bg-white rounded-lg shadow-md p-6 mt-6">
-        <div className="flex justify-between items-center">
-          <h2 className="text-lg font-medium text-gray-800">About</h2>
-          <GoPencil
-            className="cursor-pointer w-5 h-5 text-gray-600 hover:text-gray-900"
-            onClick={() => setEditingAbout(true)}
-          />
-        </div>
-        <p className="mt-4 text-gray-600">
-          {user.about || "No about details available."}
-        </p>
-      </div>
-
-      {/* Edit Profile Modal */}
-      {editingProfile && (
-        <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50 ">
-          <div className="bg-white rounded-lg shadow-lg p-6 w-200">
-            <div className="flex justify-between items-center border-b pb-3">
-              <h2 className="text-xl font-semibold">Edit Profile</h2>
-              <button
-                onClick={() => setEditingProfile(false)}
-                className="text-2xl leading-none"
-              >
-                &times;
-              </button>
-            </div>
-
-            <form onSubmit={handleProfileSubmit} className="mt-4 space-y-4">
-              <div>
-                <label className="block font-medium">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full border rounded p-2"
-                />
-              </div>
-
-              <div>
-                <label className="block font-medium">Phone</label>
-                <input
-                  type="text"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full border rounded p-2"
-                />
-              </div>
-
-              <div>
-                <label className="block font-medium">City</label>
-                <input
-                  type="text"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  className="w-full border rounded p-2"
-                />
-              </div>
-
-              <div>
-                <label className="block font-medium">Profile Image</label>
-                <input type="file" accept="image/*" onChange={handleFileChange} />
-              </div>
-
-              <div className="flex gap-4 mt-6">
+        {/* Edit Profile Modal */}
+        {editingProfile && (
+          <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50 ">
+            <div className="bg-white rounded-lg shadow-lg p-6 w-200">
+              <div className="flex justify-between items-center border-b pb-3">
+                <h2 className="text-xl font-semibold">Edit Profile</h2>
                 <button
-                  type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg"
-                >
-                  Save
-                </button>
-                <button
-                  type="button"
                   onClick={() => setEditingProfile(false)}
-                  className="px-4 py-2 bg-gray-400 text-white rounded-lg"
+                  className="text-2xl leading-none"
                 >
-                  Cancel
+                  &times;
                 </button>
               </div>
-            </form>
-          </div>
-        </div>
-      )}
 
-      {/* Edit About Modal */}
-      {editingAbout && (
-        <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 w-200 ">
-            <div className="flex justify-between items-center border-b pb-3">
-              <h2 className="text-xl font-semibold">Edit About</h2>
-              <button
-                onClick={() => setEditingAbout(false)}
-                className="text-2xl leading-none"
-              >
-                &times;
-              </button>
+              <form onSubmit={handleProfileSubmit} className="mt-4 space-y-4">
+                <div>
+                  <label className="block font-medium">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full border rounded p-2"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-medium">Phone</label>
+                  <input
+                    type="text"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full border rounded p-2"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-medium">City</label>
+                  <input
+                    type="text"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
+                    className="w-full border rounded p-2"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-medium">Profile Image</label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                  />
+                </div>
+
+                <div className="flex gap-4 mt-6">
+                  <button
+                    type="submit"
+                    className="px-4 py-2 bg-blue-600 text-white rounded-lg"
+                  >
+                    Save
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setEditingProfile(false)}
+                    className="px-4 py-2 bg-gray-400 text-white rounded-lg"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
             </div>
-
-            <form onSubmit={handleAboutSubmit} className="mt-4 space-y-4">
-              <div>
-                <textarea
-                  name="about"
-                  value={aboutText}
-                  onChange={(e) => setAboutText(e.target.value)}
-                  className="w-full border rounded p-2 min-h-[120px]"
-                />
-              </div>
-
-              <div className="flex gap-4 mt-6">
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg"
-                >
-                  Save
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setEditingAbout(false)}
-                  className="px-4 py-2 bg-gray-400 text-white rounded-lg"
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
           </div>
-        </div>
-      )}
-    <Footer />
-    </div>
-    
-</>
+        )}
+
+        {/* Edit About Modal */}
+        {editingAbout && (
+          <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg shadow-lg p-6 w-200 ">
+              <div className="flex justify-between items-center border-b pb-3">
+                <h2 className="text-xl font-semibold">Edit About</h2>
+                <button
+                  onClick={() => setEditingAbout(false)}
+                  className="text-2xl leading-none"
+                >
+                  &times;
+                </button>
+              </div>
+
+              <form onSubmit={handleAboutSubmit} className="mt-4 space-y-4">
+                <div>
+                  <textarea
+                    name="about"
+                    value={aboutText}
+                    onChange={(e) => setAboutText(e.target.value)}
+                    className="w-full border rounded p-2 min-h-[120px]"
+                  />
+                </div>
+
+                <div className="flex gap-4 mt-6">
+                  <button
+                    type="submit"
+                    className="px-4 py-2 bg-blue-600 text-white rounded-lg"
+                  >
+                    Save
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setEditingAbout(false)}
+                    className="px-4 py-2 bg-gray-400 text-white rounded-lg"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+
+        {showConfirmModal && confirmAction && (
+          <ConfirmModal
+            message="Are you sure you want to save changes?"
+            onConfirm={() => {
+              confirmAction();
+              setShowConfirmModal(false);
+            }}
+            onCancel={() => setShowConfirmModal(false)}
+          />
+        )}
+
+        <Footer />
+      </div>
+    </>
   );
 };
 

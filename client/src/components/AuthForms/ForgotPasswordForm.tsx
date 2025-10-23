@@ -182,7 +182,7 @@ const ForgotPasswordForm = () => {
 
           <button
             type="submit"
-            className="w-full sm:w-36 h-12 font-bold mt-6 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition"
+            className="w-full sm:w-36 h-12 font-bold mt-6 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition"
             disabled={timer === 0}
           >
             Verify
@@ -236,7 +236,7 @@ const ForgotPasswordForm = () => {
 
           <button
             type="submit"
-            className="w-full sm:w-36 h-12 font-bold mt-6 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition"
+            className="w-full sm:w-36 h-12 font-bold mt-6 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition"
           >
             Change
           </button>

@@ -102,7 +102,11 @@ const MentorRegistrationPage = () => {
       formik.setFieldValue(field, compressedFile);
 
       const url = URL.createObjectURL(compressedFile);
-      field === "profileImg" ? setPreviewProfile(url) : setPreviewKyc(url);
+      if (field === "profileImg") {
+        setPreviewProfile(url);
+      } else {
+        setPreviewKyc(url);
+      }
     } catch (err) {
       console.error("Compression error:", err);
       toast.error("Image compression failed.");
@@ -111,149 +115,150 @@ const MentorRegistrationPage = () => {
 
   return (
     <>
-    <Navbar />
-    <div className="min-h-screen bg-gray-100 py-10 px-4">
-      <div className="max-w-4xl mx-auto bg-white p-8 shadow-lg rounded-lg">
-        <h2 className="text-3xl font-semibold mb-6 text-center text-gray-700">
-          Mentor Registration
-        </h2>
+      <Navbar />
+      <div className="min-h-screen bg-gray-100 py-10 px-4">
+        <div className="max-w-4xl mx-auto bg-white p-8 shadow-lg rounded-lg">
+          <h2 className="text-3xl font-semibold mb-6 text-center text-gray-700">
+            Mentor Registration
+          </h2>
 
-        <form
-          onSubmit={formik.handleSubmit}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
-          {[
-            { label: "Full Name", name: "fullName", type: "text" },
-            { label: "Email", name: "email", type: "email" },
-            { label: "Password", name: "password", type: "password" },
-            { label: "Education", name: "education", type: "text" },
-            { label: "Experience", name: "experience", type: "number" },
-            { label: "Phone", name: "phone", type: "text" },
-            { label: "Street", name: "street", type: "text" },
-            { label: "City", name: "city", type: "text" },
-            { label: "State", name: "state", type: "text" },
-            { label: "Pincode", name: "pincode", type: "text" },
-          ].map((field) => (
-            <div key={field.name}>
+          <form
+            onSubmit={formik.handleSubmit}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            {[
+              { label: "Full Name", name: "fullName", type: "text" },
+              { label: "Email", name: "email", type: "email" },
+              { label: "Password", name: "password", type: "password" },
+              { label: "Education", name: "education", type: "text" },
+              { label: "Experience", name: "experience", type: "number" },
+              { label: "Phone", name: "phone", type: "text" },
+              { label: "Street", name: "street", type: "text" },
+              { label: "City", name: "city", type: "text" },
+              { label: "State", name: "state", type: "text" },
+              { label: "Pincode", name: "pincode", type: "text" },
+            ].map((field) => (
+              <div key={field.name}>
+                <label className="block text-sm font-medium text-gray-600 mb-1">
+                  {field.label}
+                </label>
+                <input
+                  type={field.type}
+                  name={field.name}
+                  onChange={formik.handleChange}
+                  value={(formik.values as any)[field.name]}
+                  className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+                />
+                <p className="text-red-500 text-xs mt-1">
+                  {(formik.errors as any)[field.name]}
+                </p>
+              </div>
+            ))}
+
+            <div>
               <label className="block text-sm font-medium text-gray-600 mb-1">
-                {field.label}
+                Specialization
               </label>
-              <input
-                type={field.type}
-                name={field.name}
+              <select
+                name="specialization"
                 onChange={formik.handleChange}
-                value={(formik.values as any)[field.name]}
+                value={formik.values.specialization}
                 className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
-              />
+              >
+                <option>General coach</option>
+                <option>Clinical</option>
+                <option>Counseling</option>
+                <option>Neuropsychology</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-600 mb-1">
+                Gender
+              </label>
+              <select
+                name="gender"
+                onChange={formik.handleChange}
+                value={formik.values.gender}
+                className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+              >
+                <option value="">Select</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
               <p className="text-red-500 text-xs mt-1">
-                {(formik.errors as any)[field.name]}
+                {formik.errors.gender}
               </p>
             </div>
-          ))}
 
-          <div>
-            <label className="block text-sm font-medium text-gray-600 mb-1">
-              Specialization
-            </label>
-            <select
-              name="specialization"
-              onChange={formik.handleChange}
-              value={formik.values.specialization}
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
-            >
-              <option>General coach</option>
-              <option>Clinical</option>
-              <option>Counseling</option>
-              <option>Neuropsychology</option>
-            </select>
-          </div>
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-gray-600 mb-1">
+                About
+              </label>
+              <textarea
+                name="about"
+                rows={3}
+                onChange={formik.handleChange}
+                value={formik.values.about}
+                className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+              ></textarea>
+              <p className="text-red-500 text-xs mt-1">{formik.errors.about}</p>
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-600 mb-1">
-              Gender
-            </label>
-            <select
-              name="gender"
-              onChange={formik.handleChange}
-              value={formik.values.gender}
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
-            >
-              <option value="">Select</option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Other</option>
-            </select>
-            <p className="text-red-500 text-xs mt-1">{formik.errors.gender}</p>
-          </div>
-
-          <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-gray-600 mb-1">
-              About
-            </label>
-            <textarea
-              name="about"
-              rows={3}
-              onChange={formik.handleChange}
-              value={formik.values.about}
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
-            ></textarea>
-            <p className="text-red-500 text-xs mt-1">{formik.errors.about}</p>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-600 mb-1">
-              Profile Image
-            </label>
-            <input
-              type="file"
-              onChange={(e) => handleFileChange(e, "profileImg")}
-            />
-            {previewProfile && (
-              <img
-                src={previewProfile}
-                alt="Preview"
-                className="w-20 h-20 mt-2 rounded-full object-cover"
+            <div>
+              <label className="block text-sm font-medium text-gray-600 mb-1">
+                Profile Image
+              </label>
+              <input
+                type="file"
+                onChange={(e) => handleFileChange(e, "profileImg")}
               />
-            )}
-            <p className="text-red-500 text-xs mt-1">
-              {formik.errors.profileImg as string}
-            </p>
-          </div>
+              {previewProfile && (
+                <img
+                  src={previewProfile}
+                  alt="Preview"
+                  className="w-20 h-20 mt-2 rounded-full object-cover"
+                />
+              )}
+              <p className="text-red-500 text-xs mt-1">
+                {formik.errors.profileImg as string}
+              </p>
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-600 mb-1">
-              KYC Certificate
-            </label>
-            <input
-              type="file"
-              onChange={(e) => handleFileChange(e, "kycCertificate")}
-            />
-            {previewKyc && (
-              <img
-                src={previewKyc}
-                alt="Preview"
-                className="w-20 h-20 mt-2 object-cover"
+            <div>
+              <label className="block text-sm font-medium text-gray-600 mb-1">
+                KYC Certificate
+              </label>
+              <input
+                type="file"
+                onChange={(e) => handleFileChange(e, "kycCertificate")}
               />
-            )}
-            <p className="text-red-500 text-xs mt-1">
-              {formik.errors.kycCertificate as string}
-            </p>
-          </div>
+              {previewKyc && (
+                <img
+                  src={previewKyc}
+                  alt="Preview"
+                  className="w-20 h-20 mt-2 object-cover"
+                />
+              )}
+              <p className="text-red-500 text-xs mt-1">
+                {formik.errors.kycCertificate as string}
+              </p>
+            </div>
 
-          <div className="md:col-span-2 text-center mt-4">
-            <button
-              type="submit"
-              disabled={loading}
-              className="bg-teal-600 text-white px-8 py-2 rounded-md hover:bg-teal-700 transition duration-200"
-            >
-              {loading ? "Registering..." : "Register"}
-            </button>
-          </div>
-        </form>
+            <div className="md:col-span-2 text-center mt-4">
+              <button
+                type="submit"
+                disabled={loading}
+                className="bg-teal-600 text-white px-8 py-2 rounded-md hover:bg-teal-700 transition duration-200"
+              >
+                {loading ? "Registering..." : "Register"}
+              </button>
+            </div>
+          </form>
+        </div>
+        <Footer />
       </div>
-    <Footer />
-    </div>
-
     </>
   );
 };
