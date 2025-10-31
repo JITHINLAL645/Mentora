@@ -11,6 +11,8 @@ import {
 } from "../controllers/mentorController";
 import { uploadFields } from "../middlewares/multer";
 import { ensureAuthenticated  } from "../middlewares/auth"; 
+import { getMentorByIdController } from "../controllers/mentorController";
+
 
 
 const router = express.Router();
@@ -25,6 +27,10 @@ router.get("/mentorprofile", ensureAuthenticated , getMentorProfileController);
 
 router.put("/change-password", ensureAuthenticated , changeMentorPassword);
 router.put("/update-profile", ensureAuthenticated , updateMentorProfileController);
+
+router.get("/getMentorById/:id", getMentorByIdController);
+
+
 
 
 

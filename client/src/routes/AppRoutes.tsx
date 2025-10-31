@@ -21,6 +21,8 @@ import MentorDashboard from "../pages/mentor/MentorDashboard";
 import MentorSingleProfile from "../pages/mentor/MentorProfile";
 import MentorRegistrationPage from "../pages/mentor/MentorRegistration";
 import MentorLogin from "../pages/mentor/MentorLogin";
+import MentorCheckout from "../pages/user/MentorCheckoutPage"; 
+
 
 const AppRoutes = () => {
   return (
@@ -48,6 +50,8 @@ const AppRoutes = () => {
         <Route path="/singlementorPage/:id" element={<MentorProfile />} />
 
         {/* Mentor Routes */}
+                <Route path="/mentorCheckout/:id" element={<MentorCheckout />} />
+
         <Route path="/mentorDashboard" element={<MentorDashboard />} />
         <Route path="/mentorProfile" element={<MentorSingleProfile />} />
         <Route

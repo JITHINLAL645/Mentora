@@ -75,3 +75,19 @@ export const updateMentorProfileController = async (req: AuthenticatedRequest, r
     res.status(400).json({ message: error.message });
   }
 };
+
+export const getMentorByIdController = async (req: Request, res: Response) => {
+  try {
+    const mentorId = req.params.id;
+    const mentor = await mentorService.getMentorByIdService(mentorId);
+    return res.status(200).json({
+      success: true,
+      data: mentor,
+    });
+  } catch (error: any) {
+    return res.status(404).json({
+      success: false,
+      message: error.message || "Mentor not found",
+    });
+  }
+};

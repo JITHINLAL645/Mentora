@@ -73,12 +73,20 @@ const MentorProfile: React.FC = () => {
     setAppointmentModalVisible(true);
   };
 
-  const confirmAppointment = (slot: ISlot) => {
-    localStorage.setItem("AppointmentId", "mock-appointment-id");
-    setAppointmentModalVisible(false);
-    setSlotModalVisible(false);
-    navigate("/appointment_booking");
-  };
+const confirmAppointment = (slot: ISlot) => {
+  if (!mentorData) {
+    toast.error("Mentor data not loaded yet");
+    return;
+  }
+
+  localStorage.setItem("AppointmentId", "mock-appointment-id");
+  setAppointmentModalVisible(false);
+  setSlotModalVisible(false);
+
+  navigate(`/mentorCheckout/${mentorData._id}`, { state: { slot, mentorId: mentorData._id } });
+};
+
+
 
   if (loading) {
     return (

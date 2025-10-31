@@ -90,6 +90,13 @@ export class MentorService {
     if (!updated) throw new Error("Mentor not found");
     return updated;
   }
+  async getMentorById(id: string) {
+    const mentor = await mentorRepository.findMentorById(id);
+    if (!mentor) {
+      throw new Error("Mentor not found");
+    }
+    return mentor;
+  }
 }
 
 export const mentorService = new MentorService();
