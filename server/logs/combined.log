@@ -1,0 +1,95 @@
+2025-11-07 17:40:54 [[32minfo[39m] : 🚀 Server running on http://localhost:5000
+2025-11-07 17:42:15 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-07 17:42:15 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-07 17:42:20 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-07 17:42:20 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-07 17:42:39 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-07 17:42:39 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-07 17:42:43 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-07 17:42:43 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-07 17:42:45 [[32minfo[39m] : User logged out successfully
+2025-11-07 17:42:59 [[32minfo[39m] : User logged in: avani123@gmail.com
+2025-11-07 17:44:10 [[32minfo[39m] : User logged out successfully
+2025-11-07 17:44:45 [[32minfo[39m] :  OTP sent to demo1@gmail.com
+2025-11-07 17:48:21 [[32minfo[39m] : 🚀 Server running on http://localhost:5000
+2025-11-07 17:48:50 [[32minfo[39m] : 🚀 Server running on http://localhost:5000

@@ -1,11 +1,13 @@
 import express from "express";
-import { getMentees, toggleBlockUser } from "../controllers/menteesController";
-import { getUserCount } from "../controllers/dashboardController";
+import { menteesController, dashboardController } from "../di/container";
+import { ensureAuthenticated } from "../middlewares/auth";
+import { isAdmin } from "../middlewares/isAdmin";
 
 const router = express.Router();
 
-router.get("/mentees", getMentees);
-router.get("/users/count", getUserCount);
-router.patch("/block/:id", toggleBlockUser);
+// Only authenticated admins can access
+router.get("/mentees", ensureAuthenticated, isAdmin, menteesController.getMentees);
+router.get("/users/count", ensureAuthenticated, isAdmin, dashboardController.getUserCount);
+router.patch("/block/:id", ensureAuthenticated, isAdmin, menteesController.toggleBlockUser);
 
 export default router;

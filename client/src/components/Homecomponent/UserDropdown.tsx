@@ -20,23 +20,30 @@ const UserDropdown = ({ onClose, onLogout }: Props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleLogout = async () => {
+ const handleLogout = async () => {
   try {
+    const token = localStorage.getItem("token");
+
     await API.post(
-      "/auth/logout", 
+      "/auth/logout",
       {},
-      { withCredentials: true } 
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      }
     );
 
     dispatch(logout());
-
+    localStorage.removeItem("token");
     if (onLogout) onLogout();
-
     navigate("/login");
   } catch (error) {
     console.error("Logout failed:", error);
   }
 };
+
 
   return (
     <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-10">

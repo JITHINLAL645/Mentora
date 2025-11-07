@@ -1,40 +1,30 @@
 import express from "express";
-import {
-  getAllMentors,
-  toggleMentorApproval,
-  getAllApprovedMentors,
-  registerMentorWithCloudinary,
-  mentorLogin,
-  getMentorProfileController,
-  changeMentorPassword,
-  updateMentorProfileController
-} from "../controllers/mentorController";
+import { mentorController } from "../di/container";
 import { uploadFields } from "../middlewares/multer";
-import { ensureAuthenticated  } from "../middlewares/auth"; 
-import { getMentorByIdController } from "../controllers/mentorController";
-
-
+import { ensureAuthenticated } from "../middlewares/auth";
 
 const router = express.Router();
 
-router.post("/admin/register", uploadFields,registerMentorWithCloudinary );
-router.post("/register", uploadFields, registerMentorWithCloudinary);
-router.get("/", getAllMentors);
-router.get("/approved", getAllApprovedMentors);
-router.patch("/toggle-approval/:id", toggleMentorApproval);
-router.post("/login", mentorLogin);
-router.get("/mentorprofile", ensureAuthenticated , getMentorProfileController);
+// Registration
+router.post("/admin/register", uploadFields, mentorController.registerMentorWithCloudinary);
+router.post("/register", uploadFields, mentorController.registerMentorWithCloudinary);
 
-router.put("/change-password", ensureAuthenticated , changeMentorPassword);
-router.put("/update-profile", ensureAuthenticated , updateMentorProfileController);
+// Get all mentors + approved mentors
+router.get("/", mentorController.getAllMentors);
+router.get("/approved", mentorController.getAllApprovedMentors);
 
-router.get("/getMentorById/:id", getMentorByIdController);
+// Toggle approval (admin)
+router.patch("/toggle-approval/:id", mentorController.toggleMentorApproval);
 
+// Login
+router.post("/login", mentorController.mentorLogin);
 
+// Mentor profile & update routes
+router.get("/mentorprofile", ensureAuthenticated, mentorController.getMentorProfileController);
+router.put("/change-password", ensureAuthenticated, mentorController.changeMentorPassword);
+router.put("/update-profile", ensureAuthenticated, mentorController.updateMentorProfileController);
 
-
-
-
-
+// Get single mentor by ID
+router.get("/getMentorById/:id", mentorController.getMentorByIdController);
 
 export default router;

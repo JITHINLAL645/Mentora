@@ -1,13 +1,18 @@
 import bcrypt from "bcryptjs";
 import { v4 as uuidv4 } from "uuid";
 import cloudinary from "../utils/cloudinary";
-import userRepository from "../repositories/userRepository";
-import authRepository from "../repositories/authRepository";
 import { IUser } from "../models/user";
+import { IUserRepository } from "../interfaces/IUserRepository";
+import { IAuthRepository } from "../interfaces/IAuthRepository";
 
 export class AuthService {
-  private userRepo = userRepository;
-  private authRepo = authRepository;
+  private userRepo: IUserRepository;
+  private authRepo: IAuthRepository;
+
+  constructor(userRepo: IUserRepository, authRepo: IAuthRepository) {
+    this.userRepo = userRepo;
+    this.authRepo = authRepo;
+  }
 
   async registerUser(userData: any): Promise<IUser> {
     const existing = await this.userRepo.findUserByEmail(userData.email);
@@ -17,10 +22,7 @@ export class AuthService {
     }
 
     const hashedPassword = await bcrypt.hash(userData.password, 10);
-    const newUser = {
-      ...userData,
-      password: hashedPassword,
-    };
+    const newUser = { ...userData, password: hashedPassword };
 
     return await this.userRepo.create(newUser);
   }
@@ -54,18 +56,13 @@ export class AuthService {
 
     const result = await new Promise<{ secure_url: string }>((resolve, reject) => {
       cloudinary.uploader
-        .upload_stream(
-          { public_id: imageName, folder: "profile_pics" },
-          (error, result) => {
-            if (error) return reject(error);
-            resolve(result as { secure_url: string });
-          }
-        )
+        .upload_stream({ public_id: imageName, folder: "profile_pics" }, (error, result) => {
+          if (error) return reject(error);
+          resolve(result as { secure_url: string });
+        })
         .end(imageBuffer);
     });
 
     return await this.authRepo.updateUserProfileImage(userId, result.secure_url);
   }
 }
-
-export default new AuthService();

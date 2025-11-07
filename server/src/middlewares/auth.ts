@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
+import logger from "../utils/logger";
+
 
 export interface AuthenticatedRequest extends Request {
   userId?: string;
@@ -36,7 +38,7 @@ export const ensureAuthenticated = (
 
     next();
   } catch (err) {
-    console.error("JWT verification error:", err);
+    logger.error("JWT verification error:", err);
      res.status(401).json({ message: "Unauthorized. Invalid token." });
      return
   }

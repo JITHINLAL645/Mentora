@@ -14,9 +14,28 @@ class UserRepository extends BaseRepository<IUser> {
     await User.updateOne({ email }, { isVerified: true });
   }
 
-  async getAllMentees(): Promise<IUser[]> {
-    return await User.find({ isAdmin: false });
+   async getAllMentees(page: number, limit: number, search?: string): Promise<{ users: IUser[]; total: number }> {
+  const skip = (page - 1) * limit;
+
+  // 🔍 build dynamic filter
+  const filter: any = { isAdmin: false };
+
+  if (search && search.trim() !== "") {
+    filter.$or = [
+      { name: { $regex: search, $options: "i" } },
+      { email: { $regex: search, $options: "i" } },
+    ];
   }
+
+  const total = await User.countDocuments(filter);
+  const users = await User.find(filter)
+    .skip(skip)
+    .limit(limit)
+    .select("-password");
+
+  return { users, total };
+}
+
   async updatePassword(email: string, hashedPassword: string): Promise<void> {
     await User.updateOne({ email }, { password: hashedPassword });
   }

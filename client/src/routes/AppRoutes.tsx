@@ -22,7 +22,7 @@ import MentorSingleProfile from "../pages/mentor/MentorProfile";
 import MentorRegistrationPage from "../pages/mentor/MentorRegistration";
 import MentorLogin from "../pages/mentor/MentorLogin";
 import MentorCheckout from "../pages/user/MentorCheckoutPage"; 
-
+import PaymentSuccess from "../pages/user/PaymentSuccess";
 
 const AppRoutes = () => {
   return (
@@ -51,6 +51,8 @@ const AppRoutes = () => {
 
         {/* Mentor Routes */}
                 <Route path="/mentorCheckout/:id" element={<MentorCheckout />} />
+                <Route path="/payment-success" element={<PaymentSuccess />} />
+
 
         <Route path="/mentorDashboard" element={<MentorDashboard />} />
         <Route path="/mentorProfile" element={<MentorSingleProfile />} />

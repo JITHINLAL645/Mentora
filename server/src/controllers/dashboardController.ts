@@ -1,17 +1,29 @@
 import { Request, Response } from "express";
-import { User } from "../models/user"; 
-
-export const getUserCount = async (req: Request, res: Response) => {
-  try {
-    const totalMentees = await User.countDocuments({ isAdmin: false });
-    const blockedMentees = await User.countDocuments({ isAdmin: false, isBlock: true });
-    const totalMentors = await User.countDocuments({ isAdmin: false, isMentor: true }); 
-    // const totalMentors = await User.countDocuments({ specialization: { $exists: true } });
+import { HttpStatus } from "../constants/httpStatus";
+import { Messages } from "../constants/messages";
+import { IDashboardService } from "../interfaces/IDashboardService";
+import logger from "../utils/logger";  
 
 
+export class DashboardController {
+  private dashboardService: IDashboardService;
 
-    res.status(200).json({ totalMentees, blockedMentees,totalMentors  });
-  } catch (error) {
-    res.status(500).json({ message: "Failed to fetch user data" });
+  constructor(dashboardService: IDashboardService) {
+    this.dashboardService = dashboardService;
   }
-};
+
+  public getUserCount = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const stats = await this.dashboardService.getUserStats();
+      res.status(HttpStatus.OK).json({
+        message: Messages.FETCH_SUCCESS,
+        data: stats,
+      });
+    } catch (error) {
+      logger.error("Error fetching user counts:", error);
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+        message: Messages.FETCH_ERROR,
+      });
+    }
+  };
+}

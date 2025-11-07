@@ -5,17 +5,16 @@ import axios from "axios";
 const AdminDashboard: React.FC = () => {
   const [totalMentees, setTotalMentees] = useState(0);
   const [blockedMentees, setBlockedMentees] = useState(0);
-  const [totalMentors, setTotalMentors] = useState(0); // ✅ add this
+  const [totalMentors, setTotalMentors] = useState(0);
 
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/api/admin/users/count"
-        );
-        setTotalMentees(response.data.totalMentees);
-        setBlockedMentees(response.data.blockedMentees);
-        setTotalMentors(response.data.totalMentors); // ✅ use this
+        const response = await axios.get("http://localhost:5000/api/admin/users/count");
+        const data = response.data.data; // ✅ Access the 'data' field
+        setTotalMentees(data.totalMentees);
+        setBlockedMentees(data.blockedMentees);
+        setTotalMentors(data.totalMentors);
       } catch (error) {
         console.error("Error fetching counts:", error);
       }
@@ -31,7 +30,6 @@ const AdminDashboard: React.FC = () => {
       <div className="flex-1 bg-gray-100 p-6 overflow-y-auto">
         <h1 className="text-2xl font-bold mb-6">Admin Dashboard</h1>
 
-        {/* Stats Boxes */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="bg-white shadow-md p-6 rounded-lg">
             <h2 className="text-lg font-semibold text-gray-700 mb-1">
@@ -51,14 +49,14 @@ const AdminDashboard: React.FC = () => {
             </p>
           </div>
 
-          {/* <div className="bg-white shadow-md p-6 rounded-lg">
-            <h2 className="text-lg font-semibold text-gray-700">
+          <div className="bg-white shadow-md p-6 rounded-lg">
+            <h2 className="text-lg font-semibold text-gray-700 mb-1">
               Total Mentors
             </h2>
             <p className="text-3xl font-bold text-blue-500 mt-2">
               {totalMentors}
             </p>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

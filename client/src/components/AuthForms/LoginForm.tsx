@@ -47,19 +47,28 @@ const handleSubmit = async (e: React.FormEvent) => {
       withCredentials: true,
     });
 
-    // ✅ Save token
+    //  Save token
     if (res.data.token) {
       localStorage.setItem("userToken", res.data.token);
+      axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.token}`;
+
     }
 
     const userData = res.data.user;
+
+    //  Save userId and name for future use (important for booking/payment)
+    localStorage.setItem("userId", userData._id);
+    localStorage.setItem("userName", userData.name);
+
+    //  Update Redux state
     dispatch(setUser(userData));
 
-    navigate(userData.isAdmin ? "/admin/dashboard" : "/"); // redirect to profile
+    navigate(userData.isAdmin ? "/admin/dashboard" : "/"); 
   } catch (err: any) {
     setError(err.response?.data?.message || "Login failed");
   }
 };
+
 
 
   return (

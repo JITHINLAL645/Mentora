@@ -1,7 +1,6 @@
 import api from "./api";
 import axios from "axios";
 
-
 // Admin-side
 export const registerMentor = async (data: FormData) => {
   return await axios.post("/api/mentors/register", data, {
@@ -11,8 +10,21 @@ export const registerMentor = async (data: FormData) => {
   });
 };
 
-export const getAllMentors = async () => {
-  return await api.get("/admin/mentors");
+// ✅ FIXED: Added page and limit parameters
+export const getAllMentors = async (page: number, limit: number) => {
+  console.log("🌐 Making API call with page:", page, "limit:", limit);
+  
+  const response = await api.get("/admin/mentors", {
+    params: { 
+      page, 
+      limit 
+    }
+  });
+  
+  console.log("🌐 API URL called:", response.config.url);
+  console.log("🌐 Params sent:", response.config.params);
+  
+  return response;
 };
 
 export const toggleMentorApproval = async (id: string) => {
@@ -22,21 +34,19 @@ export const toggleMentorApproval = async (id: string) => {
 // User-side
 export const getApprovedMentors = () => api.get("/mentors/approved");
 
-//mentor-side
-
+// Mentor-side
 export const mentorLogin = (email: string, password: string) => {
   return api.post("/mentors/login", { email, password });
 };
 
 export const getMentorProfile = async () => {
-  const token = sessionStorage.getItem("mentorToken"); // ✅ sessionStorage if you stored it there
+  const token = sessionStorage.getItem("mentorToken");
   return await api.get("/mentors/mentorprofile", {
     headers: {
-      Authorization: `Bearer ${token}`, // ✅ Important
+      Authorization: `Bearer ${token}`,
     },
   });
 };
-
 
 export const changeMentorPassword = (data: any) => {
   const token = sessionStorage.getItem("mentorToken");
@@ -51,6 +61,3 @@ export const updateMentorProfile = (data: any) => {
     headers: { Authorization: `Bearer ${token}` },
   });
 };
-
-
-

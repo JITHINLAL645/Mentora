@@ -163,7 +163,8 @@ const Home = () => {
                 your dedicated guide, I am committed to providing unwavering
                 support aimed at empowering you to reach your ultimate goals.
                 <br />
-                <p></p>
+                <br />
+                {/* <p></p> */}
                 <br /> Together, we navigate the intricacies of your
                 aspirations, employing a curated blend of proven techniques and
                 models to propel you forward.{" "}
