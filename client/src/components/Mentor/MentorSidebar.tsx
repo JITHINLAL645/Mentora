@@ -16,14 +16,16 @@ const MentorSidebar: React.FC = () => {
   const handleLogout = () => {
     // localStorage.removeItem("mentorToken");
     sessionStorage.removeItem("mentorToken");
-    navigate("/login");
+    navigate("/mentor/login");
   };
 
   const menuItems = [
     { name: "Dashboard", path: "/mentorDashboard", icon: <LayoutDashboard size={18} /> },
-    { name: "Appointment", path: "", icon: <CalendarClock size={18} /> },
+    { name: "Appointment", path: "/mentor-appointments", icon: <CalendarClock size={18} /> },
     { name: "Profile", path: "/mentorProfile", icon: <UserCircle size={18} /> },
-    { name: "Chat", path: "", icon: <MessageCircle size={18} /> },
+    { name: "Slot", path: "/mentor-Slot", icon:  <CalendarClock size={18} /> },
+    { name: "ShowAllSlot", path: "/showAll-Slot", icon:  <CalendarClock size={18} /> },
+    { name: "Chat", path: "/chat", icon: <MessageCircle size={18} /> },
     { name: "Video Call", path: "", icon: <Video size={18} /> },
   ];
 

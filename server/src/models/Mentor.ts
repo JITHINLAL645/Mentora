@@ -26,6 +26,8 @@ export interface IMentor extends Document {
   otpExpiration?: Date;
   absentDays?: Date[];
   createdAt?: Date;
+  rejectionReason?: string;
+
 
   updatedAt?: Date;
   role?: "mentor";
@@ -60,6 +62,8 @@ const mentorSchema = new Schema<IMentor>(
     deleted: { type: Boolean, default: false },
     role: { type: String, default: "mentor" },
     createdAt: { type: Date, default: Date.now },
+    rejectionReason: { type: String, default: null },
+
   },
   { timestamps: true }
 );

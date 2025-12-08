@@ -1,31 +1,32 @@
 import express from "express";
 import passport from "passport";
-import { authController } from "../di/container"; // Your DI container
+import { authController } from "../di/container";
 import { profileController } from "../controllers/profileController";
 import { userUpload } from "../middlewares/multer";
 import { ensureAuthenticated } from "../middlewares/auth";
+import { bookingController } from "../di/container";
+
+
 import jwt from "jsonwebtoken"; 
 
 
 const router = express.Router();
 
-// Helper: Generate short-lived access token for Google OAuth
 const generateToken = (user: any) => {
   return jwt.sign(
     { id: user._id, email: user.email, name: user.name, isAdmin: user.isAdmin || false },
     process.env.JWT_SECRET || "your_jwt_secret",
-    { expiresIn: "15m" }
+    { expiresIn: "2h" }
   );
 };
 
-// Google OAuth Routes
 router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
 router.get(
   "/google/callback",
   passport.authenticate("google", {
     failureRedirect: "http://localhost:5173/login",
-    session: false, // Important! No session
+    session: false, 
   }),
   (req: any, res) => {
     try {
@@ -40,7 +41,7 @@ router.get(
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "strict",
+        sameSite: "lax",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
 
@@ -52,21 +53,35 @@ router.get(
   }
 );
 
-// Auth Routes
 router.post("/signup", authController.register);
 router.post("/login", authController.login);
-router.post("/refresh-token", authController.refreshToken); // refresh token endpoint
+router.post("/refresh-token", authController.refreshToken);
 router.post("/verify-otp", authController.verifyOtp);
 router.post("/resend-otp", authController.resendOtp);
 router.post("/forgot-password", authController.forgotPassword);
 router.post("/reset-password", authController.resetPassword);
 router.post("/logout", authController.logoutUser);
 
-// Profile Routes
+router.put("/change-password", ensureAuthenticated, profileController.changePassword);
+
+// CHANGE EMAIL
+router.post("/email/send-otp", ensureAuthenticated, profileController.sendOtp);
+router.post("/email/verify-otp", ensureAuthenticated, profileController.verifyOtp);
+router.put("/email/change", ensureAuthenticated, profileController.changeEmail);
+
+
+
 router.get("/profile", ensureAuthenticated, profileController.getUserProfile);
 router.put("/profile", ensureAuthenticated, userUpload, profileController.updateUserProfile);
 
-// Get current user info
+router.get(
+  "/my-sessions",
+  ensureAuthenticated,
+  bookingController.getMySessions.bind(bookingController)
+);
+
+
+
 router.get("/user", ensureAuthenticated, (req, res) => {
   res.json(req.user);
 });

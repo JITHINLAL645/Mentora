@@ -16,14 +16,14 @@ const OtpVerificationForm: React.FC = () => {
   const [timer, setTimer] = useState(60);
   const [errorMsg, setErrorMsg] = useState("");
 
-  // ✅ Get email from query string on first render
+  //  Get email from query string on first render
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const emailFromUrl = queryParams.get("email");
     if (emailFromUrl) setEmail(emailFromUrl);
   }, [location]);
 
-  // ✅ Timer countdown
+  //  Timer countdown
   useEffect(() => {
     if (timer === 0) return;
     const interval = setInterval(() => {
@@ -32,7 +32,7 @@ const OtpVerificationForm: React.FC = () => {
     return () => clearInterval(interval);
   }, [timer]);
 
-  // ✅ Handle OTP verification
+  //  Handle OTP verification
   const handleVerify = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg(""); 
@@ -69,7 +69,7 @@ const OtpVerificationForm: React.FC = () => {
     }
   };
 
-  // ✅ Resend OTP
+  //  Resend OTP
   const handleResend = async () => {
     try {
       await resendOtp({ email });

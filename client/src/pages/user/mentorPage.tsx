@@ -3,9 +3,11 @@ import { FaStar, FaHeart } from "react-icons/fa";
 import { Info, Search } from "lucide-react";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../components/Homecomponent/Navbar";
-import Footer from "../../components/Homecomponent/Footer";
-import { getApprovedMentors } from "../../services/mentorService";
+import Navbar from "../../components/Homecomponent/Navbar";  
+import Footer from "../../components/Homecomponent/Footer";  
+import SortFromBackend from "../../components/Mentor/MentorSoring";      
+import { getFilteredMentors } from "../../services/mentorService";
+
 
 interface IMentor {
   _id: string;
@@ -21,7 +23,15 @@ interface IMentor {
   gender: string;
   about?: string;
   phone?: string;
+  rating?: number; // for sorting by rating
 }
+
+const SPECIALIZATIONS = [
+  "General coach",
+  "Clinical",
+  "Counseling",
+  "Neuropsychology",
+];
 
 const MentorPage: React.FC = () => {
   const [mentors, setMentors] = useState<IMentor[]>([]);
@@ -29,53 +39,67 @@ const MentorPage: React.FC = () => {
   const [specializationFilter, setSpecializationFilter] = useState("");
   const [genderFilter, setGenderFilter] = useState("");
   const [experienceFilter, setExperienceFilter] = useState(1);
+
+  const [sortBy, setSortBy] = useState(""); // ⭐ Sorting field
+  const [sortOrder, setSortOrder] = useState(""); // ⭐ Sorting order
+
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
   const usersPerPage = 4;
   const navigate = useNavigate();
 
-  useEffect(() => {
-   const fetchMentors = async () => {
+ const fetchMentors = async (additionalParams = {}) => {
   try {
-    const response = await getApprovedMentors();
-    const data = response.data?.data || [];
+    const response = await getFilteredMentors({
+      search: searchQuery,
+      specialization: specializationFilter,
+      gender: genderFilter,
+      experience: experienceFilter,
+      page: currentPage,
+      limit: usersPerPage,
+      ...additionalParams, // pass sort here
+    });
 
-    setMentors(data);
-
-    if (data.length === 0) {
-      toast.info("No mentors available right now");
-    }
+    const result = response.data?.data;
+    setMentors(result?.mentors || []);
+    setTotalPages(result?.totalPages || 1);
   } catch (error) {
-    console.error("Error fetching mentors:", error);
-    toast.error("Failed to fetch mentors from server");
-    setMentors([]); 
+    console.error(error);
+    setMentors([]);
   }
 };
 
+
+  useEffect(() => {
     fetchMentors();
-  }, []);
-
- const filteredMentors = mentors.filter((mentor) =>
-  mentor.fullName.toLowerCase().includes(searchQuery.toLowerCase()) &&
-  (specializationFilter
-    ? mentor.specialization.toLowerCase() === specializationFilter.toLowerCase()
-    : true) &&
-  (genderFilter ? mentor.gender === genderFilter : true) &&
-  mentor.experience >= experienceFilter
-);
-
-
-  const totalPages = Math.ceil(filteredMentors.length / usersPerPage);
-  const indexOfLastUser = currentPage * usersPerPage;
-  const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  const currentMentors = filteredMentors.slice(
-    indexOfFirstUser,
-    indexOfLastUser
-  );
-
-  const paginate = (page: number) => {
-    setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [
+    searchQuery,
+    specializationFilter,
+    genderFilter,
+    experienceFilter,
+    sortBy,
+    sortOrder,
+    currentPage,
+  ]);
+
+  const handleClearFilters = () => {
+    setSearchQuery("");
+    setSpecializationFilter("");
+    setGenderFilter("");
+    setExperienceFilter(1);
+    setSortBy("");
+    setSortOrder("");
+    setCurrentPage(1);
   };
+
+const handleSortChange = (field: string, order: string) => {
+  const sortValue = field && order ? `${field}_${order}` : "";
+  fetchMentors({ sort: sortValue });
+  setCurrentPage(1);
+};
+
 
   return (
     <div>
@@ -99,15 +123,13 @@ const MentorPage: React.FC = () => {
                 Specialization
               </h3>
               <div className="flex flex-col gap-2">
-                {[
-                  "General coach",
-                  "clinical",
-                  "counseling",
-                  "neuropsychology",
-                ].map((specialty) => (
+                {SPECIALIZATIONS.map((specialty) => (
                   <button
                     key={specialty}
-                    onClick={() => setSpecializationFilter(specialty)}
+                    onClick={() => {
+                      setSpecializationFilter(specialty);
+                      setCurrentPage(1);
+                    }}
                     className={`w-full px-4 py-2 rounded-md text-sm border font-medium text-left transition ${
                       specializationFilter === specialty
                         ? "bg-teal-600 text-white border-teal-900"
@@ -129,7 +151,10 @@ const MentorPage: React.FC = () => {
                 {["Male", "Female", "Other"].map((g) => (
                   <button
                     key={g}
-                    onClick={() => setGenderFilter(g)}
+                    onClick={() => {
+                      setGenderFilter(g);
+                      setCurrentPage(1);
+                    }}
                     className={`px-4 py-2 rounded-md text-sm border font-medium text-left transition ${
                       genderFilter === g
                         ? "bg-teal-600 text-white border-teal-900"
@@ -152,7 +177,10 @@ const MentorPage: React.FC = () => {
                 min="1"
                 max="20"
                 value={experienceFilter}
-                onChange={(e) => setExperienceFilter(Number(e.target.value))}
+                onChange={(e) => {
+                  setExperienceFilter(Number(e.target.value));
+                  setCurrentPage(1);
+                }}
                 className="w-full accent-teal-600"
               />
               <p className="text-sm mt-2 text-gray-600">
@@ -163,12 +191,7 @@ const MentorPage: React.FC = () => {
             {/* Clear Filters */}
             <div className="pt-4 flex justify-center">
               <button
-                onClick={() => {
-                  setSearchQuery("");
-                  setSpecializationFilter("");
-                  setGenderFilter("");
-                  setExperienceFilter(1);
-                }}
+                onClick={handleClearFilters}
                 className="bg-red-500 text-white px-6 py-2 rounded-md font-semibold text-sm hover:bg-red-600 transition"
               >
                 Clear Filters
@@ -178,21 +201,30 @@ const MentorPage: React.FC = () => {
 
           {/* Mentor List */}
           <div className="md:col-span-3 space-y-6">
-            <div className="relative mb-4 max-w-md mx-auto">
+            {/* Search */}
+            <div className="relative mb-4 max-w-md mx-auto flex items-center gap-4">
               <input
                 type="text"
                 placeholder="Search mentors..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setCurrentPage(1);
+                }}
                 className="w-full px-4 py-3 border rounded shadow-md"
               />
               <Search className="absolute right-3 top-3 text-gray-400" />
             </div>
 
-            {currentMentors.length === 0 ? (
+            {/* Sorting Component */}
+            <div className="mb-4">
+              <SortFromBackend onChange={handleSortChange} />
+            </div>
+
+            {mentors.length === 0 ? (
               <p className="text-center text-gray-500">No mentors found.</p>
             ) : (
-              currentMentors.map((mentor) => (
+              mentors.map((mentor) => (
                 <div
                   key={mentor._id}
                   className="flex flex-col md:flex-row items-center gap-6 p-4 md:p-6 border rounded-lg shadow-md"
@@ -205,31 +237,35 @@ const MentorPage: React.FC = () => {
 
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold">{mentor.fullName}</h3>
-                    <p className="text-sm text-gray-500">
-                      {mentor.specialization}
-                    </p>
+                    <p className="text-sm text-gray-500">{mentor.specialization}</p>
+
                     <div className="flex gap-2 mt-1">
                       <span className="px-2 py-1 bg-gray-200 text-xs rounded">
                         {mentor.experience} yrs
                       </span>
+
                       <span className="flex items-center gap-1 px-2 py-1 bg-red-100 text-red-500 text-xs font-semibold rounded">
                         <FaHeart />
                         Loyal Mentees
                         <Info className="w-4 h-4" />
                       </span>
                     </div>
+
                     <div className="flex gap-1 mt-2">
                       {[...Array(5)].map((_, i) => (
                         <FaStar key={i} className="text-yellow-400 text-sm" />
                       ))}
                     </div>
+
                     <p className="text-sm text-gray-600 mt-1">
                       {mentor.street}, {mentor.city}, {mentor.state}
                     </p>
                   </div>
 
                   <button
-                    onClick={() => navigate(`/singlementorPage/${mentor._id}`)}
+                    onClick={() =>
+                      navigate(`/singlementorPage/${mentor._id}`)
+                    }
                     className="px-4 py-2 bg-teal-600 text-white rounded shadow mt-4 md:mt-0"
                   >
                     Show Availability
@@ -243,31 +279,29 @@ const MentorPage: React.FC = () => {
               <div className="flex justify-center mt-6">
                 <nav className="inline-flex rounded-md shadow">
                   <button
-                    onClick={() => paginate(currentPage - 1)}
+                    onClick={() => setCurrentPage((prev) => prev - 1)}
                     disabled={currentPage === 1}
                     className="px-3 py-1 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 disabled:opacity-50"
                   >
                     Previous
                   </button>
 
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                    (number) => (
-                      <button
-                        key={number}
-                        onClick={() => paginate(number)}
-                        className={`px-3 py-1 border-t border-b border-gray-300 ${
-                          currentPage === number
-                            ? "bg-teal-600 text-white"
-                            : "bg-white text-gray-500 hover:bg-gray-50"
-                        }`}
-                      >
-                        {number}
-                      </button>
-                    )
-                  )}
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((number) => (
+                    <button
+                      key={number}
+                      onClick={() => setCurrentPage(number)}
+                      className={`px-3 py-1 border-t border-b border-gray-300 ${
+                        currentPage === number
+                          ? "bg-teal-600 text-white"
+                          : "bg-white text-gray-500 hover:bg-gray-50"
+                      }`}
+                    >
+                      {number}
+                    </button>
+                  ))}
 
                   <button
-                    onClick={() => paginate(currentPage + 1)}
+                    onClick={() => setCurrentPage((prev) => prev + 1)}
                     disabled={currentPage === totalPages}
                     className="px-3 py-1 rounded-r-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 disabled:opacity-50"
                   >
@@ -278,6 +312,7 @@ const MentorPage: React.FC = () => {
             )}
           </div>
         </div>
+
         <Footer />
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { Request, Response, RequestHandler } from "express";
+import {  RequestHandler } from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { HttpStatus } from "../constants/httpStatus";
@@ -23,19 +23,19 @@ export class AuthController {
     this.sendEmail = sendEmail;
   }
 
-  private generateAccessToken(userId: string) {
-    return jwt.sign({ id: userId }, process.env.JWT_SECRET as string, {
-      expiresIn: "15m",
-    });
-  }
+ private generateAccessToken(userId: string) {
+  return jwt.sign({ id: userId }, process.env.JWT_SECRET as string, {
+    expiresIn: process.env.JWT_EXPIRES_IN || "2h", 
+  });
+}
 
-  private generateRefreshToken(userId: string) {
-    return jwt.sign({ id: userId }, process.env.JWT_REFRESH_SECRET as string, {
-      expiresIn: "7d",
-    });
-  }
+private generateRefreshToken(userId: string) {
+  return jwt.sign({ id: userId }, process.env.JWT_REFRESH_SECRET as string, {
+    expiresIn: process.env.JWT_REFRESH_EXPIRES_IN || "7d",
+  });
+}
 
-  //  REGISTER
+
  public register: RequestHandler = async (req, res) => {
   try {
     const user = await this.authService.registerUser(req.body);
@@ -43,7 +43,6 @@ export class AuthController {
     await this.authService.saveOtp(user.email, otp);
     await this.sendEmail(user.email, "OTP Verification", `Your OTP is: ${otp}`);
 
-    // Log OTP in terminal for debugging
     logger.info(`OTP for REGISTER: ${otp} sent to ${user.email}`);
 
     const accessToken = this.generateAccessToken(user._id);
@@ -52,8 +51,8 @@ export class AuthController {
     res
       .cookie("refreshToken", refreshToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "strict",
+        secure:false,
+        sameSite: "lax",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       })
       .status(HttpStatus.CREATED)
@@ -68,7 +67,6 @@ export class AuthController {
   }
 };
 
-  //  LOGIN
   public login: RequestHandler = async (req, res) => {
     try {
       const { email, password } = req.body;
@@ -80,7 +78,7 @@ export class AuthController {
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "strict",
+        sameSite: "lax",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
 
@@ -101,26 +99,31 @@ export class AuthController {
     }
   };
 
-  //  REFRESH TOKEN
-  public refreshToken: RequestHandler = async (req, res) => {
-    try {
-      const token = req.cookies.refreshToken;
-      if (!token) return res.status(401).json({ message: "No refresh token" });
+public refreshToken: RequestHandler = async (req, res) => {
+  try {
+    const token = req.cookies.refreshToken;
 
-      const decoded = jwt.verify(token, process.env.JWT_REFRESH_SECRET as string) as { id: string };
-      const user = await this.userRepository.findUserById(decoded.id);
-      if (!user) return res.status(404).json({ message: "User not found" });
-
-      const newAccessToken = this.generateAccessToken(user._id);
-      logger.info(`Access token refreshed for user: ${user.email}`);
-      res.status(HttpStatus.OK).json({ token: newAccessToken });
-    } catch (err: any) {
-      logger.error("❌ Refresh token error", { stack: err.stack });
-      res.status(401).json({ message: "Invalid refresh token" });
+    if (!token) {
+      return res.status(401).json({ message: "No refresh token" });
     }
-  };
 
-  //  LOGOUT
+    const decoded = jwt.verify(token, process.env.JWT_REFRESH_SECRET as string) as { id: string };
+
+    const user = await this.userRepository.findUserById(decoded.id);
+    if (!user) {
+      return res.status(401).json({ message: "Invalid refresh token" });
+    }
+
+    const newAccessToken = this.generateAccessToken(user._id.toString());
+
+    res.json({ token: newAccessToken });
+  } catch (err: any) {
+    logger.error("Refresh token failed:", err.message);
+    res.status(401).json({ message: "Invalid or expired refresh token" });
+  }
+};
+
+
   public logoutUser: RequestHandler = async (req, res) => {
     try {
       res.clearCookie("refreshToken");
@@ -132,50 +135,59 @@ export class AuthController {
     }
   };
 
-  //  VERIFY OTP
   public verifyOtp: RequestHandler = async (req, res) => {
-    try {
-      const { email, otp } = req.body;
-      const valid = await this.authService.verifyOtp(email, otp);
+  try {
+    const { email, otp } = req.body;
+    const valid = await this.authService.verifyOtp(email, otp);
 
-      if (!valid) {
-        logger.warn(`Invalid OTP attempt for ${email}`);
-        return res.status(HttpStatus.BAD_REQUEST).json({ message: Messages.INVALID_OTP });
-      }
-
-      await this.userRepository.markVerified(email);
-      const user = await this.userRepository.findUserByEmail(email);
-      if (!user) return res.status(HttpStatus.NOT_FOUND).json({ message: Messages.USER_NOT_FOUND });
-
-      const token = this.generateAccessToken(user._id);
-      logger.info(` OTP verified successfully for ${email}`);
-
-      res.status(HttpStatus.OK).json({
-        success: true,
-        message: "Email verified successfully",
-        token,
-        user: { ...user.toObject(), verified: true },
-      });
-    } catch (err: any) {
-      logger.error(" Verify OTP error", { stack: err.stack });
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: Messages.GENERAL_ERROR });
+    if (!valid) {
+      logger.warn(`Invalid OTP attempt for ${email}`);
+      res.status(HttpStatus.BAD_REQUEST).json({ message: Messages.INVALID_OTP });
+      return;
     }
-  };
 
-  //  RESEND OTP
-  public resendOtp: RequestHandler = async (req, res) => {
+    await this.userRepository.markVerified(email);
+    const user = await this.userRepository.findUserByEmail(email);
+    if (!user) {
+      res.status(HttpStatus.NOT_FOUND).json({ message: Messages.USER_NOT_FOUND });
+      return;
+    }
+
+    const token = this.generateAccessToken(user._id);
+    logger.info(`OTP verified successfully for ${email}`);
+
+    res.status(HttpStatus.OK).json({
+      success: true,
+      message: "Email verified successfully",
+      token,
+      user: { ...user.toObject(), verified: true },
+    });
+  } catch (err: any) {
+    logger.error("Verify OTP error", { stack: err.stack });
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: Messages.GENERAL_ERROR });
+  }
+};
+
+
+ public resendOtp: RequestHandler = async (req, res) => {
   try {
     const { email } = req.body;
-    if (!email) return res.status(HttpStatus.BAD_REQUEST).json({ message: Messages.EMAIL_REQUIRED });
+
+    if (!email) {
+      res.status(HttpStatus.BAD_REQUEST).json({ message: Messages.EMAIL_REQUIRED });
+      return;
+    }
 
     const user = await this.userRepository.findUserByEmail(email);
-    if (!user) return res.status(HttpStatus.NOT_FOUND).json({ message: Messages.USER_NOT_FOUND });
+    if (!user) {
+      res.status(HttpStatus.NOT_FOUND).json({ message: Messages.USER_NOT_FOUND });
+      return;
+    }
 
     const otp = this.authService.generateOtp();
     await this.authService.saveOtp(email, otp);
     await this.sendEmail(email, "OTP Resent", `Your new OTP is: ${otp}`);
 
-    // Log OTP in terminal
     logger.info(`OTP for RESEND: ${otp} sent to ${email}`);
 
     res.status(HttpStatus.OK).json({ message: Messages.OTP_RESENT });
@@ -185,20 +197,26 @@ export class AuthController {
   }
 };
 
-  //  FORGOT PASSWORD
-  public forgotPassword: RequestHandler = async (req, res) => {
+
+public forgotPassword: RequestHandler = async (req, res) => {
   try {
     const { email } = req.body;
-    if (!email) return res.status(HttpStatus.BAD_REQUEST).json({ message: Messages.EMAIL_REQUIRED });
+
+    if (!email) {
+      res.status(HttpStatus.BAD_REQUEST).json({ message: Messages.EMAIL_REQUIRED });
+      return;
+    }
 
     const user = await this.userRepository.findUserByEmail(email);
-    if (!user) return res.status(HttpStatus.NOT_FOUND).json({ message: Messages.USER_NOT_FOUND });
+    if (!user) {
+      res.status(HttpStatus.NOT_FOUND).json({ message: Messages.USER_NOT_FOUND });
+      return;
+    }
 
     const otp = this.authService.generateOtp();
     await this.authService.saveOtp(email, otp);
     await this.sendEmail(email, "Your OTP", `Your OTP is ${otp}`);
 
-    // Log OTP in terminal
     logger.info(`OTP for FORGOT PASSWORD: ${otp} sent to ${email}`);
 
     res.status(HttpStatus.OK).json({ message: "OTP sent to your email." });
@@ -208,23 +226,31 @@ export class AuthController {
   }
 };
 
-  //  RESET PASSWORD
-  public resetPassword: RequestHandler = async (req, res) => {
-    try {
-      const { email, newPassword } = req.body;
-      if (!email || !newPassword) return res.status(HttpStatus.BAD_REQUEST).json({ message: "Email and password required" });
 
-      const user = await this.userRepository.findUserByEmail(email);
-      if (!user) return res.status(HttpStatus.NOT_FOUND).json({ message: Messages.USER_NOT_FOUND });
+ public resetPassword: RequestHandler = async (req, res) => {
+  try {
+    const { email, newPassword } = req.body;
 
-      const hashedPassword = await bcrypt.hash(newPassword, 10);
-      await this.userRepository.updatePassword(email, hashedPassword);
-
-      logger.info(` Password reset successfully for ${email}`);
-      res.status(HttpStatus.OK).json({ message: Messages.PASSWORD_RESET_SUCCESS });
-    } catch (err: any) {
-      logger.error(" Reset password error", { stack: err.stack });
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: Messages.GENERAL_ERROR });
+    if (!email || !newPassword) {
+      res.status(HttpStatus.BAD_REQUEST).json({ message: "Email and password required" });
+      return;
     }
-  };
+
+    const user = await this.userRepository.findUserByEmail(email);
+    if (!user) {
+      res.status(HttpStatus.NOT_FOUND).json({ message: Messages.USER_NOT_FOUND });
+      return;
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    await this.userRepository.updatePassword(email, hashedPassword);
+
+    logger.info(`Password reset successfully for ${email}`);
+    res.status(HttpStatus.OK).json({ message: Messages.PASSWORD_RESET_SUCCESS });
+  } catch (err: any) {
+    logger.error("Reset password error", { stack: err.stack });
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ message: Messages.GENERAL_ERROR });
+  }
+};
+
 }

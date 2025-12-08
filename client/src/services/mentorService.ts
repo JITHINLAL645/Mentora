@@ -1,7 +1,8 @@
 import api from "./api";
 import axios from "axios";
 
-// Admin-side
+
+
 export const registerMentor = async (data: FormData) => {
   return await axios.post("/api/mentors/register", data, {
     headers: {
@@ -10,20 +11,16 @@ export const registerMentor = async (data: FormData) => {
   });
 };
 
-// ✅ FIXED: Added page and limit parameters
 export const getAllMentors = async (page: number, limit: number) => {
-  console.log("🌐 Making API call with page:", page, "limit:", limit);
+  console.log(" Making API call with page:", page, "limit:", limit);
   
-  const response = await api.get("/admin/mentors", {
-    params: { 
-      page, 
-      limit 
-    }
+  const response = await api.get("/mentors", {
+    params: { page, limit },
   });
-  
-  console.log("🌐 API URL called:", response.config.url);
-  console.log("🌐 Params sent:", response.config.params);
-  
+
+  console.log(" API URL called:", response.config.url);
+  console.log(" Params sent:", response.config.params);
+
   return response;
 };
 
@@ -31,10 +28,14 @@ export const toggleMentorApproval = async (id: string) => {
   return await api.patch(`/mentors/toggle-approval/${id}`);
 };
 
-// User-side
+export const rejectMentor = async (id: string, reason: string) => {
+  return await api.post(`/mentors/reject/${id}`, { reason });
+};
+
+
 export const getApprovedMentors = () => api.get("/mentors/approved");
 
-// Mentor-side
+
 export const mentorLogin = (email: string, password: string) => {
   return api.post("/mentors/login", { email, password });
 };
@@ -61,3 +62,8 @@ export const updateMentorProfile = (data: any) => {
     headers: { Authorization: `Bearer ${token}` },
   });
 };
+
+export const getFilteredMentors = (params: any) => {
+  return api.get("/mentors/filtered", { params });
+};
+

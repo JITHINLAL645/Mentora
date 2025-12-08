@@ -11,7 +11,7 @@ const AdminDashboard: React.FC = () => {
     const fetchCounts = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api/admin/users/count");
-        const data = response.data.data; // ✅ Access the 'data' field
+        const data = response.data.data; 
         setTotalMentees(data.totalMentees);
         setBlockedMentees(data.blockedMentees);
         setTotalMentors(data.totalMentors);

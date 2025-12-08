@@ -11,22 +11,23 @@ const LoginPage: React.FC = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    try {
-      const response = await mentorLogin(email, password);
-      const { token, mentor } = response.data;
+  try {
+    const response = await mentorLogin(email, password);
+    const { token, mentor } = response.data;
 
-      // localStorage.setItem("mentorToken", token);
-      sessionStorage.setItem("mentorToken", token);
+    sessionStorage.setItem("mentorToken", token);
+    sessionStorage.setItem("mentorId", mentor._id);
 
-      toast.success("Login successful");
-      navigate("/mentorDashboard");
-    } catch (error: any) {
-      toast.error(error.response?.data?.message || "Login failed");
-    }
-  };
+    toast.success("Login successful");
+    navigate("/mentorDashboard");
+  } catch (error: any) {
+    toast.error(error.response?.data?.message || "Login failed");
+  }
+};
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="flex w-[1000px] h-[600px] shadow-2xl rounded-xl overflow-hidden bg-white">

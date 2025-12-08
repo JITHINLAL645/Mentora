@@ -5,6 +5,12 @@ import { EllipsisVertical } from "lucide-react";
 import Footer from "../../components/Homecomponent/Footer";
 import Navbar from "../../components/Homecomponent/Navbar";
 import ConfirmModal from "../../components/Mentor/ConfirmModal";
+import AccountDropdown from "../../components/user/AccountDropdown";
+// import { useNavigate } from "react-router-dom";
+import ChangePasswordModal from "../../components/user/ChangePasswordModal";
+import ChangeEmailModal from "../../components/user/ChangeEmailModal";
+import { changePasswordApi } from "../../api/user/changePasswordApi";
+import { toast } from "sonner";
 
 interface UserProfile {
   _id: string;
@@ -18,6 +24,10 @@ interface UserProfile {
 }
 
 const Profile: React.FC = () => {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showChangePassword, setShowChangePassword] = useState(false);
+  const [showChangeEmail, setShowChangeEmail] = useState(false);
+
   const [user, setUser] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -150,6 +160,27 @@ const Profile: React.FC = () => {
   if (loading) return <p>Loading...</p>;
   if (!user) return <p>No profile found</p>;
 
+  const changeEmailApi = async (newEmail: string) => {
+    try {
+      const token = localStorage.getItem("userToken");
+      if (!token) throw new Error("No token found");
+
+      const res = await axios.put(
+        "http://localhost:5000/api/auth/change-email",
+        { newEmail },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      toast.success("Email updated successfully!");
+      fetchProfile(); 
+      return res.data;
+    } catch (error: any) {
+      console.error("Email change error:", error);
+      toast.error(error.response?.data?.message || "Failed to update email");
+      throw error;
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -179,12 +210,42 @@ const Profile: React.FC = () => {
               {user.city || "No city info"}
             </p>
 
-            <div className="flex justify-center gap-4 mt-3">
+            <div className="flex justify-center gap-4 mt-3 relative">
               <GoPencil
                 className="cursor-pointer w-5 h-5 text-gray-600 hover:text-gray-900"
                 onClick={() => setEditingProfile(true)}
               />
-              <EllipsisVertical className="cursor-pointer text-gray-600" />
+
+              <div className="relative">
+                <EllipsisVertical
+                  className="cursor-pointer text-gray-600"
+                  onClick={() => setShowDropdown((prev) => !prev)}
+                />
+
+                {showDropdown && (
+                  <AccountDropdown
+                    onClose={() => setShowDropdown(false)}
+                    onChangePassword={() => setShowChangePassword(true)}
+                    onChangeEmail={() => setShowChangeEmail(true)}
+                  />
+                )}
+
+                {showChangePassword && (
+                  <ChangePasswordModal
+                    onClose={() => setShowChangePassword(false)}
+                    onSubmit={(currentPassword, newPassword) =>
+                      changePasswordApi(currentPassword, newPassword)
+                    }
+                  />
+                )}
+
+                {showChangeEmail && (
+                  <ChangeEmailModal
+                    isOpen={showChangeEmail}
+                    onClose={() => setShowChangeEmail(false)}
+                  />
+                )}
+              </div>
             </div>
           </div>
         </div>

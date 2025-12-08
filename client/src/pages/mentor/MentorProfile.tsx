@@ -39,7 +39,7 @@ const MentorProfile = () => {
   });
   const [showEditModal, setShowEditModal] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
-  const [showConfirmModal, setShowConfirmModal] = useState(false); // ✅ Confirmation modal state
+  const [showConfirmModal, setShowConfirmModal] = useState(false); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -81,7 +81,7 @@ const MentorProfile = () => {
 
   const handleEditSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setShowConfirmModal(true); // ✅ Open confirm modal before saving
+    setShowConfirmModal(true); 
   };
 
   const confirmEditSubmit = async () => {
@@ -94,7 +94,7 @@ const MentorProfile = () => {
       console.log("Update profile error:", error);
       toast.error(error.response?.data?.message || "Failed to update profile");
     } finally {
-      setShowConfirmModal(false); // ✅ Close confirm modal after action
+      setShowConfirmModal(false); 
     }
   };
 

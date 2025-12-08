@@ -4,7 +4,6 @@ import { AuthenticatedRequest } from "../middlewares/auth";
 import { HttpStatus } from "../constants/httpStatus";
 import { Messages } from "../constants/messages";
 
-
 export class MentorController {
   private mentorService: IMentorService;
 
@@ -24,28 +23,22 @@ export class MentorController {
     }
   };
 
+  public getAllMentors = async (req: Request, res: Response) => {
+    try {
+      const page = parseInt(req.query.page as string) || 1;
+      const limit = parseInt(req.query.limit as string) || 5;
 
-public getAllMentors = async (req: Request, res: Response) => {
-  try {
-    const page = parseInt(req.query.page as string) || 1;
-    const limit = parseInt(req.query.limit as string) || 5;
+      const result = await this.mentorService.getAllMentors(page, limit);
 
-    const result = await this.mentorService.getAllMentors(page, limit);
+      res.status(HttpStatus.OK).json(result);
 
-    //  FIX: Send response with consistent structure
-    res.status(HttpStatus.OK).json({
-      success: true,
-      message: "Mentors fetched successfully",
-      data: result.data 
-    });
-  } catch (error: any) {
-    res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ 
-      success: false,
-      message: error.message 
-    });
-  }
-};
-
+    } catch (error: any) {
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ 
+        success: false,
+        message: error.message 
+      });
+    }
+  };
 
   public getAllApprovedMentors = async (_req: Request, res: Response) => {
     try {
@@ -126,6 +119,49 @@ public getAllMentors = async (req: Request, res: Response) => {
       res.status(HttpStatus.NOT_FOUND).json({
         success: false,
         message: error.message || Messages.MENTOR_NOT_FOUND,
+      });
+    }
+  };
+
+  public rejectMentor = async (req: Request, res: Response) => {
+    try {
+      const { reason } = req.body;
+      const mentor = await this.mentorService.rejectMentor(req.params.id, reason);
+
+      res.status(HttpStatus.OK).json({
+        message: "Mentor rejected successfully",
+        data: mentor,
+      });
+    } catch (error: any) {
+      res.status(HttpStatus.NOT_FOUND).json({ message: error.message });
+    }
+  };
+
+
+  public getFilteredMentors = async (req: Request, res: Response) => {
+    try {
+      const filters = {
+        search: req.query.search as string,
+        specialization: req.query.specialization as string,
+        gender: req.query.gender as string,
+        experience: Number(req.query.experience),
+        sort: req.query.sort as string,  
+        page: Number(req.query.page) || 1,
+        limit: Number(req.query.limit) || 4,
+      };
+
+      const result = await this.mentorService.getFilteredMentors(filters);
+
+      return res.status(HttpStatus.OK).json({
+        success: true,
+        message: Messages.MENTOR_FETCH_SUCCESS,
+        data: result,
+      });
+
+    } catch (error: any) {
+      return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+        success: false,
+        message: error.message || "Server error",
       });
     }
   };

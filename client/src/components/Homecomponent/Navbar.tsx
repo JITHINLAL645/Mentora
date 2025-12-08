@@ -8,6 +8,7 @@ import API from "../../services/api";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../redux/store/store";
 import { logout, setUser } from "../../redux/slice/authSlice";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -52,7 +53,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    // ✅ Check for token in URL (Google OAuth redirect)
+    //  Check for token in URL (Google OAuth redirect)
     const params = new URLSearchParams(window.location.search);
     const token = params.get("token");
 
@@ -113,9 +114,10 @@ const Navbar = () => {
         <a href="/mentorPage" className="hover:text-teal-600">
           Mentors
         </a>
-        <a href="#" className="hover:text-teal-600">
+        <a href="/sessions" className="hover:text-teal-600">
           Sessions
         </a>
+
         <a href="/about" className="hover:text-teal-600">
           About
         </a>
@@ -126,7 +128,9 @@ const Navbar = () => {
         {isAuthenticated && user ? (
           <>
             <Bell className="w-6 h-6 text-gray-700 hover:text-orange-600 cursor-pointer mr-5" />
-            <MessageSquareText className="w-6 h-6 text-gray-700 hover:text-orange-600 cursor-pointer mr-5" />
+            <Link to="/messages">
+              <MessageSquareText className="w-6 h-6 text-gray-700 hover:text-orange-600 cursor-pointer mr-5" />
+            </Link>{" "}
             <div className="relative">
               <img
                 src={user.profileImage || default_img}

@@ -7,4 +7,6 @@ export interface IMentor extends IUser {
   availableDays?: string[];
   specialization?: string;
   isApproved?: boolean;
+  rejectionReason?: string;
+
 }

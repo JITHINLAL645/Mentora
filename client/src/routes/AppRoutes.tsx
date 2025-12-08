@@ -17,12 +17,21 @@ const AdminMentorRegister = lazy(
 const AdminMentorPage = lazy(() => import("../pages/admin/mentor"));
 
 import ProtectedAdminRoute from "./ProtectedAdminRoute";
+import ProtectedRoute from "./ProtectedRoute";
+import PublicRoute from "./PublicRoute";
+import ProtectedMentorRoute from "./ProtectedMentorRoute";
 import MentorDashboard from "../pages/mentor/MentorDashboard";
 import MentorSingleProfile from "../pages/mentor/MentorProfile";
 import MentorRegistrationPage from "../pages/mentor/MentorRegistration";
 import MentorLogin from "../pages/mentor/MentorLogin";
-import MentorCheckout from "../pages/user/MentorCheckoutPage"; 
+import MentorCheckout from "../pages/user/MentorCheckoutPage";
 import PaymentSuccess from "../pages/user/PaymentSuccess";
+import MentorSlotManager from "../pages/mentor/MentorSlot";
+import BookedSessions from "../pages/user/BookedSessions";
+import AllMentorAppointments from "../pages/mentor/AllMentorAppointments";
+import MenteeChatPage from "../pages/user/MenteeChatPage";
+import MentorChatPage from "../pages/mentor/MentorChatPage";
+import MentorSlotPage from "../pages/admin/MentorSlotPage";
 
 const AppRoutes = () => {
   return (
@@ -38,29 +47,149 @@ const AppRoutes = () => {
       }
     >
       <Routes>
-        {/* User Routes */}
+        {/* Public Routes -  */}
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/forgot-password"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/otpVerification"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/mentor/login"
+          element={
+            <PublicRoute>
+              <MentorLogin />
+            </PublicRoute>
+          }
+        />
+
+        {/* User Routes - Public */}
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Login />} />
-        <Route path="/forgot-password" element={<Login />} />
-        <Route path="/otpVerification" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/mentorPage" element={<MentorPage />} />
         <Route path="/singlementorPage/:id" element={<MentorProfile />} />
 
-        {/* Mentor Routes */}
-                <Route path="/mentorCheckout/:id" element={<MentorCheckout />} />
-                <Route path="/payment-success" element={<PaymentSuccess />} />
+        {/* User Routes - Protected */}
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/sessions"
+          element={
+            <ProtectedRoute>
+              <BookedSessions />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/messages"
+          element={
+            <ProtectedRoute>
+              <MenteeChatPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/mentorCheckout/:id"
+          element={
+            <ProtectedRoute>
+              <MentorCheckout />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/payment-success"
+          element={
+            <ProtectedRoute>
+              <PaymentSuccess />
+            </ProtectedRoute>
+          }
+        />
 
-
-        <Route path="/mentorDashboard" element={<MentorDashboard />} />
-        <Route path="/mentorProfile" element={<MentorSingleProfile />} />
+        {/* Mentor Routes - Protected */}
+        <Route
+          path="/mentorDashboard"
+          element={
+            <ProtectedMentorRoute>
+              <MentorDashboard />
+            </ProtectedMentorRoute>
+          }
+        />
+        <Route
+          path="/mentorProfile"
+          element={
+            <ProtectedMentorRoute>
+              <MentorSingleProfile />
+            </ProtectedMentorRoute>
+          }
+        />
+        <Route
+          path="/mentor-Slot"
+          element={
+            <ProtectedMentorRoute>
+              <MentorSlotManager />
+            </ProtectedMentorRoute>
+          }
+        />
+        <Route
+          path="/showAll-Slot"
+          element={
+            <ProtectedMentorRoute>
+              <MentorSlotPage />
+            </ProtectedMentorRoute>
+          }
+        />
+        <Route
+          path="/mentor-appointments"
+          element={
+            <ProtectedMentorRoute>
+              <AllMentorAppointments />
+            </ProtectedMentorRoute>
+          }
+        />
+        <Route
+          path="/chat"
+          element={
+            <ProtectedMentorRoute>
+              <MentorChatPage />
+            </ProtectedMentorRoute>
+          }
+        />
         <Route
           path="/mentor-registration"
           element={<MentorRegistrationPage />}
         />
-        <Route path="/mentor/login" element={<MentorLogin />} />
 
         {/* Admin Protected Routes */}
         <Route

@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../../components/Homecomponent/Navbar";
 import Footer from "../../components/Homecomponent/Footer";
 import { getApprovedMentors } from "../../services/mentorService";
+import { getSlotsByMentor } from "../../services/slotService";
 import SlotModal from "../../components/Mentor/SlotModal";
 import AppointmentConfirmModal from "../../components/Mentor/AppointmentConfirmationModal";
 
@@ -43,11 +44,16 @@ const MentorProfile: React.FC = () => {
   const [appointmentModalVisible, setAppointmentModalVisible] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState<ISlot | null>(null);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [slots, setSlots] = useState<ISlot[]>([]);
+  const removeSlot = (slotId: string) => {
+  setSlots((prev) => prev.filter((s) => s._id !== slotId));
+};
+
 
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
 
-  // Fetch mentor data
+  // 🧠 Fetch mentor details
   const fetchMentor = async () => {
     try {
       const response = await getApprovedMentors();
@@ -68,26 +74,44 @@ const MentorProfile: React.FC = () => {
     fetchMentor();
   }, [id]);
 
+  useEffect(() => {
+    const fetchSlots = async () => {
+      if (!mentorData?._id || !selectedDate) return;
+      try {
+        const res = await getSlotsByMentor(mentorData._id);
+        const available = res.data.slots.filter(
+          (s: ISlot) => s.date === selectedDate && s.isAvailable
+        );
+        setSlots(available);
+      } catch (error) {
+        console.error(error);
+        toast.error("Failed to fetch available slots");
+      }
+    };
+    fetchSlots();
+  }, [mentorData?._id, selectedDate]);
+
   const handleAppointmentClick = (slot: ISlot) => {
     setSelectedSlot(slot);
     setAppointmentModalVisible(true);
   };
 
-const confirmAppointment = (slot: ISlot) => {
-  if (!mentorData) {
-    toast.error("Mentor data not loaded yet");
-    return;
-  }
+  const confirmAppointment = (slot: ISlot) => {
+    if (!mentorData) {
+      toast.error("Mentor data not loaded yet");
+      return;
+    }
 
-  localStorage.setItem("AppointmentId", "mock-appointment-id");
-  setAppointmentModalVisible(false);
-  setSlotModalVisible(false);
+    localStorage.setItem("AppointmentId", "mock-appointment-id");
+    setAppointmentModalVisible(false);
+    setSlotModalVisible(false);
 
-  navigate(`/mentorCheckout/${mentorData._id}`, { state: { slot, mentorId: mentorData._id } });
-};
+    navigate(`/mentorCheckout/${mentorData._id}`, {
+      state: { slot, mentorId: mentorData._id },
+    });
+  };
 
-
-
+  // ⏳ Loading view
   if (loading) {
     return (
       <div className="bg-[#F6F6F6] min-h-screen">
@@ -100,6 +124,7 @@ const confirmAppointment = (slot: ISlot) => {
     );
   }
 
+  // ❌ Mentor not found view
   if (!mentorData) {
     return (
       <div className="bg-[#F6F6F6] min-h-screen">
@@ -185,11 +210,14 @@ const confirmAppointment = (slot: ISlot) => {
 
       {/* Slot Modal */}
       <SlotModal
+        mentorId={mentorData._id}
         slotModalVisible={slotModalVisible}
         setSlotModalVisible={setSlotModalVisible}
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
         handleAppointmentClick={handleAppointmentClick}
+          removeSlot={removeSlot}  
+
       />
 
       {/* Appointment Confirm Modal */}

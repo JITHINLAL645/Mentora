@@ -14,12 +14,14 @@ export class PaymentService {
     metadata?: Record<string, string>;
   }) {
     const amountInPaise = Math.round(amountInINR * 100);
+
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amountInPaise,
       currency,
       metadata,
       automatic_payment_methods: { enabled: true },
     });
+
     return paymentIntent;
   }
 
@@ -40,12 +42,16 @@ export class PaymentService {
       throw new Error("Payment not successful");
     }
 
+    const amountPaid = intent.amount / 100; 
+
     const booking = await paymentRepo.markSlotBooked({
       mentorId,
       slotId,
       userId,
       paymentIntentId,
+      amount: amountPaid, 
     });
+
     return booking;
   }
 }

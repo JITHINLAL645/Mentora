@@ -1,3 +1,4 @@
+// models/user.ts
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IUser extends Document {
@@ -23,13 +24,24 @@ export interface IUser extends Document {
 const userSchema = new Schema<IUser>(
   {
     name: { type: String },
-    email: { type: String, required: true, unique: true, lowercase: true, trim: true },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
     password: { type: String, required: true },
     otp: String,
     otpExpiration: Date,
     isVerified: { type: Boolean, default: false },
     googleId: String,
-    gender: { type: String, enum: ["Male", "Female", "Other"], default: null },
+    gender: {
+      type: String,
+      enum: ["Male", "Female", "Other", null], // null is allowed
+      default: null,
+      set: (v: string) => (v === "" || v == null ? null : v), // ← CRITICAL FIX
+    },
     phone: { type: String, default: null },
     city: String,
     street: String,
@@ -38,13 +50,17 @@ const userSchema = new Schema<IUser>(
     isBlock: { type: Boolean, default: false },
     isAdmin: { type: Boolean, default: false },
     age: Number,
-    profileImage: {
-      type: String,
-      // default:
-        // "https://res.cloudinary.com/danyvuvkm/image/upload/v1742640347/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399_cdpbr4.jpg",
-    },
+    profileImage: String,
   },
   { timestamps: true }
 );
+
+// Optional: Add a pre-save hook to clean up empty strings globally if needed
+userSchema.pre("save", function (next) {
+  if (this.isModified("gender") && (this.gender === "" || this.gender === undefined)) {
+    this.gender = null;
+  }
+  next();
+});
 
 export const User = mongoose.models.User || mongoose.model<IUser>("User", userSchema);

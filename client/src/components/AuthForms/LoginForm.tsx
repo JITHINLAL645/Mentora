@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/slice/authSlice";
+import instance from "../../axiosInstance"; 
 import axios from "axios";
-
-axios.defaults.withCredentials = true;
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
@@ -26,50 +25,54 @@ const LoginForm: React.FC = () => {
     if (id === "password") setPasswordError("");
   };
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  const { email, password } = formData;
-  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const { email, password } = formData;
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
-  if (!email || !emailRegex.test(email)) {
-    setEmailError("Please enter a valid email address. *");
-    return;
-  }
-
-  if (!password || password.length < 6) {
-    setPasswordError("Password must be at least 6 characters *");
-    return;
-  }
-
-  try {
-    const res = await axios.post("http://localhost:5000/api/auth/login", formData, {
-      withCredentials: true,
-    });
-
-    //  Save token
-    if (res.data.token) {
-      localStorage.setItem("userToken", res.data.token);
-      axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.token}`;
-
+    if (!email || !emailRegex.test(email)) {
+      setEmailError("Please enter a valid email address.");
+      return;
     }
 
-    const userData = res.data.user;
+    if (!password || password.length < 6) {
+      setPasswordError("Password must be at least 6 characters.");
+      return;
+    }
 
-    //  Save userId and name for future use (important for booking/payment)
-    localStorage.setItem("userId", userData._id);
-    localStorage.setItem("userName", userData.name);
+    try {
+      console.log("🚀 Sending login request...");
+      const res = await instance.post("/auth/login", formData);
 
-    //  Update Redux state
-    dispatch(setUser(userData));
+      const userData = res.data.user;
+      const token = res.data.token;
 
-    navigate(userData.isAdmin ? "/admin/dashboard" : "/"); 
-  } catch (err: any) {
-    setError(err.response?.data?.message || "Login failed");
-  }
-};
+      // Save token and set axios header
+      if (token) {
+        localStorage.setItem("userToken", token);
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        console.log("💾 Token saved:", token);
+      }
 
+      // Save userId and name
+      localStorage.setItem("userId", userData._id);
+      localStorage.setItem("userName", userData.name);
+      localStorage.setItem("userEmail", userData.email);
 
+      // Update Redux state with complete user data including token
+      dispatch(setUser({
+        ...userData,
+        token: token
+      }));
+
+      // Navigate to appropriate page
+      navigate(userData.isAdmin ? "/admin/dashboard" : "/", { replace: true });
+    } catch (err: any) {
+      console.log("❌ Login error:", err.response?.data || err.message);
+      setError(err.response?.data?.message || "Login failed");
+    }
+  };
 
   return (
     <div className="w-full max-w-sm bg-[#f6f6f6] p-6 rounded shadow">
@@ -113,14 +116,15 @@ const handleSubmit = async (e: React.FormEvent) => {
           {passwordError && (
             <p className="text-red-500 text-sm mt-1">{passwordError}</p>
           )}
-           <div className="flex justify-end mt-1">
-        <a href="/forgot-password" className="text-blue-600 text-sm hover:underline pt-1">
-          Forgot password?
-        </a>
-      </div>
+
+          <div className="flex justify-end mt-1">
+            <a href="/forgot-password" className="text-blue-600 text-sm hover:underline">
+              Forgot password?
+            </a>
+          </div>
         </div>
 
-        <div className="flex gap-3 ">
+        <div className="flex gap-3">
           <button
             type="submit"
             className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
@@ -147,11 +151,8 @@ const handleSubmit = async (e: React.FormEvent) => {
             Sign up
           </a>
           <br />
-          <a
-            href="/mentor/login"
-            className="text-blue-600 text-lg hover:underline text-center pd-20"
-          >
-            login as Mentor !
+          <a href="/mentor/login" className="text-blue-600 text-lg hover:underline">
+            Login as Mentor!
           </a>
         </p>
       </form>

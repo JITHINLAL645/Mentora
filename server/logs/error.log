@@ -86,3 +86,1252 @@
     at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
     at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
     at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-07 18:28:43 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-07 18:28:43 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-07 18:28:50 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-07 18:28:50 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-07 18:28:59 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-07 18:28:59 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-08 16:15:45 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-08 16:15:45 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-08 16:15:53 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-08 16:15:53 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-08 16:17:04 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-12 12:29:07 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 12:29:07 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 12:33:25 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 12:33:32 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 12:33:42 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 12:33:44 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 14:32:08 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 14:32:08 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 14:33:15 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 14:33:15 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 14:33:24 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 14:33:24 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 14:33:26 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 14:33:26 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 14:33:30 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 14:33:30 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 14:33:32 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 14:33:32 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 14:38:57 [[31merror[39m] : TypeError: this.authService.verifyOtpAndMarkVerified is not a function
+    at AuthController.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\controllers\authController.ts:135:45)
+    at Generator.next (<anonymous>)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\controllers\authController.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\controllers\authController.ts:4:12)
+    at AuthController.verifyOtp (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\controllers\authController.ts:132:57)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+2025-11-12 14:39:54 [[31merror[39m] : TypeError: this.authService.verifyOtpAndMarkVerified is not a function
+    at AuthController.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\controllers\authController.ts:135:45)
+    at Generator.next (<anonymous>)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\controllers\authController.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\controllers\authController.ts:4:12)
+    at AuthController.verifyOtp (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\controllers\authController.ts:132:57)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+2025-11-12 14:41:02 [[31merror[39m] : TypeError: this.sendEmail is not a function
+    at AuthController.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\controllers\authController.ts:44:16)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\controllers\authController.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-12 14:41:37 [[31merror[39m] : TypeError: Cannot read properties of undefined (reading 'findUserByEmail')
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:18:42)
+    at Generator.next (<anonymous>)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:4:12)
+    at AuthService.registerUser (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:25:16)
+    at AuthController.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\controllers\authController.ts:41:41)
+    at Generator.next (<anonymous>)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\controllers\authController.ts:8:71
+    at new Promise (<anonymous>)
+2025-11-12 17:35:05 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 17:35:05 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 17:39:48 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 17:39:48 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 17:40:21 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:40:22 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:40:27 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:40:35 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:40:36 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:40:37 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:40:37 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:40:37 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:40:37 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:40:37 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:40:37 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:41:53 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-12 17:42:20 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:42:21 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:42:28 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:43:49 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:43:49 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:43:50 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:43:50 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:43:50 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:43:50 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:43:50 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 17:50:32 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-12 18:07:51 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 18:07:54 [[31merror[39m] : TokenExpiredError: jwt expired
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:97:14)
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:101:10)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:25:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+2025-11-12 18:23:20 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-13 15:22:42 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-13 16:51:48 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-13 16:52:25 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-13 16:52:34 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-13 17:27:55 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-14 16:40:15 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-14 16:40:17 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-14 17:10:11 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-15 12:20:33 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-15 16:08:13 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:08:13 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:12:30 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:12:30 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:12:56 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:12:56 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:13:49 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:13:49 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:20:03 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:20:03 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:22:24 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:22:24 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:24:53 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:24:53 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:25:22 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:25:22 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:29:54 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:29:54 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:39:25 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:39:25 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:43:07 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-15 16:43:07 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-17 12:36:09 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-17 12:36:09 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-17 12:36:14 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-17 12:36:14 [[31merror[39m] : JsonWebTokenError: jwt malformed
+    at Object.module.exports [as verify] (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\jsonwebtoken\verify.js:70:17)
+    at ensureAuthenticated (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\middlewares\auth.ts:24:25)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:295:15
+    at processParams (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:582:12)
+    at next (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\router\index.js:291:5)
+2025-11-17 15:27:57 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-17 15:28:41 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-17 18:09:55 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-17 18:09:55 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-17 18:10:03 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-17 18:10:03 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-17 18:26:37 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-17 18:26:42 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-17 18:26:43 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-17 18:26:43 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-17 18:26:43 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-18 12:02:59 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-18 16:53:37 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-18 16:53:51 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-18 17:23:41 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-19 14:40:53 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-19 14:40:54 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-19 14:41:00 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-19 14:41:01 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-19 14:41:03 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-19 14:41:04 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-19 14:41:28 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-19 14:41:54 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-19 14:41:58 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-20 09:57:14 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-20 11:53:14 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-21 13:43:51 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-21 17:43:40 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-24 13:14:50 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-24 14:55:14 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-25 12:02:25 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-25 12:05:57 [[31merror[39m] : Error: You are blocked by admin
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:33:29)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-25 15:07:22 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-26 12:51:01 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-26 15:39:29 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-26 15:39:32 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-26 15:57:52 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-26 18:48:09 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-27 12:21:38 [[31merror[39m] : Invalid token:
+2025-11-27 12:36:00 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-27 12:38:34 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-27 12:42:56 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-27 12:43:03 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-27 12:43:36 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-27 12:43:41 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-27 12:48:40 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-27 12:51:26 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-27 12:57:15 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-27 23:22:28 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-28 10:05:19 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-28 10:05:21 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-28 10:05:26 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-28 10:42:32 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-28 10:44:15 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-11-28 11:57:46 [[31merror[39m] : Invalid token:
+2025-11-28 11:57:48 [[31merror[39m] : Invalid token:
+2025-11-28 11:59:52 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:05:01 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:05:03 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:05:03 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:05:11 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:05:21 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:05:22 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:05:23 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:05:23 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:05:23 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:05:23 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:05:43 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:07:38 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:10:39 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:10:48 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:27:07 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:27:12 [[31merror[39m] : Error: Session already cancelled
+    at BookingService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:45:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\bookingService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:31:38 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 12:31:45 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 13:06:03 [[31merror[39m] : Error: Cloudinary upload failed
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\utils\cloudinary.ts:27:11
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\utils\cloudinary.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 13:06:09 [[31merror[39m] : Error: Cloudinary upload failed
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\utils\cloudinary.ts:27:11
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\utils\cloudinary.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 13:06:31 [[31merror[39m] : Error: Cloudinary upload failed
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\utils\cloudinary.ts:27:11
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\utils\cloudinary.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 13:07:50 [[31merror[39m] : Error: User already exists
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:21:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-11-28 13:10:29 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-28 13:10:30 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-28 13:10:30 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-28 13:10:31 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-28 13:10:34 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-11-28 17:55:45 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-12-01 13:30:12 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-12-01 13:30:21 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-12-02 13:00:45 [[31merror[39m] : Invalid token:
+2025-12-02 13:10:27 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-12-02 13:31:35 [[31merror[39m] : ValidationError: User validation failed: gender: `` is not a valid enum value for path `gender`.
+    at model.Document.invalidate (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3352:32)
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\document.js:3113:17
+    at C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\node_modules\mongoose\lib\schemaType.js:1407:9
+    at processTicksAndRejections (node:internal/process/task_queues:77:11)
+2025-12-02 13:35:28 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)

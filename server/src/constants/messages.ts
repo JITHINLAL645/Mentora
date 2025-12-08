@@ -35,4 +35,12 @@ export const Messages = {
 
   //  Validation
   MISSING_REQUIRED_FIELDS: "Missing required fields.",
+
+  // slots
+    SERVER_ERROR: "Server error",
+  SLOT_CREATED: "Slots created successfully",
+  SLOT_ALREADY_EXIST: "Slots already exist for this date",
+  SLOT_FETCH_FAILED: "Failed to fetch slots",
+  SLOT_BOOKED: "Slot booked successfully",
+  SLOT_BOOKING_FAILED: "Failed to book slot",
 };

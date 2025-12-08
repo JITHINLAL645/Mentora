@@ -63,7 +63,6 @@ const Mentees: React.FC = () => {
           }
         );
 
-        // ✅ Correctly handle backend response structure
         const { data, totalPages, currentPage: current } = response.data;
 
         setMentees(data || []);

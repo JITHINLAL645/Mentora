@@ -36,7 +36,6 @@ interface ISlot {
   isBooked: boolean;
 }
 
-// ✅Checkout Form Component
 const CheckoutFormInner: React.FC<{
   mentorData: IMentor;
   selectedSlot: ISlot | null;
@@ -59,7 +58,6 @@ const CheckoutFormInner: React.FC<{
       return;
     }
 
-    // ✅ Save booking info before redirect
     localStorage.setItem("pendingBooking", JSON.stringify({
       mentorId: mentorData._id,
       slotId: selectedSlot._id,

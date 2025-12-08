@@ -5,7 +5,6 @@ import { Messages } from "../constants/messages";
 import Stripe from "stripe";
 import logger from "../utils/logger";
 
-
 export class PaymentController {
   private paymentService: PaymentService;
   private stripe: Stripe;
@@ -87,12 +86,14 @@ export class PaymentController {
   public finalizeBooking = async (req: Request, res: Response): Promise<void> => {
     try {
       const { mentorId, slotId, userId, sessionId } = req.body;
+
       if (!mentorId || !slotId || !sessionId) {
         res.status(HttpStatus.BAD_REQUEST).json({ message: Messages.MISSING_REQUIRED_FIELDS });
         return;
       }
 
       const session = await this.stripe.checkout.sessions.retrieve(sessionId);
+
       if (session.payment_status !== "paid") {
         throw new Error(Messages.PAYMENT_NOT_SUCCESSFUL);
       }
