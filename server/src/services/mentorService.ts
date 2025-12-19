@@ -136,10 +136,8 @@ export class MentorService {
 
   async getFilteredMentors(filters: any) {
 
-    // Extract sort value
     const sort = filters.sort || "created_desc";
 
-    // Attach sort value back to filters
     const updatedFilters = {
       ...filters,
       sort,

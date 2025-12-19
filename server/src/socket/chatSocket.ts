@@ -1,34 +1,48 @@
 import { Server, Socket } from "socket.io";
 import { chatRepository } from "../repositories/chatRepository";
 
+interface SendMessagePayload {
+  roomId: string;
+  senderId: string;
+  receiverId: string;
+  message: string;
+}
+
 export default function chatSocket(io: Server, socket: Socket) {
-  // console.log("User connected:", socket.id);
-
-  socket.on("joinRoom", async ({ roomId }) => {
+  // 🔹 Join a chat room
+  socket.on("joinRoom", ({ roomId }: { roomId: string }) => {
+    if (!roomId) return;
     socket.join(roomId);
-    // console.log(`User ${socket.id} joined room ${roomId}`);
+    // console.log(`Socket ${socket.id} joined room ${roomId}`);
   });
 
- socket.on("sendMessage", async (data) => {
-  const { roomId, senderId, receiverId, message } = data;
+  // 🔹 Send message (SAVE + EMIT)
+  socket.on("sendMessage", async (data: SendMessagePayload) => {
+    try {
+      const { roomId, senderId, receiverId, message } = data;
 
-  if (!roomId || !senderId || !receiverId || !message) {
-    console.log(" Missing required fields:", data);
-    return;
-  }
+      // Validation
+      if (!roomId || !senderId || !receiverId || !message.trim()) {
+        console.log("❌ Invalid message payload:", data);
+        return;
+      }
 
-  const saved = await chatRepository.create({
-    roomId,
-    senderId,
-    receiverId,
-    message, 
+      // Save message to DB
+      const savedMessage = await chatRepository.create({
+        roomId,
+        senderId,
+        receiverId,
+        message,
+      });
+
+      // Emit message to everyone in the room
+      io.to(roomId).emit("receiveMessage", savedMessage);
+    } catch (error) {
+      console.error("❌ Error sending message:", error);
+    }
   });
-
-  io.to(roomId).emit("receiveMessage", saved);
-});
-
 
   socket.on("disconnect", () => {
-    // console.log("User disconnected:", socket.id);
+    // console.log(`Socket disconnected: ${socket.id}`);
   });
 }

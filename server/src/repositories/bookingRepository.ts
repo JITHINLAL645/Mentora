@@ -28,6 +28,7 @@ export class BookingRepository implements IBookingRepository {
           path: "slotId",
           select: "date startTime endTime",
         })
+        .sort({ createdAt: -1 }) // Show newest bookings first
         .skip(skip)
         .limit(limit)
         .lean(),
@@ -45,8 +46,21 @@ export class BookingRepository implements IBookingRepository {
     });
   }
 
+  // OLD METHOD - keeping for backward compatibility but deprecated
   async updateSlotBooking(slotId: any, value: boolean) {
     return SlotModel.findByIdAndUpdate(slotId, { isBooked: value });
+  }
+
+  // NEW METHOD - updates both isBooked and isAvailable
+  async updateSlotAvailability(slotId: any, isBooked: boolean, isAvailable: boolean) {
+    return SlotModel.findByIdAndUpdate(
+      slotId,
+      { 
+        isBooked: isBooked,
+        isAvailable: isAvailable 
+      },
+      { new: true }
+    );
   }
 
   async updateStatus(bookingId: string, status: string) {

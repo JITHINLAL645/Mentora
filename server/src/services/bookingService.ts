@@ -25,12 +25,12 @@ export class BookingService {
       status: s.status,
       paymentIntentId: s.paymentIntentId,
       bookedAt: s.createdAt,
+      slotId: s.slotId?._id, // Added to pass slotId to frontend
     }));
 
     return { sessions, total };
   }
 
-  // ============== CANCEL SESSION ==============
   async cancelSession(bookingId: string, userId: string) {
     const booking = await this.bookingRepo.findByIdAndUser(
       bookingId,
@@ -45,7 +45,9 @@ export class BookingService {
       throw new Error("Session already cancelled");
     }
 
-    await this.bookingRepo.updateSlotBooking(booking.slotId, false);
+    // Update slot to make it available again
+    // Set isBooked to false AND isAvailable to true
+    await this.bookingRepo.updateSlotAvailability(booking.slotId, false, true);
 
     const updated = await this.bookingRepo.updateStatus(bookingId, "Cancelled");
 

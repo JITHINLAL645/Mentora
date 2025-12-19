@@ -1,8 +1,6 @@
-// src/api/user/changeEmailApi.ts
 
-import api from "../api"; // This already auto-adds Bearer token from localStorage
+import api from "../api"; 
 
-// No need to manually read token — your axios interceptor does it!
 export const sendOtpApi = (email: string) => {
   return api.post("/auth/email/send-otp", { email });
 };

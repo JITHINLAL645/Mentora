@@ -18,6 +18,7 @@ interface IBooking {
   amount: number;
   paymentStatus: string;
   status: string;
+  slotId?: string;
 }
 
 const AllBookedSessions: React.FC = () => {
@@ -28,14 +29,11 @@ const AllBookedSessions: React.FC = () => {
   const [total, setTotal] = useState(0);
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedSessionId, setSelectedSessionId] = useState<string | null>(
-    null
-  );
+  const [selectedSessionId, setSelectedSessionId] = useState<string | null>(null);
   const [selectedSessionName, setSelectedSessionName] = useState<string>("");
 
   const totalPages = Math.ceil(total / limit);
 
-  // Fetch bookings
   const fetchBookings = async () => {
     try {
       const token = localStorage.getItem("userToken");
@@ -70,14 +68,12 @@ const AllBookedSessions: React.FC = () => {
     fetchBookings();
   }, [currentPage]);
 
-  // Open modal
   const handleCancelClick = (id: string, name: string) => {
     setSelectedSessionId(id);
     setSelectedSessionName(name);
     setModalOpen(true);
   };
 
-  // Confirm cancel session
   const confirmCancelSession = async () => {
     if (!selectedSessionId) return;
 
@@ -102,12 +98,19 @@ const AllBookedSessions: React.FC = () => {
       if (!res.ok)
         return toast.error(data.message || "Failed to cancel session");
 
-      toast.success("Session cancelled successfully");
+      toast.success("Session cancelled successfully. Slot is now available again.");
+      
+      // Update the booking status locally
       setBookings((prev) =>
         prev.map((b) =>
           b._id === selectedSessionId ? { ...b, status: "Cancelled" } : b
         )
       );
+
+      // Trigger slot refresh if SlotModal is open
+      if (typeof window.refreshSlotModal === 'function') {
+        window.refreshSlotModal();
+      }
 
       setModalOpen(false);
     } catch (err) {
@@ -116,7 +119,6 @@ const AllBookedSessions: React.FC = () => {
     }
   };
 
-  // Pagination
   const paginate = (page: number) => {
     if (page >= 1 && page <= totalPages) setCurrentPage(page);
   };
@@ -255,7 +257,6 @@ const AllBookedSessions: React.FC = () => {
 
       <Footer />
 
-      {/* Confirm Cancel Modal */}
       <ConfirmCancelModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

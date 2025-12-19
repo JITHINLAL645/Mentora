@@ -1335,3 +1335,57 @@
     at Generator.next (<anonymous>)
     at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-12-08 11:42:30 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-12-08 11:42:38 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-12-08 15:43:42 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-12-08 15:43:49 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-12-08 15:43:57 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-12-08 15:43:59 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-12-08 15:44:00 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-12-16 10:42:57 [[31merror[39m] : Error: Wrong password
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:37:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+2025-12-17 13:47:26 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-12-17 13:47:30 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-12-18 11:42:55 [[31merror[39m] : Error: User not found
+    at AuthService.<anonymous> (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:32:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\Lenovo\OneDrive\Desktop\Mentora\server\src\services\authService.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)

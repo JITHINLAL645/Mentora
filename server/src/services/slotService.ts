@@ -1,5 +1,5 @@
+// src/services/slotService.ts
 import { SlotRepository } from "../repositories/slotRepository";
-import { ISlot } from "../interfaces/ISlot";
 
 export class SlotService {
   private slotRepository: SlotRepository;
@@ -39,14 +39,16 @@ export class SlotService {
     return { created: true, message: "Slots added successfully" };
   }
 
-  // Fixed: Removed extra { and fixed syntax
   async getSlotsByMentorPaginated(mentorId: string, skip: number, limit: number) {
     return this.slotRepository.findSlotsByMentorPaginated(mentorId, skip, limit);
   }
 
-  // Backward compatibility (optional)
   async getSlotsByMentor(mentorId: string) {
-    const { slots } = await this.slotRepository.findSlotsByMentorPaginated(mentorId, 0, 1000);
+    const { slots } = await this.slotRepository.findSlotsByMentorPaginated(
+      mentorId,
+      0,
+      1000
+    );
     return slots;
   }
 
@@ -57,6 +59,7 @@ export class SlotService {
 
     slot.isBooked = true;
     slot.isAvailable = false;
+
     await this.slotRepository.updateById(slotId, slot);
 
     return "Slot booked successfully";

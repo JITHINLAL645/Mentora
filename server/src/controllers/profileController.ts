@@ -151,7 +151,6 @@ public changePassword = async (req: AuthRequest, res: Response) => {
   };
 
   // CHANGE EMAIL
- // CHANGE EMAIL - FINAL FIXED VERSION
 public changeEmail = async (req: AuthRequest, res: Response) => {
   try {
     const { oldEmail, newEmail } = req.body;

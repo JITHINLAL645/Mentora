@@ -1,24 +1,15 @@
-import { BookingDocument } from "../models/appointmentSchemas";
-
 export interface IBookingRepository {
   findByUserIdPaginated(
     userId: string,
     page: number,
     limit: number
-  ): Promise<{ data: BookingDocument[]; total: number }>;
+  ): Promise<{ data: any[]; total: number }>;
 
-  findByIdAndUser(
-    bookingId: string,
-    userId: string
-  ): Promise<BookingDocument | null>;
+  findByIdAndUser(bookingId: string, userId: string): Promise<any>;
 
-  updateSlotBooking(
-    slotId: string,
-    value: boolean
-  ): Promise<any>;
+  updateSlotBooking(slotId: any, value: boolean): Promise<any>;
 
-  updateStatus(
-    bookingId: string,
-    status: string
-  ): Promise<BookingDocument | null>;
+  updateSlotAvailability(slotId: any, isBooked: boolean, isAvailable: boolean): Promise<any>;
+
+  updateStatus(bookingId: string, status: string): Promise<any>;
 }

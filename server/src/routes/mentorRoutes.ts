@@ -12,7 +12,6 @@ const router = express.Router();
 router.post("/admin/register", uploadFields, mentorController.registerMentorWithCloudinary);
 router.post("/register", uploadFields, mentorController.registerMentorWithCloudinary);
 
-// ========== Mentor Listing 
 router.get("/", mentorController.getAllMentors);
 router.get("/approved", mentorController.getAllApprovedMentors);
 router.get("/filtered", mentorController.getFilteredMentors);
