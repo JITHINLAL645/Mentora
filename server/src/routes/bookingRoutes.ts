@@ -16,4 +16,11 @@ router.get(
   bookingController.getMySessions
 );
 
+router.get(
+  "/mentor/booked-mentees",
+  ensureAuthenticated,
+  bookingController.getMentorBookedMentees
+);
+
+
 export default router;

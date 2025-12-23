@@ -6,6 +6,9 @@ import SlotModel from "../models/slotModel";
 export class BookingRepository implements IBookingRepository {
   constructor(private bookingModel: Model<BookingDocument>) {}
 
+  // ================================
+  // USER BOOKINGS (PAGINATED)
+  // ================================
   async findByUserIdPaginated(
     userId: string,
     page: number,
@@ -22,13 +25,17 @@ export class BookingRepository implements IBookingRepository {
         .find({ userId: uid })
         .populate({
           path: "mentorId",
-          select: "fullName profileImg specialization",
+          select: "fullName profileImg specialization email",
         })
         .populate({
           path: "slotId",
           select: "date startTime endTime",
         })
-        .sort({ createdAt: -1 }) // Show newest bookings first
+        .populate({
+          path: "userId",
+          select: "name email fullName profileImg",
+        })
+        .sort({ createdAt: -1 })
         .skip(skip)
         .limit(limit)
         .lean(),
@@ -39,6 +46,9 @@ export class BookingRepository implements IBookingRepository {
     return { data, total };
   }
 
+  // ================================
+  // FIND SINGLE BOOKING
+  // ================================
   async findByIdAndUser(bookingId: string, userId: string) {
     return this.bookingModel.findOne({
       _id: bookingId,
@@ -46,23 +56,52 @@ export class BookingRepository implements IBookingRepository {
     });
   }
 
-  // OLD METHOD - keeping for backward compatibility but deprecated
+  // ================================
+  // MENTOR → BOOKED MENTEES (CHAT)
+  // ================================
+  async findBookedMenteesByMentor(mentorId: string) {
+    const mid = Types.ObjectId.isValid(mentorId)
+      ? new Types.ObjectId(mentorId)
+      : mentorId;
+
+    return this.bookingModel
+      .find({ mentorId: mid })
+      .populate({
+        path: "userId",
+        select: "name email profileImg",
+      })
+      .select("userId")
+      .lean();
+  }
+
+  // ================================
+  // SLOT UPDATES (OLD - DEPRECATED)
+  // ================================
   async updateSlotBooking(slotId: any, value: boolean) {
     return SlotModel.findByIdAndUpdate(slotId, { isBooked: value });
   }
 
-  // NEW METHOD - updates both isBooked and isAvailable
-  async updateSlotAvailability(slotId: any, isBooked: boolean, isAvailable: boolean) {
+  // ================================
+  // SLOT AVAILABILITY (NEW)
+  // ================================
+  async updateSlotAvailability(
+    slotId: any,
+    isBooked: boolean,
+    isAvailable: boolean
+  ) {
     return SlotModel.findByIdAndUpdate(
       slotId,
-      { 
-        isBooked: isBooked,
-        isAvailable: isAvailable 
+      {
+        isBooked,
+        isAvailable,
       },
       { new: true }
     );
   }
 
+  // ================================
+  // BOOKING STATUS UPDATE
+  // ================================
   async updateStatus(bookingId: string, status: string) {
     return this.bookingModel.findByIdAndUpdate(
       bookingId,

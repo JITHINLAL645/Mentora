@@ -4,66 +4,86 @@ import axios from "axios";
 import { socket } from "../../services/socket";
 
 const MentorChatPage = () => {
-  const mentorId = localStorage.getItem("mentorId");
-
+  const [mentorId, setMentorId] = useState<string | null>(null);
   const [mentees, setMentees] = useState<any[]>([]);
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [messages, setMessages] = useState<any[]>([]);
   const [newMessage, setNewMessage] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  /* ============================
-     🔹 Fetch booked mentees
-     ============================ */
-  const fetchMentees = async () => {
-    if (!mentorId) return;
-
-    try {
-      const res = await axios.get(`/api/mentors/${mentorId}/booked-mentees`);
-      setMentees(res.data);
-    } catch (error) {
-      console.error("❌ Error fetching mentees:", error);
-    }
-  };
-
-  /* ============================
-     🔹 Initial load
-     ============================ */
+  // 🔹 Load mentorId
   useEffect(() => {
-    if (!mentorId) {
-      console.log("❌ Mentor ID missing");
+    const id = sessionStorage.getItem("mentorId");
+    if (!id) {
+      setError("Mentor ID not found. Please login again.");
+      setLoading(false);
       return;
     }
+    setMentorId(id);
+  }, []);
 
-    fetchMentees();
-  }, [mentorId]);
-
-  /* ============================
-     🔹 Load messages on user click
-     ============================ */
-  const loadMessages = async (user: any) => {
-    if (!mentorId || !user?._id) return;
-
-    setSelectedUser(user);
-
-    const roomId = [mentorId, user._id].sort().join("-");
-
+  // 🔹 Fetch mentees (FIXED)
+  const fetchMentees = async () => {
     try {
-      const res = await axios.get(`/api/chat/${roomId}`);
-      setMessages(res.data);
-      socket.emit("joinRoom", { roomId });
-    } catch (error) {
-      console.error("❌ Error loading messages:", error);
+      setLoading(true);
+      setError(null);
+
+      const token = sessionStorage.getItem("mentorToken");
+      if (!token) throw new Error("Authentication token missing");
+
+      const res = await axios.get(
+        "/api/bookings/mentor/booked-mentees",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // ✅ THIS IS THE FIX
+      setMentees(res.data.mentees || []);
+    } catch (err: any) {
+      console.error("Fetch mentees error:", err);
+      setError(err.response?.data?.message || err.message);
+      setMentees([]);
+    } finally {
+      setLoading(false);
     }
   };
 
-  /* ============================
-     🔹 Receive socket messages
-     ============================ */
+  // 🔹 Socket + initial load
+  useEffect(() => {
+    if (!mentorId) return;
+
+    socket.emit("joinUser", mentorId);
+    fetchMentees();
+
+    return () => {
+      socket.off("receiveMessage");
+    };
+  }, [mentorId]);
+
+  // 🔹 Load messages
+  const loadMessages = async (user: any) => {
+    setSelectedUser(user);
+    setMessages([]);
+
+    const roomId = [mentorId, user._id].sort().join("-");
+    const res = await axios.get(`/api/chat/${roomId}`);
+    setMessages(res.data || []);
+
+    socket.emit("joinRoom", { roomId });
+  };
+
+  // 🔹 Receive messages
   useEffect(() => {
     socket.on("receiveMessage", (msg) => {
-      setMessages((prev) => [...prev, msg]);
+      setMessages((prev) =>
+        prev.some((m) => m._id === msg._id) ? prev : [...prev, msg]
+      );
     });
 
     return () => {
@@ -71,45 +91,20 @@ const MentorChatPage = () => {
     };
   }, []);
 
-  /* ============================
-     🔹 Send message
-     ============================ */
+  // 🔹 Send message
   const sendMessage = () => {
-    if (!mentorId) {
-      console.log("❌ Mentor ID missing");
-      return;
-    }
-
-    if (!selectedUser?._id) {
-      console.log("❌ Mentee not selected");
-      return;
-    }
-
-    if (!newMessage.trim()) {
-      console.log("❌ Empty message");
-      return;
-    }
-
-    const roomId = [mentorId, selectedUser._id].sort().join("-");
-
-    if (!roomId || roomId === "-") {
-      console.log("❌ Invalid roomId:", roomId);
-      return;
-    }
+    if (!newMessage.trim() || !selectedUser) return;
 
     socket.emit("sendMessage", {
-      roomId,
+      roomId: [mentorId, selectedUser._id].sort().join("-"),
       senderId: mentorId,
       receiverId: selectedUser._id,
-      message: newMessage.trim(),
+      message: newMessage,
     });
 
     setNewMessage("");
   };
 
-  /* ============================
-     🔹 Auto scroll
-     ============================ */
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -119,62 +114,64 @@ const MentorChatPage = () => {
       <MentorSidebar />
 
       <div className="flex w-full">
-        {/* LEFT – MENTEES */}
-        <div className="w-1/4 border-r">
-          {mentees.length === 0 ? (
-            <p className="p-4 text-gray-500">No mentees found</p>
+        {/* LEFT */}
+        <div className="w-1/4 border-r bg-gray-50">
+          <div className="p-4 font-semibold">My Mentees</div>
+
+          {loading ? (
+            <p className="p-4">Loading...</p>
+          ) : error ? (
+            <p className="p-4 text-red-500">{error}</p>
+          ) : mentees.length === 0 ? (
+            <p className="p-4">No mentees found</p>
           ) : (
             mentees.map((m) => (
               <div
                 key={m._id}
+                className="p-4 cursor-pointer hover:bg-blue-100"
                 onClick={() => loadMessages(m)}
-                className={`p-4 cursor-pointer border-b hover:bg-gray-100 ${
-                  selectedUser?._id === m._id ? "bg-gray-200" : ""
-                }`}
               >
-                {m.name}
+                <p className="font-medium">{m.name}</p>
+                <p className="text-xs">{m.email}</p>
               </div>
             ))
           )}
         </div>
 
-        {/* RIGHT – CHAT */}
+        {/* RIGHT */}
         <div className="w-3/4 flex flex-col">
           <div className="flex-1 p-4 overflow-y-auto">
-            {selectedUser ? (
-              messages.map((msg) => (
-                <div
-                  key={msg._id || `${msg.senderId}-${msg.createdAt}`}
-                  className="mb-2"
-                >
-                  <span className="px-3 py-1 rounded bg-gray-200">
-                    {msg.message}
-                  </span>
-                </div>
-              ))
-            ) : (
-              <p className="text-gray-500">Select a mentee to start chat</p>
-            )}
+            {messages.map((msg) => (
+              <div
+                key={msg._id}
+                className={`mb-2 ${
+                  msg.senderId === mentorId ? "text-right" : "text-left"
+                }`}
+              >
+                <span className="px-3 py-2 bg-blue-600 text-white rounded">
+                  {msg.message}
+                </span>
+              </div>
+            ))}
             <div ref={messagesEndRef} />
           </div>
 
-          <div className="p-4 flex border-t">
-            <input
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-              className="flex-1 border px-3 py-2 rounded"
-              placeholder="Type a message..."
-              disabled={!selectedUser}
-              onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-            />
-            <button
-              onClick={sendMessage}
-              className="ml-2 px-4 bg-blue-600 text-white rounded"
-              disabled={!selectedUser}
-            >
-              Send
-            </button>
-          </div>
+          {selectedUser && (
+            <div className="p-4 border-t flex gap-2">
+              <input
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.target.value)}
+                className="flex-1 border p-2"
+                placeholder="Type a message"
+              />
+              <button
+                onClick={sendMessage}
+                className="bg-blue-600 text-white px-4"
+              >
+                Send
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

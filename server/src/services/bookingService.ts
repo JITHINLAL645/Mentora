@@ -12,11 +12,17 @@ export class BookingService {
 
     const sessions = data.map((s) => ({
       _id: s._id,
-      mentor: {
-        fullName: s.mentorId?.fullName,
-        profileImg: s.mentorId?.profileImg,
-        specialization: s.mentorId?.specialization,
-      },
+      userId: s.userId,
+      mentor: s.mentorId
+        ? {
+            _id: s.mentorId._id,
+            fullName: s.mentorId.fullName,
+            profileImg: s.mentorId.profileImg,
+            specialization: s.mentorId.specialization,
+            email: s.mentorId.email,
+          }
+        : null,
+      mentorId: s.mentorId?._id,
       date: s.slotId?.date,
       startTime: s.slotId?.startTime,
       endTime: s.slotId?.endTime,
@@ -25,17 +31,14 @@ export class BookingService {
       status: s.status,
       paymentIntentId: s.paymentIntentId,
       bookedAt: s.createdAt,
-      slotId: s.slotId?._id, // Added to pass slotId to frontend
+      slotId: s.slotId?._id,
     }));
 
     return { sessions, total };
   }
 
   async cancelSession(bookingId: string, userId: string) {
-    const booking = await this.bookingRepo.findByIdAndUser(
-      bookingId,
-      userId
-    );
+    const booking = await this.bookingRepo.findByIdAndUser(bookingId, userId);
 
     if (!booking) {
       throw new Error("Session not found");
@@ -45,12 +48,32 @@ export class BookingService {
       throw new Error("Session already cancelled");
     }
 
-    // Update slot to make it available again
-    // Set isBooked to false AND isAvailable to true
-    await this.bookingRepo.updateSlotAvailability(booking.slotId, false, true);
+    await this.bookingRepo.updateSlotAvailability(
+      booking.slotId,
+      false,
+      true
+    );
 
-    const updated = await this.bookingRepo.updateStatus(bookingId, "Cancelled");
+    return this.bookingRepo.updateStatus(bookingId, "Cancelled");
+  }
 
-    return updated;
+  // ================================
+  // MENTOR → BOOKED MENTEES (CHAT)
+  // ================================
+  async getBookedMenteesForMentor(mentorId: string) {
+    const bookings = await this.bookingRepo.findBookedMenteesByMentor(mentorId);
+
+    const menteeMap = new Map<string, any>();
+
+    for (const booking of bookings) {
+      if (booking.userId && booking.userId._id) {
+        menteeMap.set(
+          booking.userId._id.toString(),
+          booking.userId
+        );
+      }
+    }
+
+    return Array.from(menteeMap.values());
   }
 }

@@ -8,6 +8,9 @@ import logger from "../utils/logger";
 export class BookingController {
   constructor(private bookingService: BookingService) {}
 
+  // ================================
+  // USER → MY SESSIONS
+  // ================================
   getMySessions = async (
     req: AuthenticatedRequest,
     res: Response
@@ -45,6 +48,9 @@ export class BookingController {
     }
   };
 
+  // ================================
+  // USER → CANCEL SESSION
+  // ================================
   cancelSession = async (
     req: AuthenticatedRequest,
     res: Response
@@ -71,6 +77,39 @@ export class BookingController {
       });
     } catch (err: any) {
       logger.error("Error in cancelSession:", err);
+
+      return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+        message: err.message || Messages.GENERAL_ERROR,
+      });
+    }
+  };
+
+  // ================================
+  // MENTOR → BOOKED MENTEES (CHAT)
+  // ================================
+  getMentorBookedMentees = async (
+    req: AuthenticatedRequest,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      const mentorId = req.userId; // mentorId from JWT
+
+      if (!mentorId) {
+        return res.status(HttpStatus.UNAUTHORIZED).json({
+          message: Messages.USER_NOT_FOUND,
+        });
+      }
+
+      const mentees =
+        await this.bookingService.getBookedMenteesForMentor(mentorId);
+
+      return res.status(HttpStatus.OK).json({
+        success: true,
+        message: Messages.FETCH_SUCCESS,
+        mentees,
+      });
+    } catch (err: any) {
+      logger.error("Error in getMentorBookedMentees:", err);
 
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: err.message || Messages.GENERAL_ERROR,
